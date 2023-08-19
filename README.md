@@ -1,0 +1,1 @@
+# www.chodim-inak.sk
