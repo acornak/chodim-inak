@@ -10,12 +10,20 @@ const config: Config = {
 		extend: {
 			colors: {
 				primary: {
-					200: "#8c8c8e",
-					300: "#2c2c38",
-					400: "#242430",
-					500: "#191921",
+					base: "#29265b",
+					dark: "#1e1b4d",
+					light: "#3c3a6b",
 				},
-				secondary: "#fcc40c",
+				secondary: {
+					base: "#68c6eb",
+					dark: "#4fa8c4",
+					light: "#8cdcf5",
+				},
+				tertiary: {
+					100: "#f2f2f2",
+					200: "#e6e6e6",
+					300: "#cccccc",
+				},
 			},
 		},
 	},
