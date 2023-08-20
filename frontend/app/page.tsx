@@ -1,7 +1,14 @@
-import React from "react";
+import React, { FC } from "react";
+// Components
+import { HeroHome } from "../components/Hero";
 
-const Home = (): JSX.Element => {
-	return <>This is homepage</>;
+const Home: FC = (): JSX.Element => {
+	return (
+		<>
+			<HeroHome />
+			This is homepage
+		</>
+	);
 };
 
 export default Home;

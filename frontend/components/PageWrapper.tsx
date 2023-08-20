@@ -1,5 +1,10 @@
 "use client";
-import React, { useEffect, ReactNode, FC } from "react";
+import React, { useEffect, ReactNode, FC, useState } from "react";
+// Next
+import { usePathname } from "next/navigation";
+// Components
+import Navbar from "./Navbar";
+import Footer from "./Footer";
 // Context
 import { useLoadingCtx } from "./context/LoadingContext";
 
@@ -9,6 +14,12 @@ type WrapperProps = {
 
 const PageWrapper: FC<WrapperProps> = ({ children }): JSX.Element => {
 	const { setPageLoaded } = useLoadingCtx();
+	const pathname: string = usePathname();
+	const [currentPage, setCurrentPage] = useState<string>("");
+
+	useEffect((): void => {
+		setCurrentPage(pathname);
+	}, [pathname]);
 
 	useEffect((): (() => void) => {
 		const timer = setTimeout(() => {
@@ -24,7 +35,13 @@ const PageWrapper: FC<WrapperProps> = ({ children }): JSX.Element => {
 		return () => clearTimeout(timer);
 	}, [setPageLoaded]);
 
-	return <>{children}</>;
+	return (
+		<div className="flex flex-col h-screen justify-between">
+			<Navbar currentPage={currentPage} />
+			<div className="mb-auto">{children}</div>
+			<Footer />
+		</div>
+	);
 };
 
 export default PageWrapper;

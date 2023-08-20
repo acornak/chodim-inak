@@ -1,11 +1,11 @@
 "use client";
-import React from "react";
+import React, { FC } from "react";
 // Misc
 import CountUp from "react-countup";
 // Context
 import AnimatedProgressProvider from "./context/AnimatedProgressProvider";
 
-const InitialLoader = (): JSX.Element => {
+const InitialLoader: FC = (): JSX.Element => {
 	return (
 		<div className="fixed inset-0 bg-primary-base flex flex-col justify-center items-center">
 			<div className="text-white text-xl font-bold mb-4">
