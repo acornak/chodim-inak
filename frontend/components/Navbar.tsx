@@ -49,7 +49,7 @@ const Navbar: FC<NavbarProps> = ({ currentPage }): JSX.Element => {
 					))}
 				</ul>
 
-				<div>
+				<div className="mr-4 md:mr-0">
 					<CTAButton>Chcem asistovať!</CTAButton>
 				</div>
 			</div>

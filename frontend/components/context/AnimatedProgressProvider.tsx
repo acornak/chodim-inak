@@ -18,7 +18,7 @@ const AnimatedProgressProvider = ({
 }: AnimatedProgressProviderProps) => {
 	const [value, setValue] = useState(valueStart);
 
-	useEffect(() => {
+	useEffect((): (() => void) => {
 		const timeout = setTimeout(() => {
 			const interval = setInterval(() => {
 				setValue((oldValue: number) => {
