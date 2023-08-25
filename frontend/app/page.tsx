@@ -11,6 +11,18 @@ const Home: FC = (): JSX.Element => {
 			<ContentWrapper>
 				<About />
 			</ContentWrapper>
+			<ContentWrapper>
+				<About />
+			</ContentWrapper>
+			<ContentWrapper>
+				<About />
+			</ContentWrapper>
+			<ContentWrapper id="story">
+				<About />
+			</ContentWrapper>
+			<ContentWrapper>
+				<About />
+			</ContentWrapper>
 		</>
 	);
 };

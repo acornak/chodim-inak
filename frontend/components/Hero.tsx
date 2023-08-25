@@ -1,28 +1,55 @@
-import React, { FC } from "react";
+"use client";
+import React, { FC, useEffect, useState } from "react";
 // Next
 import Image from "next/image";
 import { StaticImport } from "next/dist/shared/lib/get-img-props";
-// Components
-import { CTAButton } from "./styled/Button";
 // Image
-import heroImage from "@/public/hero.jpeg";
+import heroImage from "@/public/hero.png";
 
 const HeroHome: FC = (): JSX.Element => {
+	const [loaded, setLoaded] = useState(false);
+
+	useEffect(() => {
+		setLoaded(true);
+	}, []);
+
 	return (
-		<div className="relative h-screen flex items-center justify-center">
+		<div className="relative h-[90vh] flex items-center justify-center z-10 text-white dark:text-gray-300">
 			<Image
 				src={heroImage}
-				fill
+				layout="fill"
 				priority
 				alt="Chodím inak a vítam vás vo svete osobnej asistencie."
-				className="z-0"
 				style={{ objectFit: "cover" }}
 			/>
-
-			<div className="z-10 relative text-center">
-				<h1 className="text-4xl font-bold mb-4">Chodím inak</h1>
-				<p className="mb-4">a vítam vás vo svete osobnej asistencie.</p>
-				<CTAButton>Chcem asistovať!</CTAButton>
+			<div className="absolute z-10 text-left md:pb-48 md:pl-32 lg:pl-56 xl:pl-72 w-full text-center md:text-left">
+				<h1
+					className={`text-4xl font-bold mb-4 md:mb-8 uppercase transform transition-all ease-in-out duration-700 ${
+						loaded
+							? "translate-y-0 opacity-100 delay-100"
+							: "translate-y-8 opacity-0"
+					}`}
+				>
+					Chodím inak...
+				</h1>
+				<p
+					className={`mb-4 md:mb-8 text-lg transform transition-all ease-in-out duration-700 ${
+						loaded
+							? "translate-y-0 opacity-100 delay-300"
+							: "translate-y-8 opacity-0"
+					}`}
+				>
+					...a vítam vás vo svete osobnej asistencie.
+				</p>
+				<button
+					className={`bg-transparent px-6 py-2 rounded uppercase border hover:bg-white hover:text-gray-800 font-semibold transform transition-all ease-in-out duration-700 ${
+						loaded
+							? "translate-y-0 opacity-100 delay-500"
+							: "translate-y-8 opacity-0"
+					}`}
+				>
+					Chcem asistovať!
+				</button>
 			</div>
 		</div>
 	);
