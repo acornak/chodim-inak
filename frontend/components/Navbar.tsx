@@ -21,6 +21,7 @@ type NavbarProps = {
 
 const Navbar: FC<NavbarProps> = ({ currentPage }): JSX.Element => {
 	const [showChildren, setShowChildren] = useState<number>(-1);
+	const [logo, setLogo] = useState<StaticImageData>(logoLight);
 	const [isMobile, setIsMobile] = useState(false);
 	const { theme } = useTheme();
 
@@ -41,15 +42,15 @@ const Navbar: FC<NavbarProps> = ({ currentPage }): JSX.Element => {
 			? "bg-white dark:bg-gray-300"
 			: "bg-primary-base dark:bg-white";
 
-	const handleLogo = (): StaticImageData => {
+	useEffect(() => {
 		if (currentPage === "/") {
-			return logoDark;
+			setLogo(logoDark);
 		} else if (theme === "dark") {
-			return logoDark;
+			setLogo(logoDark);
 		} else {
-			return logoLight;
+			setLogo(logoLight);
 		}
-	};
+	}, [currentPage, theme]);
 
 	useEffect(() => {
 		const handleResize = () => {
@@ -86,11 +87,12 @@ const Navbar: FC<NavbarProps> = ({ currentPage }): JSX.Element => {
 				<div className="flex-shrink-0">
 					<Link href="/">
 						<Image
-							src={handleLogo()}
+							src={logo}
 							alt="Chodím inak"
 							width={160}
 							height={160}
 							priority
+							key={"logo"}
 						/>
 					</Link>
 				</div>
