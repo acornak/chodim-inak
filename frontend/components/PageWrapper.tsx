@@ -21,7 +21,11 @@ const PageWrapper: FC<WrapperProps> = ({ children }): JSX.Element => {
 	}, [pathname]);
 
 	return (
-		<ThemeProvider attribute="class" defaultTheme="system">
+		<ThemeProvider
+			attribute="class"
+			defaultTheme="light"
+			enableSystem={false}
+		>
 			<div className="flex flex-col h-screen justify-between">
 				<Navbar currentPage={currentPage} />
 				<div className="mb-auto">{children}</div>

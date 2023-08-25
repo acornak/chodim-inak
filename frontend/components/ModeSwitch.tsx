@@ -6,9 +6,16 @@ import { DarkMode, LightMode } from "./icons/ModeIcons";
 
 const ModeSwitch: FC = (): JSX.Element => {
 	const [mounted, setMounted] = useState<boolean>(false);
+	const [resolvedTheme, setResolvedTheme] = useState<string>("light");
 	const { theme, setTheme } = useTheme();
 
 	useEffect((): void => setMounted(true), []);
+
+	useEffect((): void => {
+		if (theme) {
+			setResolvedTheme(theme);
+		}
+	}, [theme, mounted]);
 
 	if (!mounted) return <></>;
 
@@ -23,13 +30,13 @@ const ModeSwitch: FC = (): JSX.Element => {
 					onChange={() =>
 						setTheme(theme === "dark" ? "light" : "dark")
 					}
-					checked={theme === "dark"}
+					checked={resolvedTheme === "dark"}
 				/>
 				<label
 					htmlFor="dark-mode-toggle"
 					className="dark-mode-label block text-gray-300 overflow-hidden rounded-md h-7 bg-primary-light cursor-pointer transition-colors duration-200 ease-in flex justify-center items-center"
 				>
-					{theme === "dark" ? (
+					{resolvedTheme === "dark" ? (
 						<DarkMode className="transition-opacity duration-300 ease-in opacity-100 mr-6 mt-1" />
 					) : (
 						<LightMode className="transition-opacity duration-300 ease-in opacity-100 ml-6 mt-1" />
