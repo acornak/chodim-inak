@@ -35,3 +35,12 @@ body::-webkit-scrollbar {
 .dark-mode-label {
 	transition: background-color 0.3s ease-in-out;
 }
+
+.homepage-button {
+	transition: background-color 300ms ease-in-out, color 300ms ease-in-out;
+}
+
+.loaded-homepage-button {
+	transition: transform 700ms ease-in-out 500ms,
+		opacity 700ms ease-in-out 500ms;
+}

@@ -24,29 +24,31 @@ const HeroHome: FC = (): JSX.Element => {
 			/>
 			<div className="absolute z-10 text-left md:pb-48 md:pl-32 lg:pl-56 xl:pl-72 w-full text-center md:text-left">
 				<h1
+					style={{ transitionDelay: "100ms" }}
 					className={`text-4xl font-bold mb-4 md:mb-8 uppercase transform transition-all ease-in-out duration-700 ${
 						loaded
-							? "translate-y-0 opacity-100 delay-100"
+							? "translate-y-0 opacity-100"
 							: "translate-y-8 opacity-0"
 					}`}
 				>
 					Chodím inak...
 				</h1>
 				<p
+					style={{ transitionDelay: "300ms" }}
 					className={`mb-4 md:mb-8 text-lg transform transition-all ease-in-out duration-700 ${
 						loaded
-							? "translate-y-0 opacity-100 delay-300"
+							? "translate-y-0 opacity-100"
 							: "translate-y-8 opacity-0"
 					}`}
 				>
 					...a vítam vás vo svete osobnej asistencie.
 				</p>
 				<button
-					className={`bg-transparent px-6 py-2 rounded uppercase border hover:bg-white hover:text-gray-800 font-semibold transform transition-all ease-in-out duration-700 ${
+					className={`homepage-button bg-transparent px-6 py-2 rounded uppercase border font-semibold transform ${
 						loaded
-							? "translate-y-0 opacity-100 delay-500"
+							? "loaded-homepage-button translate-y-0 opacity-100"
 							: "translate-y-8 opacity-0"
-					}`}
+					} hover:bg-white hover:text-gray-800`}
 				>
 					Chcem asistovať!
 				</button>
