@@ -14,13 +14,75 @@ import { NavItems } from "./shared/constants";
 import logoLight from "@/public/logo-light.png";
 import logoDark from "@/public/logo-dark.png";
 import { ChevronDown } from "./icons/Chevrons";
+import BarsIcon from "./icons/Bars";
+import CloseIcon from "./icons/Close";
 
 type NavbarProps = {
 	currentPage: string;
 };
 
+type NavMobileOpenProps = {
+	closeMenu: () => void;
+	menuOpen: boolean;
+};
+
+const NavMobileOpen: FC<NavMobileOpenProps> = ({ closeMenu, menuOpen }) => {
+	const [menuStyle, setMenuStyle] = useState({
+		transform: "translateX(100%)",
+		transition: "",
+	});
+
+	useEffect(() => {
+		if (menuOpen) {
+			setMenuStyle({
+				transform: "translateX(0%)",
+				transition: "transform 0.3s ease-in-out",
+			});
+		} else {
+			setMenuStyle({
+				transform: "translateX(100%)",
+				transition: "transform 0.3s ease-in-out",
+			});
+		}
+	}, [menuOpen]);
+
+	return (
+		<div
+			style={menuStyle}
+			className="md:hidden fixed top-0 right-0 w-1/2 h-full bg-white dark:bg-gray-800 flex flex-col space-y-4 py-8 px-6"
+		>
+			<button
+				style={menuStyle}
+				className={`absolute top-0 left-[-32px] bg-gray-600`}
+				onClick={closeMenu}
+			>
+				<CloseIcon className="w-8 h-8 text-white" />
+			</button>
+
+			<div className="flex items-center text-gray-700 dark:text-gray-300 uppercase text-xs">
+				<LanguageSwitch />
+				<ModeSwitch />
+			</div>
+
+			<ul className="flex flex-col space-y-4">
+				{NavItems.map((item, index) => (
+					<li
+						key={index}
+						className="text-gray-700 dark:text-gray-300"
+					>
+						<Link href={item.path} onClick={closeMenu}>
+							{item.name}
+						</Link>
+					</li>
+				))}
+			</ul>
+		</div>
+	);
+};
+
 const NavbarDesktop: FC<NavbarProps> = ({ currentPage }): JSX.Element => {
 	const [isScrolled, setIsScrolled] = useState<boolean>(false);
+	const [isMobileMenuOpen, setIsMobileMenuOpen] = useState<boolean>(false);
 	const [showChildren, setShowChildren] = useState<number>(-1);
 	const [logo, setLogo] = useState<StaticImageData>(logoLight);
 	const [textColor, setTextColor] = useState<string>(
@@ -130,7 +192,7 @@ const NavbarDesktop: FC<NavbarProps> = ({ currentPage }): JSX.Element => {
 				isScrolled ? "bg-white dark:bg-gray-800" : bg
 			} fixed top-0 w-full z-20 py-4`}
 		>
-			<div className="container mx-auto flex justify-between items-center">
+			<div className="container mx-auto flex justify-between items-center px-6 md:px-2">
 				<div className="flex-shrink-0">
 					<Link href="/">
 						<Image
@@ -143,6 +205,18 @@ const NavbarDesktop: FC<NavbarProps> = ({ currentPage }): JSX.Element => {
 						/>
 					</Link>
 				</div>
+				<button
+					className="md:hidden"
+					onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+				>
+					<BarsIcon className={`h-6 w-6 ${textColor}`} />
+				</button>
+
+				<NavMobileOpen
+					closeMenu={() => setIsMobileMenuOpen(false)}
+					menuOpen={isMobileMenuOpen}
+				/>
+
 				<ul className="hidden text-sm lg:text-lg md:flex flex-grow justify-center items-center space-x-0">
 					{NavItems.map((item, index) => (
 						<>
@@ -212,7 +286,7 @@ const NavbarDesktop: FC<NavbarProps> = ({ currentPage }): JSX.Element => {
 						</>
 					))}
 				</ul>
-				<div className="flex items-center text-white mr-2 md:mr-0 uppercase text-xs">
+				<div className="hidden md:flex items-center text-white mr-2 md:mr-0 uppercase text-xs">
 					<LanguageSwitch bg={bg} textColor={textColor} />
 					<div className="border-l h-5 mx-4" />
 					<ModeSwitch />

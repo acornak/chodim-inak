@@ -1,4 +1,3 @@
-"use client";
 // React
 import React, { FC } from "react";
 // Icons
