@@ -5,15 +5,14 @@
 body {
 	scrollbar-width: none;
 	-ms-overflow-style: none;
+	height: 100%;
+	overflow: auto;
+	overscroll-behavior-y: none;
 }
 
 body::-webkit-scrollbar {
 	width: 0.1rem;
 	display: none;
-}
-
-.custom-shadow {
-	text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Adjust as needed */
 }
 
 @layer base {
@@ -50,5 +49,5 @@ body::-webkit-scrollbar {
 }
 
 .dark .dark-mode-fill {
-	fill: black;
+	fill: rgb(31 41 55);
 }

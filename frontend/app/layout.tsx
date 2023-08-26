@@ -1,10 +1,10 @@
 import React from "react";
 import "./globals.css";
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { DM_Sans } from "next/font/google";
 import PageWrapper from "@/components/PageWrapper";
 
-const inter = Inter({ subsets: ["latin"] });
+const dmSans = DM_Sans({ weight: ["500"], subsets: ["latin"] });
 
 export const metadata: Metadata = {
 	title: "Daniela Komanická | Chodím inak",
@@ -14,7 +14,7 @@ export const metadata: Metadata = {
 const RootLayout = ({ children }: { children: React.ReactNode }) => {
 	return (
 		<html lang="sk">
-			<body className={inter.className}>
+			<body className={dmSans.className}>
 				<PageWrapper>{children}</PageWrapper>
 			</body>
 		</html>

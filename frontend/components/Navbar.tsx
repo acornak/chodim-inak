@@ -126,7 +126,7 @@ const NavMobileOpen: FC<NavMobileOpenProps> = ({ closeMenu, menuOpen }) => {
 										className="relative z-10 transition-colors"
 										onClick={handleChildrenClose}
 									>
-										<span className="inline-block relative overflow-hidden hover:text-black dark:hover:text-white">
+										<span className="inline-block relative overflow-hidden hover:text-black dark:hover:text-white text-xs">
 											{child.name}
 											<span className="absolute left-0 bottom-0 h-0.5 w-0 bg-secondary-base group-hover:w-full transition-all ease-in-out duration-200"></span>
 										</span>
@@ -137,16 +137,18 @@ const NavMobileOpen: FC<NavMobileOpenProps> = ({ closeMenu, menuOpen }) => {
 					</li>
 				))}
 			</ul>
-
+			<hr className="my-2" />
 			<div className="flex text-gray-700 dark:text-gray-300 uppercase justify-between text-xs">
 				<LanguageSwitch />
 				<ModeSwitch />
 			</div>
 
-			<div className="fixed bottom-0 left-0 w-full p-4 bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 text-sm">
-				<button className="text-xs px-12 py-2 mb-4 rounded uppercase font-semibold border border-gray-300">
-					Chcem asistovať!
-				</button>
+			<div className="fixed bottom-0 left-0 w-full p-4 bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 text-sm justify-center">
+				<div className="flex justify-center">
+					<button className="text-xs px-12 py-2 mb-4 rounded uppercase font-semibold border border-gray-300">
+						Chcem asistovať!
+					</button>
+				</div>
 
 				<hr className="my-2" />
 
