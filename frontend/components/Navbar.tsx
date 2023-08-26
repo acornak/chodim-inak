@@ -35,6 +35,12 @@ const NavMobileOpen: FC<NavMobileOpenProps> = ({ closeMenu, menuOpen }) => {
 		setShowChildren(showChildren === index ? -1 : index);
 	};
 
+	const handleChildrenClose = () => {
+		setShowChildren(-1);
+		setRotateIndex(null);
+		closeMenu();
+	};
+
 	const [menuStyle, setMenuStyle] = useState({
 		transform: "translateX(100%)",
 		transition: "",
@@ -114,6 +120,7 @@ const NavMobileOpen: FC<NavMobileOpenProps> = ({ closeMenu, menuOpen }) => {
 									<Link
 										href={`${item.path}${child.path}`}
 										className="relative z-10 transition-colors"
+										onClick={handleChildrenClose}
 									>
 										<span className="inline-block relative overflow-hidden hover:text-black dark:hover:text-white">
 											{child.name}
