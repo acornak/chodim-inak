@@ -1,6 +1,7 @@
-import React from "react";
+import React, { FC } from "react";
+import { IconProps } from "../shared/types";
 
-const LinkedInIcon = (): JSX.Element => {
+const LinkedInIcon: FC<IconProps> = ({ className }): JSX.Element => {
 	return (
 		<svg
 			xmlns="http://www.w3.org/2000/svg"
@@ -8,7 +9,7 @@ const LinkedInIcon = (): JSX.Element => {
 			height="1.7em"
 			fill="currentColor"
 			stroke="currentColor"
-			className="w-7 h-7"
+			className={`w-7 h-7 ${className}`}
 		>
 			<circle cx="16" cy="16" r="15.5" />
 			<g className="dark-mode-fill">

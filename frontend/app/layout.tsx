@@ -4,7 +4,7 @@ import type { Metadata } from "next";
 import { DM_Sans } from "next/font/google";
 import PageWrapper from "@/components/PageWrapper";
 
-const dmSans = DM_Sans({ weight: ["500"], subsets: ["latin"] });
+const dmSans = DM_Sans({ weight: ["400", "500", "700"], subsets: ["latin"] });
 
 export const metadata: Metadata = {
 	title: "Daniela Komanická | Chodím inak",
