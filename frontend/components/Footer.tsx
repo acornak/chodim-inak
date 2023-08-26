@@ -84,17 +84,29 @@ const Footer: FC = (): JSX.Element => {
 				<div className="hidden md:block">
 					<h4 className="font-semibold mb-2">Sociálne siete</h4>
 					<ul>
-						<li className="flex items-center">
-							<FacebookIcon className="mr-4" />
-							Facebook
+						<li>
+							<a href="#" className="flex items-center">
+								<div className="w-5 flex-shrink-0">
+									<FacebookIcon className="w-full" />
+								</div>
+								<span className="ml-2">Facebook</span>
+							</a>
 						</li>
-						<li className="flex items-center">
-							<TwitterIcon className="mr-4" />
-							Twitter
+						<li>
+							<a href="#" className="flex items-center">
+								<div className="w-5 flex-shrink-0">
+									<TwitterIcon className="w-full" />
+								</div>
+								<span className="ml-2">Twitter</span>
+							</a>
 						</li>
-						<li className="flex items-center">
-							<LinkedInIcon className="mr-4" />
-							LinkedIn
+						<li>
+							<a href="#" className="flex items-center">
+								<div className="w-5 flex-shrink-0">
+									<LinkedInIcon className="w-full" />
+								</div>
+								<span className="ml-2">LinkedIn</span>
+							</a>
 						</li>
 					</ul>
 				</div>

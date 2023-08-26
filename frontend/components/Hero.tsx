@@ -6,7 +6,15 @@ import { StaticImport } from "next/dist/shared/lib/get-img-props";
 // Image
 import heroImage from "@/public/hero.png";
 
-const HeroHome: FC = (): JSX.Element => {
+type HeroHomeProps = {
+	dict: {
+		heading: string;
+		subheading: string;
+		button: string;
+	};
+};
+
+const HeroHome: FC<HeroHomeProps> = ({ dict }): JSX.Element => {
 	const [loaded, setLoaded] = useState(false);
 
 	useEffect(() => {
@@ -31,7 +39,7 @@ const HeroHome: FC = (): JSX.Element => {
 							: "translate-y-8 opacity-0"
 					}`}
 				>
-					Chodím inak...
+					{dict.heading}
 				</h1>
 				<p
 					style={{ transitionDelay: "300ms" }}
@@ -41,7 +49,7 @@ const HeroHome: FC = (): JSX.Element => {
 							: "translate-y-8 opacity-0"
 					}`}
 				>
-					...a vítam vás vo svete osobnej asistencie.
+					{dict.subheading}
 				</p>
 				<button
 					className={`homepage-button bg-transparent px-6 py-2 rounded uppercase border font-semibold transform ${
@@ -50,7 +58,7 @@ const HeroHome: FC = (): JSX.Element => {
 							: "translate-y-8 opacity-0"
 					} hover:bg-white hover:text-gray-800`}
 				>
-					Chcem asistovať!
+					{dict.button}
 				</button>
 			</div>
 		</div>

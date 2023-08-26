@@ -1,4 +1,4 @@
-import React from "react";
+import React, { ReactNode } from "react";
 import "./globals.css";
 import type { Metadata } from "next";
 import { DM_Sans } from "next/font/google";
@@ -11,9 +11,19 @@ export const metadata: Metadata = {
 	description: "Vítam vás vo svete osobnej asistencie.",
 };
 
-const RootLayout = ({ children }: { children: React.ReactNode }) => {
+export async function generateStaticParams() {
+	return [{ lang: "en" }, { lang: "sk" }];
+}
+
+const RootLayout = ({
+	children,
+	params,
+}: {
+	children: ReactNode;
+	params: { lang: string };
+}) => {
 	return (
-		<html lang="sk">
+		<html lang={params.lang}>
 			<body className={dmSans.className}>
 				<PageWrapper>{children}</PageWrapper>
 			</body>

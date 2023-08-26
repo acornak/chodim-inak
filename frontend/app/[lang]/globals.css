@@ -24,13 +24,16 @@ body::-webkit-scrollbar {
 .dark-mode-checkbox {
 	transition: all 0.3s ease-in-out;
 }
+
 .dark-mode-checkbox:checked {
 	transform: translateX(100%);
 	border-color: #00385f;
 }
+
 .dark-mode-checkbox:checked + label {
 	background-color: #00385f;
 }
+
 .dark-mode-label {
 	transition: background-color 0.3s ease-in-out;
 }

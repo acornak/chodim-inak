@@ -1,13 +1,22 @@
-import React, { FC } from "react";
+import React from "react";
 // Components
 import { HeroHome } from "@/components/Hero";
 import About from "@/components/About";
 import ContentWrapper from "@/components/styled/ContentWrapper";
 
-const Home: FC = (): JSX.Element => {
+import { Locale } from "../../i18-config";
+import { getDictionary } from "@/dictionaries";
+
+export default async function Home({
+	params: { lang },
+}: {
+	params: { lang: Locale };
+}): Promise<JSX.Element> {
+	const dict = await getDictionary(lang);
+
 	return (
 		<>
-			<HeroHome />
+			<HeroHome dict={dict.home.hero} />
 			<ContentWrapper>
 				<About />
 			</ContentWrapper>
@@ -25,6 +34,4 @@ const Home: FC = (): JSX.Element => {
 			</ContentWrapper>
 		</>
 	);
-};
-
-export default Home;
+}

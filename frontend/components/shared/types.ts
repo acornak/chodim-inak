@@ -1,7 +1,11 @@
 import { ReactNode } from "react";
 
 export type NavItem = {
-	name: string;
+	name: {
+		en: string;
+		sk: string;
+		[lang: string]: string | undefined;
+	};
 	path: string;
 	children?: NavItem[];
 };

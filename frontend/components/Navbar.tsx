@@ -19,6 +19,8 @@ import CloseIcon from "./icons/Close";
 import FacebookIcon from "./icons/Facebook";
 import TwitterIcon from "./icons/Twitter";
 import LinkedInIcon from "./icons/LinkedIn";
+import { getLocaleFromPath } from "./shared/functions";
+import { usePathname } from "next/navigation";
 
 type NavbarProps = {
 	currentPage: string;
@@ -30,6 +32,8 @@ type NavMobileOpenProps = {
 };
 
 const NavMobileOpen: FC<NavMobileOpenProps> = ({ closeMenu, menuOpen }) => {
+	const pathname = usePathname();
+	const locale = getLocaleFromPath(pathname)!.toLowerCase();
 	const [showChildren, setShowChildren] = useState<number>(-1);
 	const [rotateIndex, setRotateIndex] = useState<number | null>(null);
 
@@ -81,12 +85,12 @@ const NavMobileOpen: FC<NavMobileOpenProps> = ({ closeMenu, menuOpen }) => {
 					<li key={index}>
 						<div className="relative flex items-center justify-between uppercase text-sm">
 							<Link
-								href={`${item.path}`}
+								href={`/${locale}${item.path}`}
 								className="relative z-10 transition-colors group"
 								onClick={handleChildrenClose}
 							>
 								<span className="inline-block relative overflow-hidden hover:text-black dark:hover:text-white">
-									{item.name}
+									{item.name[locale!]}
 									<span className="absolute left-0 bottom-0 h-0.5 w-0 bg-secondary-base group-hover:w-full transition-all ease-in-out duration-200"></span>
 								</span>
 							</Link>
@@ -122,12 +126,12 @@ const NavMobileOpen: FC<NavMobileOpenProps> = ({ closeMenu, menuOpen }) => {
 							{item.children?.map((child, childIndex) => (
 								<li key={childIndex} className="relative group">
 									<Link
-										href={`${item.path}${child.path}`}
+										href={`/${locale}${item.path}${child.path}`}
 										className="relative z-10 transition-colors"
 										onClick={handleChildrenClose}
 									>
 										<span className="inline-block relative overflow-hidden hover:text-black dark:hover:text-white text-xs">
-											{child.name}
+											{child.name[locale]}
 											<span className="absolute left-0 bottom-0 h-0.5 w-0 bg-secondary-base group-hover:w-full transition-all ease-in-out duration-200"></span>
 										</span>
 									</Link>
@@ -187,6 +191,8 @@ const NavMobileOpen: FC<NavMobileOpenProps> = ({ closeMenu, menuOpen }) => {
 };
 
 const Navbar: FC<NavbarProps> = ({ currentPage }): JSX.Element => {
+	const pathname = usePathname();
+	const locale = getLocaleFromPath(pathname)!.toLowerCase();
 	const [isScrolled, setIsScrolled] = useState<boolean>(false);
 	const [isMobileMenuOpen, setIsMobileMenuOpen] = useState<boolean>(false);
 	const [showChildren, setShowChildren] = useState<number>(-1);
@@ -198,33 +204,35 @@ const Navbar: FC<NavbarProps> = ({ currentPage }): JSX.Element => {
 	const { theme } = useTheme();
 
 	const bg =
-		currentPage === "/" ? "bg-transparent" : "bg-white dark:bg-gray-800";
+		currentPage === "/" + locale
+			? "bg-transparent"
+			: "bg-white dark:bg-gray-800";
 
 	const textColorHover =
-		currentPage === "/"
+		currentPage === "/" + locale
 			? `${textColor}`
 			: `${textColor} hover:text-black dark:hover:text-white`;
 
 	const underline =
-		currentPage === "/"
+		currentPage === "/" + locale
 			? "bg-white dark:bg-gray-300"
 			: "bg-primary-base dark:bg-white";
 
 	useEffect((): void => {
-		if (currentPage === "/" && !isScrolled) {
+		if (currentPage === "/" + locale && !isScrolled) {
 			setTextColor("text-white dark:text-gray-300");
 		} else {
 			setTextColor("text-gray-700 dark:text-gray-300");
 		}
-	}, [currentPage, theme, isScrolled]);
+	}, [currentPage, theme, isScrolled, locale]);
 
 	useEffect((): void => {
-		if ((currentPage === "/" && !isScrolled) || theme === "dark") {
+		if ((currentPage === "/" + locale && !isScrolled) || theme === "dark") {
 			setLogo(logoDark);
 		} else {
 			setLogo(logoLight);
 		}
-	}, [currentPage, theme, isScrolled]);
+	}, [currentPage, theme, isScrolled, locale]);
 
 	useEffect((): (() => void) => {
 		const handleScroll = () => {
@@ -236,7 +244,6 @@ const Navbar: FC<NavbarProps> = ({ currentPage }): JSX.Element => {
 			}
 		};
 
-		// Initial check
 		handleScroll();
 
 		window.addEventListener("scroll", handleScroll);
@@ -292,6 +299,10 @@ const Navbar: FC<NavbarProps> = ({ currentPage }): JSX.Element => {
 		}
 	};
 
+	useEffect(() => {
+		console.log(showChildren);
+	}, [showChildren]);
+
 	return (
 		<nav
 			className={`${
@@ -300,7 +311,7 @@ const Navbar: FC<NavbarProps> = ({ currentPage }): JSX.Element => {
 		>
 			<div className="container mx-auto flex justify-between items-center px-6 md:px-0">
 				<div className="flex-shrink-0">
-					<Link href="/">
+					<Link href={`/${locale}`}>
 						<Image
 							src={logo}
 							alt="Chodím inak"
@@ -332,12 +343,11 @@ const Navbar: FC<NavbarProps> = ({ currentPage }): JSX.Element => {
 								}`}
 							>
 								<Link
-									href={item.path}
+									href={`/${locale}${item.path}`}
 									className={`${textColorHover} font-semibold relative z-10 transition-colors`}
 									onClick={() => setShowChildren(-1)}
 								>
-									{item.name}
-
+									{item.name[locale]}
 									<span className="absolute inset-x-0 -bottom-1 h-0.5 bg-secondary-base transform scale-x-0 group-hover:scale-x-100 transition-transform origin-top-left" />
 									<span
 										className={`absolute inset-x-0 -bottom-1 h-0.5 ${
@@ -375,14 +385,14 @@ const Navbar: FC<NavbarProps> = ({ currentPage }): JSX.Element => {
 												className="px-4 py-2 relative hover:text-black dark:hover:text-white uppercase text-sm"
 											>
 												<Link
-													href={`${item.path}${child.path}`}
+													href={`/${locale}${item.path}${child.path}`}
 													className="relative z-10 transition-colors group"
 													onClick={() =>
 														setShowChildren(-1)
 													}
 												>
 													<span className="inline-block relative overflow-hidden">
-														{child.name}
+														{child.name[locale]}
 														<span className="absolute left-0 bottom-0 h-0.5 w-0 bg-secondary-base group-hover:w-full transition-all ease-in-out duration-200"></span>
 													</span>
 												</Link>

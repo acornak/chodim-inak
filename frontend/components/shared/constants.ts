@@ -3,33 +3,36 @@ import { NavItem } from "./types";
 
 export const NavItems: NavItem[] = [
 	{
-		name: "Domov",
+		name: { sk: "Domov", en: "Home" },
 		path: "/",
 		children: [
 			{
-				name: "Môj príbeh",
+				name: { sk: "Môj príbeh", en: "My story" },
 				path: "#story",
 			},
 			{
-				name: "Referencie",
+				name: { sk: "Referencie", en: "References" },
 				path: "#references",
 			},
 			{
-				name: "Asistentské desatoro",
+				name: {
+					sk: "Asistentské desatoro",
+					en: "Assistant's Decalogue",
+				},
 				path: "#oa",
 			},
 		],
 	},
 	{
-		name: "Asistenčný kalendár",
+		name: { sk: "Asistenčný kalendár", en: "Assistance calendar" },
 		path: "/calendar",
 	},
 	{
-		name: "Blog",
+		name: { sk: "Blog", en: "Blog" },
 		path: "/blog",
 	},
 	{
-		name: "FAQ",
+		name: { sk: "FAQ", en: "FAQ" },
 		path: "/faq",
 	},
 ];
