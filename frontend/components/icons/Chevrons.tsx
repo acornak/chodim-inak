@@ -1,12 +1,17 @@
 // React
-import React, { FC } from "react";
+import React, { FC, CSSProperties } from "react";
 // Icons
 import { IconProps } from "../shared/types";
 
-const ChevronRight: FC<IconProps> = ({
+type ChevronProps = IconProps & {
+	style?: CSSProperties;
+};
+
+const ChevronRight: FC<ChevronProps> = ({
 	fill = "None",
 	stroke = "currentcolor",
 	className,
+	style,
 }): JSX.Element => {
 	return (
 		<svg
@@ -17,6 +22,7 @@ const ChevronRight: FC<IconProps> = ({
 			stroke={stroke}
 			className={`w-5 h-5 ${className}`}
 			data-testid="chevron-right"
+			style={style}
 		>
 			<path
 				strokeLinecap="round"
@@ -27,10 +33,11 @@ const ChevronRight: FC<IconProps> = ({
 	);
 };
 
-const ChevronLeft: FC<IconProps> = ({
+const ChevronLeft: FC<ChevronProps> = ({
 	fill = "None",
 	stroke = "currentcolor",
 	className,
+	style,
 }): JSX.Element => {
 	return (
 		<svg
@@ -41,6 +48,7 @@ const ChevronLeft: FC<IconProps> = ({
 			stroke={stroke}
 			className={`w-5 h-5 ${className}`}
 			data-testid="chevron-left"
+			style={style}
 		>
 			<path
 				strokeLinecap="round"
@@ -51,10 +59,11 @@ const ChevronLeft: FC<IconProps> = ({
 	);
 };
 
-const ChevronDown: FC<IconProps> = ({
+const ChevronDown: FC<ChevronProps> = ({
 	fill = "None",
 	stroke = "currentcolor",
 	className,
+	style,
 }): JSX.Element => {
 	return (
 		<svg
@@ -65,6 +74,7 @@ const ChevronDown: FC<IconProps> = ({
 			stroke={stroke}
 			className={`w-5 h-5 ${className}`}
 			data-testid="chevron-left"
+			style={style}
 		>
 			<path
 				strokeLinecap="round"

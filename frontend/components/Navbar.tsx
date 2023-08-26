@@ -27,6 +27,14 @@ type NavMobileOpenProps = {
 };
 
 const NavMobileOpen: FC<NavMobileOpenProps> = ({ closeMenu, menuOpen }) => {
+	const [showChildren, setShowChildren] = useState<number>(-1);
+	const [rotateIndex, setRotateIndex] = useState<number | null>(null);
+
+	const toggleChildren = (index: number) => {
+		setRotateIndex(index === rotateIndex ? null : index);
+		setShowChildren(showChildren === index ? -1 : index);
+	};
+
 	const [menuStyle, setMenuStyle] = useState({
 		transform: "translateX(100%)",
 		transition: "",
@@ -49,33 +57,80 @@ const NavMobileOpen: FC<NavMobileOpenProps> = ({ closeMenu, menuOpen }) => {
 	return (
 		<div
 			style={menuStyle}
-			className="md:hidden fixed top-0 right-0 w-1/2 h-full bg-white dark:bg-gray-800 flex flex-col space-y-4 py-8 px-6"
+			className="md:hidden fixed top-0 right-0 w-1/2 h-full bg-white dark:bg-gray-800 flex flex-col space-y-4 py-8 px-6 text-gray-700 dark:text-gray-300"
 		>
 			<button
 				style={menuStyle}
-				className={`absolute top-0 left-[-32px] bg-gray-600`}
+				className={`absolute top-0 left-[-48px] bg-gray-600 p-2`}
 				onClick={closeMenu}
 			>
 				<CloseIcon className="w-8 h-8 text-white" />
 			</button>
 
-			<div className="flex items-center text-gray-700 dark:text-gray-300 uppercase text-xs">
-				<LanguageSwitch />
-				<ModeSwitch />
-			</div>
-
-			<ul className="flex flex-col space-y-4">
+			<ul className="flex flex-col space-y-4 uppercase font-semibold">
 				{NavItems.map((item, index) => (
-					<li
-						key={index}
-						className="text-gray-700 dark:text-gray-300"
-					>
-						<Link href={item.path} onClick={closeMenu}>
-							{item.name}
-						</Link>
+					<li key={index}>
+						<div className="relative flex items-center justify-between uppercase text-sm">
+							<Link
+								href={`${item.path}${item.path}`}
+								className="relative z-10 transition-colors group"
+							>
+								<span className="inline-block relative overflow-hidden hover:text-black dark:hover:text-white">
+									{item.name}
+									<span className="absolute left-0 bottom-0 h-0.5 w-0 bg-secondary-base group-hover:w-full transition-all ease-in-out duration-200"></span>
+								</span>
+							</Link>
+							{item.children && (
+								<button
+									onClick={() => toggleChildren(index)}
+									className="flex items-center"
+								>
+									<ChevronDown
+										className="inline-block ml-1 align-middle"
+										style={{
+											transform:
+												rotateIndex === index
+													? "rotate(90deg)"
+													: "",
+											transition:
+												"transform 0.3s ease-in-out",
+										}}
+									/>
+								</button>
+							)}
+						</div>
+
+						<ul
+							className="pl-4 text-sm space-y-2 pt-2"
+							style={{
+								maxHeight:
+									rotateIndex === index ? "500px" : "0px",
+								overflow: "hidden",
+								transition: "max-height 0.5s ease-in-out",
+							}}
+						>
+							{item.children?.map((child, childIndex) => (
+								<li key={childIndex} className="relative group">
+									<Link
+										href={`${item.path}${child.path}`}
+										className="relative z-10 transition-colors"
+									>
+										<span className="inline-block relative overflow-hidden hover:text-black dark:hover:text-white">
+											{child.name}
+											<span className="absolute left-0 bottom-0 h-0.5 w-0 bg-secondary-base group-hover:w-full transition-all ease-in-out duration-200"></span>
+										</span>
+									</Link>
+								</li>
+							))}
+						</ul>
 					</li>
 				))}
 			</ul>
+
+			<div className="flex text-gray-700 dark:text-gray-300 uppercase justify-between text-xs">
+				<LanguageSwitch />
+				<ModeSwitch />
+			</div>
 		</div>
 	);
 };
@@ -222,7 +277,7 @@ const NavbarDesktop: FC<NavbarProps> = ({ currentPage }): JSX.Element => {
 						<>
 							<li
 								key={index}
-								className={`relative group uppercase ${
+								className={`relative group uppercase ${textColorHover} ${
 									!item.children && "md:pr-4 lg:pr-8"
 								}`}
 							>
@@ -287,7 +342,11 @@ const NavbarDesktop: FC<NavbarProps> = ({ currentPage }): JSX.Element => {
 					))}
 				</ul>
 				<div className="hidden md:flex items-center text-white mr-2 md:mr-0 uppercase text-xs">
-					<LanguageSwitch bg={bg} textColor={textColor} />
+					{/* TODO: add background */}
+					<LanguageSwitch
+						bg={isScrolled ? "bg-white dark:bg-gray-800" : bg}
+						textColor={textColor}
+					/>
 					<div className="border-l h-5 mx-4" />
 					<ModeSwitch />
 				</div>
