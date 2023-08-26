@@ -27,15 +27,15 @@ const Footer: FC = (): JSX.Element => {
 	return (
 		<footer className="bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 py-8">
 			<hr className="my-4 mx-8" />
-			<div className="container mx-auto grid grid-cols-5 gap-8">
-				<div className="text-xs items-center text-center">
+			<div className="container mx-auto md:px-0 grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-8 px-6 md:px-0">
+				<div className="text-xs">
 					<Image
 						src={logo}
 						alt="Chodím inak"
 						width={0}
 						height={0}
 						sizes="100vw"
-						style={{ width: "100%", height: "auto" }}
+						style={{ width: "90%", height: "auto" }}
 						priority
 						key={"logo"}
 						className="mb-6"
@@ -63,7 +63,7 @@ const Footer: FC = (): JSX.Element => {
 					</span>
 				</div>
 
-				<div>
+				<div className="hidden lg:block">
 					<h4 className="font-semibold mb-2">Mapa stránky</h4>
 					<ul>
 						<li>Home</li>
@@ -72,7 +72,7 @@ const Footer: FC = (): JSX.Element => {
 					</ul>
 				</div>
 
-				<div>
+				<div className="hidden md:block">
 					<h4 className="font-semibold mb-2">Zaujímavé linky</h4>
 					<ul>
 						<li>FAQ</li>
@@ -81,7 +81,7 @@ const Footer: FC = (): JSX.Element => {
 					</ul>
 				</div>
 
-				<div>
+				<div className="hidden md:block">
 					<h4 className="font-semibold mb-2">Sociálne siete</h4>
 					<ul>
 						<li className="flex items-center">
@@ -101,18 +101,18 @@ const Footer: FC = (): JSX.Element => {
 
 				<div>
 					<h4 className="font-semibold mb-2">Kontakt</h4>
-					<p>
+					<p className="text-sm">
 						<b>Email</b>:{" "}
 						<a href="mailto:example@example.com">
 							example@example.com
 						</a>
 					</p>
-					<p>
+					<p className="text-sm">
 						<b>Telefón</b>:{" "}
 						<a href="tel:00421901123456">00421 901 123 456</a>
 					</p>
 					<div className="flex justify-center mt-4">
-						<button className="text-xs px-12 py-2 mb-4 rounded uppercase font-semibold border border-gray-300">
+						<button className="text-xs px-10 md:px-4 lg:px-6 xl:px-12 py-2 mb-4 rounded uppercase font-semibold border border-gray-300">
 							Chcem asistovať!
 						</button>
 					</div>
