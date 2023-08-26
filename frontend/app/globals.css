@@ -44,3 +44,11 @@ body::-webkit-scrollbar {
 	transition: transform 700ms ease-in-out 500ms,
 		opacity 700ms ease-in-out 500ms;
 }
+
+.dark-mode-fill {
+	fill: white;
+}
+
+.dark .dark-mode-fill {
+	fill: black;
+}

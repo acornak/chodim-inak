@@ -16,6 +16,9 @@ import logoDark from "@/public/logo-dark.png";
 import { ChevronDown } from "./icons/Chevrons";
 import BarsIcon from "./icons/Bars";
 import CloseIcon from "./icons/Close";
+import FacebookIcon from "./icons/Facebook";
+import TwitterIcon from "./icons/Twitter";
+import LinkedInIcon from "./icons/LinkedIn";
 
 type NavbarProps = {
 	currentPage: string;
@@ -80,6 +83,7 @@ const NavMobileOpen: FC<NavMobileOpenProps> = ({ closeMenu, menuOpen }) => {
 							<Link
 								href={`${item.path}`}
 								className="relative z-10 transition-colors group"
+								onClick={handleChildrenClose}
 							>
 								<span className="inline-block relative overflow-hidden hover:text-black dark:hover:text-white">
 									{item.name}
@@ -138,11 +142,49 @@ const NavMobileOpen: FC<NavMobileOpenProps> = ({ closeMenu, menuOpen }) => {
 				<LanguageSwitch />
 				<ModeSwitch />
 			</div>
+
+			<div className="fixed bottom-0 left-0 w-full p-4 bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 text-sm">
+				<button className="text-xs px-12 py-2 mb-4 rounded uppercase font-semibold border border-gray-300">
+					Chcem asistovať!
+				</button>
+
+				<hr className="my-2" />
+
+				<div className="flex flex-col items-center">
+					<span className="font-semibold text-center uppercase">
+						Kontakt
+					</span>
+				</div>
+				<div className="flex flex-col items-start">
+					<span>
+						<b>Email</b>:{" "}
+						<a href="mailto:example@example.com">
+							example@example.com
+						</a>
+					</span>
+					<span>
+						<b>Telefón</b>:{" "}
+						<a href="tel:00421901123456">00421 901 123 456</a>
+					</span>
+				</div>
+
+				<div className="flex mt-4 space-x-4 justify-center items-center">
+					<a href="#">
+						<FacebookIcon />
+					</a>
+					<a href="#">
+						<TwitterIcon />
+					</a>
+					<a href="#" className="mt-0">
+						<LinkedInIcon />
+					</a>
+				</div>
+			</div>
 		</div>
 	);
 };
 
-const NavbarDesktop: FC<NavbarProps> = ({ currentPage }): JSX.Element => {
+const Navbar: FC<NavbarProps> = ({ currentPage }): JSX.Element => {
 	const [isScrolled, setIsScrolled] = useState<boolean>(false);
 	const [isMobileMenuOpen, setIsMobileMenuOpen] = useState<boolean>(false);
 	const [showChildren, setShowChildren] = useState<number>(-1);
@@ -254,7 +296,7 @@ const NavbarDesktop: FC<NavbarProps> = ({ currentPage }): JSX.Element => {
 				isScrolled ? "bg-white dark:bg-gray-800" : bg
 			} fixed top-0 w-full z-20 py-4`}
 		>
-			<div className="container mx-auto flex justify-between items-center px-6 md:px-2">
+			<div className="container mx-auto flex justify-between items-center px-6 md:px-0">
 				<div className="flex-shrink-0">
 					<Link href="/">
 						<Image
@@ -360,14 +402,6 @@ const NavbarDesktop: FC<NavbarProps> = ({ currentPage }): JSX.Element => {
 				</div>
 			</div>
 		</nav>
-	);
-};
-
-const Navbar: FC<NavbarProps> = ({ currentPage }): JSX.Element => {
-	return (
-		<>
-			<NavbarDesktop currentPage={currentPage} />
-		</>
 	);
 };
 
