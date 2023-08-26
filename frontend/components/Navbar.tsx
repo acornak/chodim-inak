@@ -1,5 +1,5 @@
 "use client";
-import React, { FC, useEffect, useState } from "react";
+import React, { FC, Fragment, useEffect, useState } from "react";
 // Next.js
 import Image, { StaticImageData } from "next/image";
 import Link from "next/link";
@@ -31,7 +31,7 @@ const NavMobileOpen: FC<NavMobileOpenProps> = ({ closeMenu, menuOpen }) => {
 	const [rotateIndex, setRotateIndex] = useState<number | null>(null);
 
 	const toggleChildren = (index: number) => {
-		setRotateIndex(index === rotateIndex ? null : index);
+		setRotateIndex((prevIndex) => (index === prevIndex ? null : index));
 		setShowChildren(showChildren === index ? -1 : index);
 	};
 
@@ -78,7 +78,7 @@ const NavMobileOpen: FC<NavMobileOpenProps> = ({ closeMenu, menuOpen }) => {
 					<li key={index}>
 						<div className="relative flex items-center justify-between uppercase text-sm">
 							<Link
-								href={`${item.path}${item.path}`}
+								href={`${item.path}`}
 								className="relative z-10 transition-colors group"
 							>
 								<span className="inline-block relative overflow-hidden hover:text-black dark:hover:text-white">
@@ -99,7 +99,7 @@ const NavMobileOpen: FC<NavMobileOpenProps> = ({ closeMenu, menuOpen }) => {
 													? "rotate(90deg)"
 													: "",
 											transition:
-												"transform 0.3s ease-in-out",
+												"transform 0.5s ease-in-out",
 										}}
 									/>
 								</button>
@@ -281,9 +281,8 @@ const NavbarDesktop: FC<NavbarProps> = ({ currentPage }): JSX.Element => {
 
 				<ul className="hidden text-sm lg:text-lg md:flex flex-grow justify-center items-center space-x-0">
 					{NavItems.map((item, index) => (
-						<>
+						<Fragment key={index}>
 							<li
-								key={index}
 								className={`relative group uppercase ${textColorHover} ${
 									!item.children && "md:pr-4 lg:pr-8"
 								}`}
@@ -334,6 +333,9 @@ const NavbarDesktop: FC<NavbarProps> = ({ currentPage }): JSX.Element => {
 												<Link
 													href={`${item.path}${child.path}`}
 													className="relative z-10 transition-colors group"
+													onClick={() =>
+														setShowChildren(-1)
+													}
 												>
 													<span className="inline-block relative overflow-hidden">
 														{child.name}
@@ -345,11 +347,10 @@ const NavbarDesktop: FC<NavbarProps> = ({ currentPage }): JSX.Element => {
 									</ul>
 								</li>
 							)}
-						</>
+						</Fragment>
 					))}
 				</ul>
 				<div className="hidden md:flex items-center text-white mr-2 md:mr-0 uppercase text-xs">
-					{/* TODO: add background */}
 					<LanguageSwitch
 						bg={isScrolled ? "bg-white dark:bg-gray-800" : bg}
 						textColor={textColor}
