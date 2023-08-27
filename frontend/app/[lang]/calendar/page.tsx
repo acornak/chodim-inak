@@ -1,7 +1,7 @@
 import React from "react";
 // Components
 import { HeroOthers } from "@/components/Hero";
-import { CTAButton } from "@/components/styled/Button";
+
 import ContentWrapper from "@/components/styled/ContentWrapper";
 import About from "@/components/About";
 
@@ -15,7 +15,7 @@ const Kalendar = (): JSX.Element => {
 				title={"Asistenčný kalendár"}
 				subtitle="Zarezervujte si asistenciu"
 				image={heroKalendar}
-				action={<CTAButton>Chcem asistovať!</CTAButton>}
+				// action={<CTAButton>Chcem asistovať!</CTAButton>}
 			/>
 			<ContentWrapper>
 				<About />

@@ -1,11 +1,13 @@
 "use client";
 import React, { FC, useState } from "react";
-// Images and icons
-import { ChevronDown } from "./icons/Chevrons";
+// Next
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { i18n } from "@/i18-config";
+// Functions
 import { getLocaleFromPath } from "./shared/functions";
+// Images and icons
+import { ChevronDown } from "./icons/Chevrons";
 
 type LanguageSwitchProps = {
 	textColor?: string;

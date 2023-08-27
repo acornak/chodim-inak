@@ -2,6 +2,7 @@
 import React, { FC, useEffect, useState } from "react";
 // Context
 import { useTheme } from "next-themes";
+// Images and icons
 import { DarkMode, LightMode } from "./icons/ModeIcons";
 
 const ModeSwitch: FC = (): JSX.Element => {

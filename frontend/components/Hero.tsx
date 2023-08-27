@@ -15,14 +15,18 @@ type HeroHomeProps = {
 };
 
 const HeroHome: FC<HeroHomeProps> = ({ dict }): JSX.Element => {
-	const [loaded, setLoaded] = useState(false);
+	const [loaded, setLoaded] = useState<boolean>(false);
 
-	useEffect(() => {
+	useEffect((): void => {
 		setLoaded(true);
 	}, []);
 
+	const commonClasses = `transform transition-all ease-in-out duration-700 ${
+		loaded ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"
+	}`;
+
 	return (
-		<div className="relative h-[90vh] flex items-center justify-center z-10 text-white dark:text-gray-300">
+		<div className="relative h-[90vh] flex items-center justify-center text-white dark:text-gray-300">
 			<Image
 				src={heroImage}
 				layout="fill"
@@ -30,33 +34,25 @@ const HeroHome: FC<HeroHomeProps> = ({ dict }): JSX.Element => {
 				alt="Chodím inak a vítam vás vo svete osobnej asistencie."
 				style={{ objectFit: "cover" }}
 			/>
-			<div className="absolute z-10 text-left md:pb-48 md:pl-32 lg:pl-56 xl:pl-72 w-full text-center md:text-left">
+			<div className="absolute z-10 md:ml-[30%] w-full text-center md:text-left">
 				<h1
+					className={`${commonClasses} text-4xl font-bold mb-4 md:mb-8 uppercase`}
 					style={{ transitionDelay: "100ms" }}
-					className={`text-4xl font-bold mb-4 md:mb-8 uppercase transform transition-all ease-in-out duration-700 ${
-						loaded
-							? "translate-y-0 opacity-100"
-							: "translate-y-8 opacity-0"
-					}`}
 				>
 					{dict.heading}
 				</h1>
 				<p
+					className={`${commonClasses} text-lg mb-4 md:mb-8`}
 					style={{ transitionDelay: "300ms" }}
-					className={`mb-4 md:mb-8 text-lg transform transition-all ease-in-out duration-700 ${
-						loaded
-							? "translate-y-0 opacity-100"
-							: "translate-y-8 opacity-0"
-					}`}
 				>
 					{dict.subheading}
 				</p>
 				<button
-					className={`homepage-button bg-transparent px-6 py-2 rounded uppercase border font-semibold transform ${
+					className={`homepage-button bg-transparent px-6 py-2 rounded uppercase border font-semibold transform hover:bg-white hover:text-gray-800 ${
 						loaded
 							? "loaded-homepage-button translate-y-0 opacity-100"
 							: "translate-y-8 opacity-0"
-					} hover:bg-white hover:text-gray-800`}
+					} `}
 				>
 					{dict.button}
 				</button>

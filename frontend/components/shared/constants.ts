@@ -1,6 +1,17 @@
 // Types and constants
 import { NavItem } from "./types";
 
+export const bgColor = (currentPage: string, locale: string): string => {
+	return currentPage === "/" + locale
+		? "bg-transparent"
+		: "bg-white dark:bg-gray-800";
+};
+
+// const underline =
+// 	currentPage === "/" + locale
+// 		? "bg-white dark:bg-gray-300"
+// 		: "bg-primary-base dark:bg-white";
+
 export const NavItems: NavItem[] = [
 	{
 		name: { sk: "Domov", en: "Home" },
