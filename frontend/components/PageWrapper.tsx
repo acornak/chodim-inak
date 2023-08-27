@@ -17,9 +17,9 @@ const PageWrapper: FC<WrapperProps> = ({ children }): JSX.Element => {
 			defaultTheme="light"
 			enableSystem={true}
 		>
-			<div className="flex flex-col h-screen justify-between">
+			<div className="flex flex-col min-h-screen justify-between">
 				<Navbar />
-				<div className="mb-auto">{children}</div>
+				<div>{children}</div>
 				<Footer />
 			</div>
 		</ThemeProvider>

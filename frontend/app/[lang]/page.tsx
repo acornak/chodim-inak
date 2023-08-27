@@ -2,8 +2,8 @@ import React from "react";
 // Components
 import { HeroHome } from "@/components/Hero";
 import About from "@/components/About";
-import ContentWrapper from "@/components/styled/ContentWrapper";
-
+import Introduction from "@/components/Introduction";
+// Internationalization
 import { Locale } from "../../i18-config";
 import { getDictionary } from "@/dictionaries";
 
@@ -17,21 +17,12 @@ export default async function Home({
 	return (
 		<>
 			<HeroHome dict={dict.home.hero} />
-			<ContentWrapper>
-				<About />
-			</ContentWrapper>
-			<ContentWrapper>
-				<About />
-			</ContentWrapper>
-			<ContentWrapper>
-				<About />
-			</ContentWrapper>
-			<ContentWrapper id="story">
-				<About />
-			</ContentWrapper>
-			<ContentWrapper>
-				<About />
-			</ContentWrapper>
+
+			<Introduction />
+			<About />
+			<About />
+			<About />
+			<About />
 		</>
 	);
 }

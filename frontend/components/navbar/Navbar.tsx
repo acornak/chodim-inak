@@ -28,7 +28,7 @@ import {
 	MenuItem,
 	MobileMenuButton,
 	OtherControls,
-} from "./NavbarCommon";
+} from "./NavbarDesktop";
 
 const Navbar: FC = (): JSX.Element => {
 	const currentPage: string = usePathname();

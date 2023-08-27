@@ -65,15 +65,3 @@ body::-webkit-scrollbar {
 		opacity: 1;
 	}
 }
-
-.animate-initial {
-	@apply translate-y-8 opacity-0;
-}
-
-.animate-enter {
-	@apply translate-y-0 opacity-100;
-}
-
-.animate-enter-active {
-	@apply transition-all ease-in-out duration-700;
-}
