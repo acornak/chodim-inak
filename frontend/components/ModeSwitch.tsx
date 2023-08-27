@@ -5,19 +5,14 @@ import { useTheme } from "next-themes";
 import { DarkMode, LightMode } from "./icons/ModeIcons";
 
 const ModeSwitch: FC = (): JSX.Element => {
-	const [mounted, setMounted] = useState<boolean>(false);
 	const [resolvedTheme, setResolvedTheme] = useState<string>("light");
 	const { theme, setTheme } = useTheme();
-
-	useEffect((): void => setMounted(true), []);
 
 	useEffect((): void => {
 		if (theme) {
 			setResolvedTheme(theme);
 		}
-	}, [theme, mounted]);
-
-	if (!mounted) return <></>;
+	}, [theme]);
 
 	return (
 		<>

@@ -196,10 +196,8 @@ const Navbar: FC<NavbarProps> = ({ currentPage }): JSX.Element => {
 	const [isScrolled, setIsScrolled] = useState<boolean>(false);
 	const [isMobileMenuOpen, setIsMobileMenuOpen] = useState<boolean>(false);
 	const [showChildren, setShowChildren] = useState<number>(-1);
-	const [logo, setLogo] = useState<StaticImageData>(logoLight);
-	const [textColor, setTextColor] = useState<string>(
-		"text-white dark:text-gray-300",
-	);
+	const [logo, setLogo] = useState<StaticImageData>();
+	const [textColor, setTextColor] = useState<string>();
 	const [isMobile, setIsMobile] = useState(false);
 	const { theme } = useTheme();
 
@@ -299,10 +297,6 @@ const Navbar: FC<NavbarProps> = ({ currentPage }): JSX.Element => {
 		}
 	};
 
-	useEffect(() => {
-		console.log(showChildren);
-	}, [showChildren]);
-
 	return (
 		<nav
 			className={`${
@@ -311,16 +305,18 @@ const Navbar: FC<NavbarProps> = ({ currentPage }): JSX.Element => {
 		>
 			<div className="container mx-auto flex justify-between items-center px-6 md:px-0">
 				<div className="flex-shrink-0">
-					<Link href={`/${locale}`}>
-						<Image
-							src={logo}
-							alt="Chodím inak"
-							width={160}
-							height={160}
-							priority
-							key={"logo"}
-						/>
-					</Link>
+					{logo && (
+						<Link href={`/${locale}`}>
+							<Image
+								src={logo}
+								alt="Chodím inak"
+								width={160}
+								height={160}
+								priority
+								key={"logo"}
+							/>
+						</Link>
+					)}
 				</div>
 				<button
 					className="md:hidden"
