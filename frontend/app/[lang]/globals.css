@@ -7,7 +7,7 @@ body {
 	-ms-overflow-style: none;
 	height: 100%;
 	overflow: auto;
-	overscroll-behavior-y: none;
+	overscroll-behavior: none;
 }
 
 body::-webkit-scrollbar {
