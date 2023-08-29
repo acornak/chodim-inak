@@ -16,6 +16,12 @@ type HeroHomeProps = {
 
 const HeroHome: FC<HeroHomeProps> = ({ dict }): JSX.Element => {
 	const [loaded, setLoaded] = useState<boolean>(false);
+	const [hovered, setHovered] = useState<boolean>(false);
+
+	const shadowStyle: string =
+		"0 0 2px #FFF, 0 0 5px #FFF, 0 0 7px #FF33FF, 0 0 10px #FF33FF, 0 0 12px #FF33FF, 0 0 15px #FF33FF, 0 0 17px #FF33FF";
+
+	const buttonShadow = hovered ? { boxShadow: shadowStyle } : {};
 
 	useEffect((): void => {
 		setLoaded(true);
@@ -34,10 +40,15 @@ const HeroHome: FC<HeroHomeProps> = ({ dict }): JSX.Element => {
 				alt="Chodím inak a vítam vás vo svete osobnej asistencie."
 				style={{ objectFit: "cover" }}
 			/>
+			<div className="absolute inset-0 bg-gradient-to-b from-transparent to-black opacity-70"></div>
+
 			<div className="absolute z-10 md:ml-[30%] w-full text-center md:text-left">
 				<h1
 					className={`${commonClasses} text-4xl font-bold mb-4 md:mb-8 uppercase`}
-					style={{ transitionDelay: "100ms" }}
+					style={{
+						textShadow: shadowStyle,
+						transitionDelay: "100ms",
+					}}
 				>
 					{dict.heading}
 				</h1>
@@ -53,6 +64,9 @@ const HeroHome: FC<HeroHomeProps> = ({ dict }): JSX.Element => {
 							? "loaded-homepage-button translate-y-0 opacity-100"
 							: "translate-y-8 opacity-0"
 					} `}
+					style={buttonShadow}
+					onMouseEnter={(): void => setHovered(true)}
+					onMouseLeave={(): void => setHovered(false)}
 				>
 					{dict.button}
 				</button>
