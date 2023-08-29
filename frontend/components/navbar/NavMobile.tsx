@@ -61,7 +61,7 @@ const NavMobileOpen: FC<NavMobileOpenProps> = ({ closeMenu, menuOpen }) => {
 	return (
 		<div
 			style={menuStyle}
-			className="md:hidden fixed top-0 right-0 w-1/2 h-full bg-white dark:bg-gray-800 flex flex-col space-y-4 py-8 px-6 text-gray-700 dark:text-gray-300 overflow-hidden overflow-y-auto"
+			className="md:hidden fixed top-0 right-0 w-1/2 h-full bg-white dark:bg-gray-800 flex flex-col space-y-4 py-8 px-6 text-gray-700 dark:text-gray-300"
 		>
 			<button
 				style={menuStyle}

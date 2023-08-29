@@ -1,8 +1,8 @@
 "use client";
 // React
-import React, { FC } from "react";
+import React, { FC, useEffect, useState } from "react";
 // Next
-import Image from "next/image";
+import Image, { StaticImageData } from "next/image";
 import Link from "next/link";
 import { useTheme } from "next-themes";
 // Images and icons
@@ -66,7 +66,13 @@ const LinkList: FC<LinkListProps> = ({ title, links, external }) => {
 
 const Footer: FC = (): JSX.Element => {
 	const { theme } = useTheme();
-	const logo = theme && theme === "dark" ? logoDark : logoLight;
+	const [logo, setLogo] = useState<StaticImageData>();
+
+	useEffect((): void => {
+		const newLogo: StaticImageData =
+			theme === "dark" ? logoDark : logoLight;
+		setLogo(newLogo);
+	}, [theme]);
 
 	const socialLinks = [
 		{ Icon: FacebookIcon, name: "Facebook", href: "#" },
@@ -93,13 +99,15 @@ const Footer: FC = (): JSX.Element => {
 			<hr className="my-4 mx-8" />
 			<div className="container mx-auto grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-8 px-6 md:px-0">
 				<div className="text-xs">
-					<Image
-						src={logo}
-						alt="Logo"
-						style={{ width: "90%", height: "auto" }}
-						priority
-						className="mb-6"
-					/>
+					{logo && (
+						<Image
+							src={logo}
+							alt="Logo"
+							style={{ width: "90%", height: "auto" }}
+							priority
+							className="mb-6"
+						/>
+					)}
 					<span>
 						© {new Date().getFullYear()} Daniela Komanická
 						<p>
