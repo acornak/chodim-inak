@@ -1,7 +1,6 @@
 import React from "react";
 // Components
 import { HeroHome } from "@/components/Hero";
-import About from "@/components/About";
 import Introduction from "@/components/Introduction";
 // Internationalization
 import { Locale } from "../../i18-config";
@@ -18,11 +17,7 @@ export default async function Home({
 		<>
 			<HeroHome dict={dict.home.hero} />
 
-			<Introduction />
-			<About />
-			<About />
-			<About />
-			<About />
+			<Introduction dict={dict.home.introduction} />
 		</>
 	);
 }
