@@ -4,7 +4,7 @@ import React, { FC, useEffect, useState } from "react";
 import Image from "next/image";
 import { StaticImport } from "next/dist/shared/lib/get-img-props";
 // Image
-import heroalt2 from "@/public/home/hero.jpg";
+import heroalt2 from "@/public/home/home-hero.jpg";
 
 type HeroHomeProps = {
 	dict: {
