@@ -35,7 +35,11 @@ const ModeSwitch: FC = (): JSX.Element => {
 					{resolvedTheme === "dark" ? (
 						<DarkMode className="transition-opacity duration-300 ease-in opacity-100 mr-6 mt-1" />
 					) : (
-						<LightMode className="transition-opacity duration-300 ease-in opacity-100 ml-6 mt-1" />
+						<LightMode
+							fill="white"
+							stroke="white"
+							className="transition-opacity duration-300 ease-in opacity-100 ml-6 mt-1"
+						/>
 					)}
 				</label>
 			</div>

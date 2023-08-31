@@ -4,7 +4,7 @@ import React, { FC, useEffect, useState } from "react";
 import Image from "next/image";
 import { StaticImport } from "next/dist/shared/lib/get-img-props";
 // Image
-import heroImage from "@/public/home/hero.png";
+import heroalt2 from "@/public/home/hero.jpg";
 
 type HeroHomeProps = {
 	dict: {
@@ -16,12 +16,6 @@ type HeroHomeProps = {
 
 const HeroHome: FC<HeroHomeProps> = ({ dict }): JSX.Element => {
 	const [loaded, setLoaded] = useState<boolean>(false);
-	const [hovered, setHovered] = useState<boolean>(false);
-
-	const shadowStyle: string =
-		"0 0 2px #FFF, 0 0 5px #FFF, 0 0 7px #FF33FF, 0 0 10px #FF33FF, 0 0 12px #FF33FF, 0 0 15px #FF33FF, 0 0 17px #FF33FF";
-
-	const buttonShadow = hovered ? { boxShadow: shadowStyle } : {};
 
 	useEffect((): void => {
 		setLoaded(true);
@@ -32,21 +26,20 @@ const HeroHome: FC<HeroHomeProps> = ({ dict }): JSX.Element => {
 	}`;
 
 	return (
-		<div className="relative h-[90vh] flex items-center justify-center text-white dark:text-gray-300">
+		<div className="relative h-[100vh] flex items-center justify-center text-white dark:text-gray-300">
 			<Image
-				src={heroImage}
-				layout="fill"
+				src={heroalt2}
+				fill
 				priority
 				alt="Chodím inak a vítam vás vo svete osobnej asistencie."
 				style={{ objectFit: "cover" }}
 			/>
-			<div className="absolute inset-0 bg-gradient-to-b from-transparent to-black opacity-70"></div>
-
+			<div className="absolute inset-0 bg-gradient-to-b from-transparent to-black opacity-70" />
+			<div className="absolute inset-0 dark:bg-black dark:opacity-30" />
 			<div className="absolute z-10 md:ml-[30%] w-full text-center md:text-left">
 				<h1
 					className={`${commonClasses} text-4xl font-bold mb-4 md:mb-8 uppercase`}
 					style={{
-						textShadow: shadowStyle,
 						transitionDelay: "100ms",
 					}}
 				>
@@ -64,9 +57,6 @@ const HeroHome: FC<HeroHomeProps> = ({ dict }): JSX.Element => {
 							? "loaded-homepage-button translate-y-0 opacity-100"
 							: "translate-y-8 opacity-0"
 					} `}
-					style={buttonShadow}
-					onMouseEnter={(): void => setHovered(true)}
-					onMouseLeave={(): void => setHovered(false)}
 				>
 					{dict.button}
 				</button>
