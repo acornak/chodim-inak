@@ -31,6 +31,7 @@ import {
 } from "./NavbarDesktop";
 
 const Navbar: FC = (): JSX.Element => {
+	const { theme } = useTheme();
 	const currentPage: string = usePathname();
 	const locale: string = useMemo(
 		(): string => getLocaleFromPath(currentPage)!.toLowerCase(),
@@ -43,9 +44,18 @@ const Navbar: FC = (): JSX.Element => {
 	const isScrolled: boolean = useScroll();
 	const [isMobileMenuOpen, setIsMobileMenuOpen] = useState<boolean>(false);
 
-	const [logo, setLogo] = useState<StaticImageData>();
-	const [textColor, setTextColor] = useState<string>();
-	const { theme } = useTheme();
+	const initialTextColor =
+		currentPage === "/" + locale && !isScrolled
+			? "text-white dark:text-gray-300"
+			: "text-gray-700 dark:text-gray-300";
+	const initialLogo =
+		(currentPage === "/" + locale && !isScrolled) || theme === "dark"
+			? logoDark
+			: logoLight;
+
+	const [logo, setLogo] = useState<StaticImageData>(initialLogo);
+	const [textColor, setTextColor] = useState<string>(initialTextColor);
+
 	const [isMobile, setIsMobile] = useState<boolean>(false);
 
 	const textColorHover: string =
@@ -58,17 +68,9 @@ const Navbar: FC = (): JSX.Element => {
 			? "bg-white dark:bg-gray-300"
 			: "bg-primary-base dark:bg-white";
 
-	useEffect((): void => {
-		if (currentPage === "/" + locale && !isScrolled) {
-			setTextColor("text-white dark:text-gray-300");
-		} else {
-			setTextColor("text-gray-700 dark:text-gray-300");
-		}
-		const newLogo: StaticImageData =
-			(currentPage === "/" + locale && !isScrolled) || theme === "dark"
-				? logoDark
-				: logoLight;
-		setLogo(newLogo);
+	useEffect(() => {
+		setTextColor(initialTextColor);
+		setLogo(initialLogo);
 	}, [currentPage, theme, isScrolled, locale]);
 
 	useLayoutEffect((): (() => void) => {
