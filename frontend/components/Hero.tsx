@@ -32,11 +32,12 @@ const HeroHome: FC<HeroHomeProps> = ({ dict }): JSX.Element => {
 				fill
 				priority
 				alt="Chodím inak a vítam vás vo svete osobnej asistencie."
-				style={{ objectFit: "cover" }}
+				style={{ objectFit: "cover", objectPosition: "60%" }}
 			/>
+
 			<div className="absolute inset-0 bg-gradient-to-b from-transparent to-black opacity-70" />
 			<div className="absolute inset-0 dark:bg-black dark:opacity-30" />
-			<div className="absolute z-10 md:ml-[30%] w-full text-center md:text-left">
+			<div className="absolute z-10 md:ml-[40%] lg:ml-[60%] mt-[30%] md:mt-0 md:mb-[10%] w-full text-center md:text-left">
 				<h1
 					className={`${commonClasses} text-4xl font-bold mb-4 md:mb-8 uppercase`}
 					style={{

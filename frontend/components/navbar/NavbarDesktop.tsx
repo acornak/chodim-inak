@@ -10,16 +10,20 @@ import BarsIcon from "../icons/Bars";
 import { NavItem } from "../shared/types";
 import { ChevronDown } from "../icons/Chevrons";
 
-type LogoProps = { locale: string; logo: StaticImageData | undefined };
+type LogoProps = {
+	locale: string;
+	logo: StaticImageData | undefined;
+	isScrolled?: boolean;
+};
 
-export const Logo: FC<LogoProps> = ({ locale, logo }) =>
+export const Logo: FC<LogoProps> = ({ locale, logo, isScrolled }) =>
 	logo && (
 		<Link href={`/${locale}`}>
 			<Image
 				src={logo}
 				alt="Chodím inak"
-				width={160}
-				height={160}
+				width={isScrolled ? 180 : 260}
+				height={isScrolled ? 180 : 260}
 				priority
 				key={"logo"}
 			/>
