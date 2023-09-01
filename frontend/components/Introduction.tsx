@@ -5,7 +5,7 @@ import Image from "next/image";
 // Functions
 import { useOnScreen } from "./shared/hooks";
 // Images
-import introductionImage from "@/public/home/introduction.jpg";
+import introductionImage from "@/public/home/introduction.webp";
 
 type IntroductionProps = {
 	dict: {
@@ -59,13 +59,13 @@ const Introduction: FC<IntroductionProps> = ({ dict }): JSX.Element => {
 					<p className="text-lg text-justify md:px-10 pb-6">
 						{dict.paragraph1}
 					</p>
-					<p className="text-lg text-justify md:px-10 pb-6">
+					<p className="text-md text-justify md:px-10 pb-6">
 						{dict.paragraph2}
 					</p>
-					<p className="text-lg text-justify md:px-10 pb-6">
+					<p className="text-md text-justify md:px-10 pb-6">
 						{dict.paragraph3}
 					</p>
-					<p className="text-lg text-justify md:px-10">
+					<p className="text-md text-justify md:px-10">
 						{dict.paragraph4}
 					</p>
 				</div>
