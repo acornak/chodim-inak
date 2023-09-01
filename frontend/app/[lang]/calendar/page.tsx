@@ -21,7 +21,10 @@ export default async function Calendar({
 				subtitle={dict.hero.subheading}
 				image={heroCalendar}
 			/>
-			<div className="text-center pt-10 px-4 text-2xl uppercase font-semibold dark:text-gray-300">
+			<div
+				className="text-center pt-10 px-4 text-2xl uppercase font-semibold dark:text-gray-300"
+				id="register"
+			>
 				<p className="mx-auto">{dict.heading}</p>
 			</div>
 			<div className="flex justify-center items-center py-6 px-4">

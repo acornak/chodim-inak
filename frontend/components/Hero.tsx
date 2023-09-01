@@ -53,15 +53,17 @@ const HeroHome: FC<HeroHomeProps> = ({ dict }): JSX.Element => {
 				>
 					{dict.subheading}
 				</p>
-				<button
-					className={`homepage-button bg-transparent px-6 py-2 rounded uppercase border font-semibold transform hover:bg-white hover:text-gray-800 ${
-						loaded
-							? "loaded-homepage-button translate-y-0 opacity-100"
-							: "translate-y-8 opacity-0"
-					} `}
-				>
-					<Link href={"/calendar"}>{dict.button}</Link>
-				</button>
+				<Link href="/calendar#register">
+					<button
+						className={`homepage-button bg-transparent px-6 py-2 rounded uppercase border font-semibold transform hover:bg-white hover:text-gray-800 ${
+							loaded
+								? "loaded-homepage-button translate-y-0 opacity-100"
+								: "translate-y-8 opacity-0"
+						} `}
+					>
+						{dict.button}
+					</button>
+				</Link>
 			</div>
 		</div>
 	);

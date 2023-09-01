@@ -23,7 +23,12 @@ const SocialLink: FC<{
 	name: string;
 	href: string;
 }> = ({ Icon, name, href }) => (
-	<a href={href} className="flex items-center">
+	<a
+		href={href}
+		className="flex items-center"
+		rel="noopener noreferrer"
+		target="_blank"
+	>
 		<div className="w-5 flex-shrink-0">
 			<Icon className="w-full" />
 		</div>
@@ -75,39 +80,19 @@ const Footer: FC = (): JSX.Element => {
 	const locale: "sk" | "en" = getLocaleFromPath(pathname)!;
 
 	const dict = {
-		en: {
-			sitemap: {
-				heading: "Sitemap",
-			},
-			links: {
-				heading: "Useful links",
-			},
-			social: {
-				heading: "Social networks",
-			},
-			contact: {
-				heading: "Contact",
-				email: "Email",
-				phone: "Phone",
-				button: "I want to help!",
-			},
+		sitemap: {
+			heading: { en: "Sitemap", sk: "Mapa stránky" },
 		},
-		sk: {
-			sitemap: {
-				heading: "Mapa stránky",
-			},
-			links: {
-				heading: "Zaujímavé odkazy",
-			},
-			social: {
-				heading: "Sociálne siete",
-			},
-			contact: {
-				heading: "Kontakt",
-				email: "Email",
-				phone: "Telefón",
-				button: "Chcem asistovať!",
-			},
+		links: {
+			heading: { en: "Useful links", sk: "Zaujímavé odkazy" },
+		},
+		social: {
+			heading: { en: "Social networks", sk: "Sociálne siete" },
+		},
+		contact: {
+			heading: { en: "Contact", sk: "Kontakt" },
+			phone: { en: "Phone", sk: "Telefón" },
+			button: { en: "I want to help!", sk: "Chcem asistovať!" },
 		},
 	};
 
@@ -118,7 +103,11 @@ const Footer: FC = (): JSX.Element => {
 	}, [theme]);
 
 	const socialLinks = [
-		{ Icon: FacebookIcon, name: "Facebook", href: "#" },
+		{
+			Icon: FacebookIcon,
+			name: "Facebook",
+			href: process.env.NEXT_PUBLIC_FACEBOOK_URL!,
+		},
 		{ Icon: TwitterIcon, name: "Twitter", href: "#" },
 		{ Icon: LinkedInIcon, name: "LinkedIn", href: "#" },
 	];
@@ -174,20 +163,20 @@ const Footer: FC = (): JSX.Element => {
 					</span>
 				</div>
 				<LinkList
-					title={dict[locale].sitemap.heading}
+					title={dict.sitemap.heading[locale]}
 					links={NavItems}
 					external={false}
 					locale={locale}
 				/>
 				<LinkList
-					title={dict[locale].links.heading}
+					title={dict.links.heading[locale]}
 					links={externalLinks}
 					external={true}
 					locale={locale}
 				/>
 				<div className="hidden md:block">
 					<h4 className="font-semibold mb-2">
-						{dict[locale].social.heading}
+						{dict.social.heading[locale]}
 					</h4>
 					<ul>
 						{socialLinks.map(({ Icon, name, href }, index) => (
@@ -203,22 +192,24 @@ const Footer: FC = (): JSX.Element => {
 				</div>
 				<div>
 					<h4 className="font-semibold mb-2">
-						{dict[locale].contact.heading}
+						{dict.contact.heading[locale]}
 					</h4>
 					<p className="text-sm">
-						<b>{dict[locale].contact.email}</b>:{" "}
+						<b>Email</b>:{" "}
 						<a href="mailto:example@example.com">
 							example@example.com
 						</a>
 					</p>
 					<p className="text-sm">
-						<b>{dict[locale].contact.phone}</b>:{" "}
+						<b>{dict.contact.phone[locale]}</b>:{" "}
 						<a href="tel:00421901123456">00421 901 123 456</a>
 					</p>
 					<div className="flex justify-center mt-4">
-						<button className="text-xs px-10 md:px-4 lg:px-6 xl:px-12 py-2 mb-4 rounded uppercase font-semibold border border-gray-300">
-							{dict[locale].contact.button}
-						</button>
+						<Link href="/calendar#register">
+							<button className="text-xs px-10 md:px-4 lg:px-6 xl:px-12 py-2 mb-4 rounded uppercase font-semibold border border-gray-300">
+								{dict.contact.button[locale]}
+							</button>
+						</Link>
 					</div>
 				</div>
 			</div>

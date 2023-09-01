@@ -24,9 +24,24 @@ type NavMobileOpenProps = {
 
 const NavMobileOpen: FC<NavMobileOpenProps> = ({ closeMenu, menuOpen }) => {
 	const pathname = usePathname();
-	const locale = getLocaleFromPath(pathname)!.toLowerCase();
+	const locale: "sk" | "en" = getLocaleFromPath(pathname)!;
 	const [showChildren, setShowChildren] = useState<number>(-1);
 	const [rotateIndex, setRotateIndex] = useState<number | null>(null);
+
+	const dict = {
+		contact: {
+			sk: "Kontakt",
+			en: "Contact",
+		},
+		button: {
+			sk: "Chcem asistovať!",
+			en: "I want to help!",
+		},
+		phone: {
+			sk: "Telefón",
+			en: "Phone",
+		},
+	};
 
 	const toggleChildren = (index: number) => {
 		setRotateIndex((prevIndex) => (index === prevIndex ? null : index));
@@ -139,17 +154,22 @@ const NavMobileOpen: FC<NavMobileOpenProps> = ({ closeMenu, menuOpen }) => {
 			</div>
 
 			<div className="fixed bottom-0 left-0 w-full p-4 bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 text-sm justify-center">
-				<div className="flex justify-center">
-					<button className="text-xs px-12 py-2 mb-4 rounded uppercase font-semibold border border-gray-300">
-						Chcem asistovať!
-					</button>
-				</div>
+				<Link href="/calendar#register">
+					<div className="flex justify-center">
+						<button
+							className="text-xs px-12 py-2 mb-4 rounded uppercase font-semibold border border-gray-300"
+							onClick={closeMenu}
+						>
+							{dict.button[locale]}
+						</button>
+					</div>
+				</Link>
 
 				<hr className="my-2" />
 
 				<div className="flex flex-col items-center">
 					<span className="font-semibold text-center uppercase">
-						Kontakt
+						{dict.contact[locale]}
 					</span>
 				</div>
 				<div className="flex flex-col items-start">
@@ -160,13 +180,18 @@ const NavMobileOpen: FC<NavMobileOpenProps> = ({ closeMenu, menuOpen }) => {
 						</a>
 					</span>
 					<span>
-						<b>Telefón</b>:{" "}
+						<b>{dict.phone[locale]}</b>:{" "}
 						<a href="tel:00421901123456">00421 901 123 456</a>
 					</span>
 				</div>
 
 				<div className="flex mt-4 space-x-4 justify-center items-center">
-					<a href="#">
+					<a
+						href={process.env.NEXT_PUBLIC_FACEBOOK_URL}
+						className="flex items-center"
+						rel="noopener noreferrer"
+						target="_blank"
+					>
 						<FacebookIcon />
 					</a>
 					<a href="#">
