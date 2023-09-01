@@ -89,8 +89,11 @@ const Navbar: FC = (): JSX.Element => {
 			} fixed top-0 w-full z-20 py-4`}
 		>
 			<div className="container mx-auto flex justify-between items-center px-6 md:px-0">
-				{/* TODO */}
-				<Logo locale={locale} logo={logo} isScrolled={isScrolled} />
+				<Logo
+					locale={locale}
+					logo={logo}
+					biggerLogo={currentPage === "/" + locale && !isScrolled}
+				/>
 				<MobileMenuButton
 					setIsMobileMenuOpen={setIsMobileMenuOpen}
 					textColor={textColor}

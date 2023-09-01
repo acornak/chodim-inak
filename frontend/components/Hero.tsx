@@ -5,6 +5,7 @@ import Image from "next/image";
 import { StaticImport } from "next/dist/shared/lib/get-img-props";
 // Image
 import heroalt2 from "@/public/home/home-hero.jpg";
+import Link from "next/link";
 
 type HeroHomeProps = {
 	dict: {
@@ -59,7 +60,7 @@ const HeroHome: FC<HeroHomeProps> = ({ dict }): JSX.Element => {
 							: "translate-y-8 opacity-0"
 					} `}
 				>
-					{dict.button}
+					<Link href={"/calendar"}>{dict.button}</Link>
 				</button>
 			</div>
 		</div>

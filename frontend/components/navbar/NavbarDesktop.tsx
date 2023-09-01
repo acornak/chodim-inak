@@ -13,20 +13,30 @@ import { ChevronDown } from "../icons/Chevrons";
 type LogoProps = {
 	locale: string;
 	logo: StaticImageData | undefined;
-	isScrolled?: boolean;
+	biggerLogo?: boolean;
 };
 
-export const Logo: FC<LogoProps> = ({ locale, logo, isScrolled }) =>
+export const Logo: FC<LogoProps> = ({ locale, logo, biggerLogo }) =>
 	logo && (
 		<Link href={`/${locale}`}>
-			<Image
-				src={logo}
-				alt="Chodím inak"
-				width={isScrolled ? 180 : 260}
-				height={isScrolled ? 180 : 260}
-				priority
-				key={"logo"}
-			/>
+			<div
+				style={{
+					width: "290px",
+					height: "60px",
+					display: "flex",
+					alignItems: "center",
+				}}
+				className="pl-0 md:pr-6 lg:pr-0"
+			>
+				<Image
+					src={logo}
+					alt="Chodím inak"
+					width={biggerLogo ? 290 : 180}
+					height={biggerLogo ? 290 : 180}
+					priority
+					key={"logo"}
+				/>
+			</div>
 		</Link>
 	);
 
