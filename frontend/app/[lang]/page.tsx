@@ -11,13 +11,13 @@ export default async function Home({
 }: {
 	params: { lang: Locale };
 }): Promise<JSX.Element> {
-	const dict = await getDictionary(lang);
+	const dict = (await getDictionary(lang)).home;
 
 	return (
 		<>
-			<HeroHome dict={dict.home.hero} />
+			<HeroHome dict={dict.hero} />
 
-			<Introduction dict={dict.home.introduction} />
+			<Introduction dict={dict.introduction} />
 		</>
 	);
 }

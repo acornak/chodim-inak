@@ -1,4 +1,10 @@
-export const getLocaleFromPath = (pathName: string): string | null => {
+export const getLocaleFromPath = (pathName: string): "sk" | "en" | null => {
 	const segments = pathName.split("/");
-	return segments[1] || null;
+	const locale = segments[1];
+
+	if (locale === "sk" || locale === "en") {
+		return locale;
+	}
+
+	return null;
 };

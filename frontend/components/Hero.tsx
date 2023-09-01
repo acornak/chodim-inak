@@ -81,19 +81,20 @@ const HeroOthers: FC<HeroProps> = ({
 	action,
 }): JSX.Element => {
 	return (
-		<div className="relative h-72 flex items-center justify-center">
+		<div className="relative h-[70vh] flex items-center justify-center text-white dark:text-gray-300">
 			<Image
 				src={image}
 				fill
 				priority
 				alt="Chodím inak a vítam vás vo svete osobnej asistencie."
 				className="z-0"
-				style={{ objectFit: "cover" }}
+				style={{ objectFit: "cover", objectPosition: "60%" }}
 			/>
-
+			<div className="absolute inset-0 bg-gradient-to-b from-transparent to-black opacity-70" />
+			<div className="absolute inset-0 dark:bg-black dark:opacity-50" />
 			<div className="z-10 relative text-center">
 				<h1 className="text-4xl font-bold mb-4">{title}</h1>
-				<p className="mb-4">{subtitle}</p>
+				<p className="mb-4 text-2xl">{subtitle}</p>
 				{action}
 			</div>
 		</div>

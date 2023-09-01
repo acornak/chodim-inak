@@ -53,7 +53,7 @@ const Navbar: FC = (): JSX.Element => {
 			? logoDark
 			: logoLight;
 
-	const [logo, setLogo] = useState<StaticImageData>(initialLogo);
+	const [logo, setLogo] = useState<StaticImageData>();
 	const [textColor, setTextColor] = useState<string>(initialTextColor);
 
 	const [isMobile, setIsMobile] = useState<boolean>(false);
@@ -68,10 +68,10 @@ const Navbar: FC = (): JSX.Element => {
 			? "bg-white dark:bg-gray-300"
 			: "bg-primary-base dark:bg-white";
 
-	useEffect(() => {
+	useEffect((): void => {
 		setTextColor(initialTextColor);
 		setLogo(initialLogo);
-	}, [currentPage, theme, isScrolled, locale]);
+	}, [currentPage, theme, isScrolled, locale, initialLogo, initialTextColor]);
 
 	useLayoutEffect((): (() => void) => {
 		const handleResize = debounce(

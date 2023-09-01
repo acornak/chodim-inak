@@ -5,6 +5,7 @@ import React, { FC, useEffect, useState } from "react";
 import Image, { StaticImageData } from "next/image";
 import Link from "next/link";
 import { useTheme } from "next-themes";
+import { usePathname } from "next/navigation";
 // Images and icons
 import logoLight from "@/public/logo-light.png";
 import logoDark from "@/public/logo-dark.png";
@@ -14,7 +15,7 @@ import LinkedInIcon from "./icons/LinkedIn";
 // Types and constants
 import { IconProps, NavItem } from "./shared/types";
 import { NavItems } from "./shared/constants";
-import { usePathname } from "next/navigation";
+// Functions
 import { getLocaleFromPath } from "./shared/functions";
 
 const SocialLink: FC<{
@@ -33,13 +34,16 @@ const SocialLink: FC<{
 type LinkListProps = {
 	title: string;
 	links: NavItem[];
+	locale: string;
 	external?: boolean;
 };
 
-const LinkList: FC<LinkListProps> = ({ title, links, external }) => {
-	const pathname = usePathname();
-	const locale = getLocaleFromPath(pathname)!.toLowerCase();
-
+const LinkList: FC<LinkListProps> = ({
+	title,
+	links,
+	locale,
+	external,
+}): JSX.Element => {
 	return (
 		<div className="hidden md:block">
 			<h4 className="font-semibold mb-2">{title}</h4>
@@ -67,6 +71,45 @@ const LinkList: FC<LinkListProps> = ({ title, links, external }) => {
 const Footer: FC = (): JSX.Element => {
 	const { theme } = useTheme();
 	const [logo, setLogo] = useState<StaticImageData>();
+	const pathname = usePathname();
+	const locale: "sk" | "en" = getLocaleFromPath(pathname)!;
+
+	const dict = {
+		en: {
+			sitemap: {
+				heading: "Sitemap",
+			},
+			links: {
+				heading: "Useful links",
+			},
+			social: {
+				heading: "Social networks",
+			},
+			contact: {
+				heading: "Contact",
+				email: "Email",
+				phone: "Phone",
+				button: "I want to help!",
+			},
+		},
+		sk: {
+			sitemap: {
+				heading: "Mapa stránky",
+			},
+			links: {
+				heading: "Zaujímavé odkazy",
+			},
+			social: {
+				heading: "Sociálne siete",
+			},
+			contact: {
+				heading: "Kontakt",
+				email: "Email",
+				phone: "Telefón",
+				button: "Chcem asistovať!",
+			},
+		},
+	};
 
 	useEffect((): void => {
 		const newLogo: StaticImageData =
@@ -131,17 +174,21 @@ const Footer: FC = (): JSX.Element => {
 					</span>
 				</div>
 				<LinkList
-					title="Mapa stránky"
+					title={dict[locale].sitemap.heading}
 					links={NavItems}
 					external={false}
+					locale={locale}
 				/>
 				<LinkList
-					title="Mapa stránky"
+					title={dict[locale].links.heading}
 					links={externalLinks}
 					external={true}
+					locale={locale}
 				/>
 				<div className="hidden md:block">
-					<h4 className="font-semibold mb-2">Sociálne siete</h4>
+					<h4 className="font-semibold mb-2">
+						{dict[locale].social.heading}
+					</h4>
 					<ul>
 						{socialLinks.map(({ Icon, name, href }, index) => (
 							<li key={index}>
@@ -155,20 +202,22 @@ const Footer: FC = (): JSX.Element => {
 					</ul>
 				</div>
 				<div>
-					<h4 className="font-semibold mb-2">Kontakt</h4>
+					<h4 className="font-semibold mb-2">
+						{dict[locale].contact.heading}
+					</h4>
 					<p className="text-sm">
-						<b>Email</b>:{" "}
+						<b>{dict[locale].contact.email}</b>:{" "}
 						<a href="mailto:example@example.com">
 							example@example.com
 						</a>
 					</p>
 					<p className="text-sm">
-						<b>Telefón</b>:{" "}
+						<b>{dict[locale].contact.phone}</b>:{" "}
 						<a href="tel:00421901123456">00421 901 123 456</a>
 					</p>
 					<div className="flex justify-center mt-4">
 						<button className="text-xs px-10 md:px-4 lg:px-6 xl:px-12 py-2 mb-4 rounded uppercase font-semibold border border-gray-300">
-							Chcem asistovať!
+							{dict[locale].contact.button}
 						</button>
 					</div>
 				</div>

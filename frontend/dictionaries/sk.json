@@ -13,5 +13,25 @@
 			"paragraph3": "Skutočnosť, že sa o seba nedokáže postarať fyzicky, mohla vyvážiť jedine faktom, že sa o seba postará psychicky. To zvládla a o fyzickú stránku pomoci (či už v jej podnájme, v uliciach Prahy i po celej Európe, kde s nadšením cestuje) prosí touto cestou vás. Bez nej totiž neprežije. Milé priateľky, milí priatelia, keďže asistenciu potrebujem 24 hodín denne a žiadna agentúra ju nie je schopná pokryť, hľadám si touto cestou ľudí ochotných vypomôcť mi práve formou osobnej asistencie.",
 			"paragraph4": "Milé priateľky, milí priatelia, keďže asistenciu potrebujem 24 hodín denne a žiadna agentúra ju nie je schopná pokryť, hľadám si touto cestou ľudí ochotných vypomôcť mi práve formou osobnej asistencie."
 		}
+	},
+	"calendar": {
+		"hero": {
+			"heading": "Asistenčný kalendár",
+			"subheading": "Zarezervujte si asistenciu"
+		}
+	},
+	"blog": {
+		"hero": {
+			"heading": "Blog",
+			"subheading": "Vitajte na mojom blogu"
+		},
+		"placeholder": "Táto sekcia je v príprave. Prosím, skúste to neskôr."
+	},
+	"faq": {
+		"hero": {
+			"heading": "FAQ",
+			"subheading": "Často kladené otázky o osobnej asistencii"
+		},
+		"placeholder": "Táto sekcia je v príprave. Prosím, skúste to neskôr."
 	}
 }
