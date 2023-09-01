@@ -53,7 +53,7 @@ const Navbar: FC = (): JSX.Element => {
 			? logoDark
 			: logoLight;
 
-	const [logo, setLogo] = useState<StaticImageData>();
+	const [logo, setLogo] = useState<StaticImageData>(logoDark);
 	const [textColor, setTextColor] = useState<string>(initialTextColor);
 
 	const [isMobile, setIsMobile] = useState<boolean>(false);

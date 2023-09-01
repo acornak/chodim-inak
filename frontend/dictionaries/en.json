@@ -18,7 +18,8 @@
 		"hero": {
 			"heading": "Assistance calendar",
 			"subheading": "Here you can see when I need help."
-		}
+		},
+		"heading": "Book a date"
 	},
 	"blog": {
 		"hero": {

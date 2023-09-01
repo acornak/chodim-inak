@@ -17,8 +17,9 @@
 	"calendar": {
 		"hero": {
 			"heading": "Asistenčný kalendár",
-			"subheading": "Zarezervujte si asistenciu"
-		}
+			"subheading": "Zistite, kedy potrebujem pomoc."
+		},
+		"heading": "Zarezervujte si asistenciu"
 	},
 	"blog": {
 		"hero": {

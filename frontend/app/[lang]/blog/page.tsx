@@ -13,6 +13,7 @@ export default async function Blog({
 	params: { lang: Locale };
 }): Promise<JSX.Element> {
 	const dict = (await getDictionary(lang)).blog;
+
 	return (
 		<>
 			<HeroOthers

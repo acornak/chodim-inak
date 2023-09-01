@@ -21,10 +21,13 @@ export default async function Calendar({
 				subtitle={dict.hero.subheading}
 				image={heroCalendar}
 			/>
+			<div className="text-center pt-10 px-4 text-2xl uppercase font-semibold dark:text-gray-300">
+				<p className="mx-auto">{dict.heading}</p>
+			</div>
 			<div className="flex justify-center items-center py-6 px-4">
 				<div className="w-full max-w-screen-md">
 					<iframe
-						src="https://calendar.google.com/calendar/embed?src=41d1e23231256d809175ffb473c9e5f7bdc7a575c14ef9b7cb1c6b4d1728aa9a%40group.calendar.google.com&ctz=Europe%2FPrague"
+						src="https://calendar.google.com/calendar/embed?src=chodim.jinak%40gmail.com&ctz=Europe%2FPrague"
 						className="w-full h-[60vh]"
 						style={{ border: 0 }}
 					/>
