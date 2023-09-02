@@ -7,17 +7,16 @@ import { useOnScreen } from "./shared/hooks";
 // Images
 import introductionImage from "@/public/home/introduction.webp";
 
-type IntroductionProps = {
+type AboutMeProps = {
 	dict: {
 		heading: string;
 		paragraph1: string;
 		paragraph2: string;
 		paragraph3: string;
-		paragraph4: string;
 	};
 };
 
-const Introduction: FC<IntroductionProps> = ({ dict }): JSX.Element => {
+const AboutMe: FC<AboutMeProps> = ({ dict }): JSX.Element => {
 	const options = { rootMargin: "-100px" };
 	const [ref, visible] = useOnScreen(options);
 
@@ -32,12 +31,16 @@ const Introduction: FC<IntroductionProps> = ({ dict }): JSX.Element => {
 	return (
 		<>
 			<h1
-				className={`text-4xl mb-4 hidden md:block font-bold uppercase text-center pt-10 ${contentAnimation}`}
+				className={`text-4xl mb-4 font-bold uppercase text-center pt-10 ${contentAnimation}`}
+				id="about"
 			>
 				{dict.heading}
 			</h1>
+			<p className={`text-lg text-justify px-10 ${contentAnimation}`}>
+				{dict.paragraph1}
+			</p>
 			<div className="grid grid-cols-1 md:grid-cols-2 p-10" ref={ref}>
-				<div className="relative h-[70vh]">
+				<div className="relative h-[70vh] md:self-center">
 					<div className="absolute inset-0 mb-10 md:mb-0">
 						<Image
 							src={introductionImage}
@@ -53,25 +56,19 @@ const Introduction: FC<IntroductionProps> = ({ dict }): JSX.Element => {
 					</div>
 				</div>
 				<div className={`${contentAnimation}`}>
-					<h1 className="text-4xl mb-4 md:hidden font-bold uppercase">
-						{dict.heading}
-					</h1>
-					<p className="text-lg text-justify md:px-10 pb-6">
-						{dict.paragraph1}
-					</p>
 					<p className="text-md text-justify md:px-10 pb-6">
 						{dict.paragraph2}
 					</p>
-					<p className="text-md text-justify md:px-10 pb-6">
+					<p className="md:hidden lg:block text-md text-justify md:px-10 pb-6">
 						{dict.paragraph3}
-					</p>
-					<p className="text-md text-justify md:px-10">
-						{dict.paragraph4}
 					</p>
 				</div>
 			</div>
+			<p className="hidden md:block lg:hidden text-md text-justify md:px-10 pb-6">
+				{dict.paragraph3}
+			</p>
 		</>
 	);
 };
 
-export default Introduction;
+export default AboutMe;

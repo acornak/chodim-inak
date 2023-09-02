@@ -7,23 +7,18 @@ export const bgColor = (currentPage: string, locale: string): string => {
 		: "bg-white dark:bg-gray-800";
 };
 
-// const underline =
-// 	currentPage === "/" + locale
-// 		? "bg-white dark:bg-gray-300"
-// 		: "bg-primary-base dark:bg-white";
-
 export const NavItems: NavItem[] = [
 	{
 		name: { sk: "Domov", en: "Home" },
 		path: "/",
 		children: [
 			{
-				name: { sk: "Môj príbeh", en: "My story" },
-				path: "#story",
+				name: { sk: "O mne", en: "About me" },
+				path: "#about",
 			},
 			{
-				name: { sk: "Referencie", en: "References" },
-				path: "#references",
+				name: { sk: "O asistencii", en: "About assistance" },
+				path: "#asistance",
 			},
 			{
 				name: {
