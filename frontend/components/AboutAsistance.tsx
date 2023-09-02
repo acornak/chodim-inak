@@ -65,7 +65,7 @@ const AboutAsistance: FC<AboutAsistanceProps> = ({ dict }): JSX.Element => {
 						className="p-4 slide-card transform transition-all duration-1000 ease-in-out translate-x-[310%]"
 						key={card.heading}
 					>
-						<div className="flip-card rounded-lg overflow-hidden h-[400px]">
+						<div className="flip-card rounded-lg overflow-hidden h-[420px]">
 							<div className="flip-card-inner h-full">
 								<div className="flip-card-front flex items-center justify-center h-full bg-gray-100 dark:bg-gray-600 rounded-lg">
 									<h2 className="text-2xl font-bold">
