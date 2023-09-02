@@ -47,10 +47,9 @@ const AboutAsistance: FC<AboutAsistanceProps> = ({ dict }): JSX.Element => {
 	}`;
 
 	return (
-		<>
+		<section id="assistance">
 			<h1
 				className={`text-4xl mb-4 font-bold uppercase text-center pt-10 ${contentAnimation}`}
-				id="about"
 				ref={ref}
 			>
 				{dict.heading}
@@ -58,7 +57,6 @@ const AboutAsistance: FC<AboutAsistanceProps> = ({ dict }): JSX.Element => {
 			<div
 				ref={cardsRef}
 				className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4"
-				id="asistance"
 			>
 				{dict.cards.map((card) => (
 					<div
@@ -92,7 +90,7 @@ const AboutAsistance: FC<AboutAsistanceProps> = ({ dict }): JSX.Element => {
 					</div>
 				))}
 			</div>
-		</>
+		</section>
 	);
 };
 

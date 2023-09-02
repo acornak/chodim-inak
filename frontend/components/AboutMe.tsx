@@ -29,10 +29,9 @@ const AboutMe: FC<AboutMeProps> = ({ dict }): JSX.Element => {
 	}`;
 
 	return (
-		<>
+		<section id="me">
 			<h1
 				className={`text-4xl mb-4 font-bold uppercase text-center pt-10 ${contentAnimation}`}
-				id="about"
 			>
 				{dict.heading}
 			</h1>
@@ -67,7 +66,7 @@ const AboutMe: FC<AboutMeProps> = ({ dict }): JSX.Element => {
 			<p className="hidden md:block lg:hidden text-md text-justify md:px-10 pb-6">
 				{dict.paragraph3}
 			</p>
-		</>
+		</section>
 	);
 };
 

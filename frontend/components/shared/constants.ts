@@ -14,18 +14,11 @@ export const NavItems: NavItem[] = [
 		children: [
 			{
 				name: { sk: "O mne", en: "About me" },
-				path: "#about",
+				path: "#me",
 			},
 			{
 				name: { sk: "O asistencii", en: "About assistance" },
-				path: "#asistance",
-			},
-			{
-				name: {
-					sk: "Asistentské desatoro",
-					en: "Assistant's Decalogue",
-				},
-				path: "#oa",
+				path: "#assistance",
 			},
 		],
 	},

@@ -68,6 +68,43 @@ const Navbar: FC = (): JSX.Element => {
 			? "bg-white dark:bg-gray-300"
 			: "bg-primary-base dark:bg-white";
 
+	const [shouldShowNavbar, setShouldShowNavbar] = useState<boolean>(true);
+
+	useEffect((): (() => void) => {
+		let lastScrollTop = 0;
+
+		const handleScroll = (): void => {
+			const currentScrollTop =
+				window.scrollY || document.documentElement.scrollTop;
+
+			if (currentScrollTop < lastScrollTop || currentScrollTop < 50) {
+				setShouldShowNavbar(true);
+			} else {
+				setShouldShowNavbar(false);
+			}
+			lastScrollTop = currentScrollTop;
+		};
+
+		const handleMouseMove = (e: MouseEvent) => {
+			const currentScrollTop =
+				window.scrollY || document.documentElement.scrollTop;
+
+			if (e.clientY < 50) {
+				setShouldShowNavbar(true);
+			} else if (e.clientY > 150 && currentScrollTop !== 0) {
+				setShouldShowNavbar(false);
+			}
+		};
+
+		window.addEventListener("scroll", handleScroll);
+		window.addEventListener("mousemove", handleMouseMove);
+
+		return (): void => {
+			window.removeEventListener("scroll", handleScroll);
+			window.removeEventListener("mousemove", handleMouseMove);
+		};
+	}, []);
+
 	useEffect((): void => {
 		setTextColor(initialTextColor);
 		setLogo(initialLogo);
@@ -82,11 +119,13 @@ const Navbar: FC = (): JSX.Element => {
 		return () => window.removeEventListener("resize", handleResize);
 	}, []);
 
+	const navClass = shouldShowNavbar ? "top-0" : "-top-full";
+
 	return (
 		<nav
-			className={`${
+			className={`${navClass} transition-all ease-in-out duration-300 ${
 				isScrolled ? "bg-white dark:bg-gray-800" : bg
-			} fixed top-0 w-full z-20 py-4`}
+			} fixed w-full z-20 py-4`}
 		>
 			<div className="container mx-auto flex justify-between items-center px-6 md:px-0">
 				<Logo
