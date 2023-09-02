@@ -6,7 +6,6 @@ import { Locale } from "@/i18-config";
 import { getDictionary } from "@/dictionaries";
 // Image
 import heroFaq from "@/public/faq/hero-faq.png";
-import AboutAsistance from "@/components/AboutAsistance";
 
 export default async function FAQ({
 	params: { lang },
@@ -25,7 +24,6 @@ export default async function FAQ({
 			<div className="text-center pt-10 px-4 text-2xl font-semibold dark:text-gray-300">
 				<p className="mx-auto">{dict.placeholder}</p>
 			</div>
-			<AboutAsistance />
 		</>
 	);
 }
