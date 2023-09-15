@@ -5,7 +5,7 @@ import { useFormik } from "formik";
 import * as Yup from "yup";
 import { useGoogleReCaptcha } from "react-google-recaptcha-v3";
 // Functions
-import { useOnScreen } from "./shared/hooks";
+import { useOnScreen, useScrollToChangeURL } from "./shared/hooks";
 // Icons
 import SuccessIcon from "@/components/icons/Success";
 import ErrorIcon from "@/components/icons/Error";
@@ -43,6 +43,8 @@ const ContactForm: FC<ContactFormProps> = ({ dict }): JSX.Element => {
 
 	const [submitError, setSubmitError] = useState<boolean>(false);
 	const [submitSuccess, setSubmitSuccess] = useState<boolean>(false);
+
+	useScrollToChangeURL(ref, "contact");
 
 	const validationSchema = Yup.object({
 		name: Yup.string().required(dict.required),

@@ -1,7 +1,7 @@
 import React from "react";
 // Components
 import { HeroHome } from "@/components/Hero";
-import Introduction from "@/components/AboutMe";
+import AboutMe from "@/components/AboutMe";
 // Internationalization
 import { Locale } from "../../i18-config";
 import { getDictionary } from "@/dictionaries";
@@ -18,7 +18,7 @@ export default async function Home({
 	return (
 		<>
 			<HeroHome dict={dict.hero} />
-			<Introduction dict={dict.introduction} />
+			<AboutMe dict={dict.introduction} />
 			<AboutAsistance dict={dict.assistance} />
 			<ContactForm dict={dict.contact} />
 		</>

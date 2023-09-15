@@ -1,11 +1,12 @@
 "use client";
-import React, { FC, useEffect, useState } from "react";
+import React, { FC, useEffect, useRef, useState } from "react";
 // Next
 import Image from "next/image";
 import { StaticImport } from "next/dist/shared/lib/get-img-props";
 // Image
 import heroalt2 from "@/public/home/home-hero.webp";
 import Link from "next/link";
+import { useScrollToChangeURL } from "./shared/hooks";
 
 type HeroHomeProps = {
 	dict: {
@@ -17,17 +18,23 @@ type HeroHomeProps = {
 
 const HeroHome: FC<HeroHomeProps> = ({ dict }): JSX.Element => {
 	const [loaded, setLoaded] = useState<boolean>(false);
+	const ref = useRef<HTMLDivElement>(null);
 
 	useEffect((): void => {
 		setLoaded(true);
 	}, []);
+
+	useScrollToChangeURL(ref, "");
 
 	const commonClasses = `transform transition-all ease-in-out duration-700 ${
 		loaded ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"
 	}`;
 
 	return (
-		<div className="relative h-[100vh] flex items-center justify-center text-white dark:text-gray-300">
+		<div
+			className="relative h-[100vh] flex items-center justify-center text-white dark:text-gray-300"
+			ref={ref}
+		>
 			<Image
 				src={heroalt2}
 				fill

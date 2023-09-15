@@ -3,7 +3,7 @@ import React, { FC } from "react";
 // Next
 import Image from "next/image";
 // Functions
-import { useOnScreen } from "./shared/hooks";
+import { useOnScreen, useScrollToChangeURL } from "./shared/hooks";
 // Images
 import introductionImage from "@/public/home/introduction.webp";
 
@@ -19,6 +19,8 @@ type AboutMeProps = {
 const AboutMe: FC<AboutMeProps> = ({ dict }): JSX.Element => {
 	const options = { rootMargin: "-100px" };
 	const [ref, visible] = useOnScreen(options);
+
+	useScrollToChangeURL(ref, "me");
 
 	const imgAnimation = `absolute inset-0 transition-all duration-700 ease-in-out ${
 		visible ? "translate-x-0 opacity-100" : "-translate-x-1/2 opacity-0"

@@ -1,7 +1,7 @@
 "use client";
 import React, { FC, useEffect, useRef } from "react";
 // Functions
-import { useOnScreen } from "./shared/hooks";
+import { useOnScreen, useScrollToChangeURL } from "./shared/hooks";
 // Images
 import "./cards.css";
 
@@ -41,6 +41,8 @@ const AboutAsistance: FC<AboutAsistanceProps> = ({ dict }): JSX.Element => {
 			});
 		}
 	}, [visible]);
+
+	useScrollToChangeURL(ref, "assistance");
 
 	const contentAnimation = `flex flex-col justify-center items-center text-center transform transition-all ease-in-out duration-700 ${
 		visible ? "translate-x-0 opacity-100" : "translate-x-full opacity-0"
