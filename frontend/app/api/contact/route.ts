@@ -1,6 +1,5 @@
 import nodemailer from "nodemailer";
 import generateConfirmationTemplate from "./confirmation";
-import generateNotificationTemplate from "./notification";
 
 async function sendMail(to: string, subject: string, html: string) {
 	const transporter = nodemailer.createTransport({
@@ -51,7 +50,6 @@ export async function POST(req: Request) {
 		message: string;
 		name: string;
 		subject: string;
-		blog: string;
 		"g-recaptcha-response": string;
 	} = await req.json();
 
@@ -66,26 +64,18 @@ export async function POST(req: Request) {
 	let status: number = 200;
 
 	try {
-		// Verity reCAPTCHA
 		await verifyRecaptcha(body["g-recaptcha-response"]);
 
-		// Send mail to user
 		await sendMail(
 			body.to,
 			"Thanks for reaching out!",
-			generateConfirmationTemplate(body.name, body.message, body.blog),
+			generateConfirmationTemplate(body.name, body.message),
 		);
 
-		// Send mail to me
 		await sendMail(
 			process.env.EMAIL_USERNAME!,
 			"Someone reached out to you!",
-			generateNotificationTemplate(
-				body.name,
-				body.to,
-				body.message,
-				body.blog,
-			),
+			generateConfirmationTemplate(body.name, body.message),
 		);
 
 		// eslint-disable-next-line @typescript-eslint/no-explicit-any
