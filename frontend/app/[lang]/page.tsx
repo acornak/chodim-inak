@@ -6,6 +6,7 @@ import Introduction from "@/components/AboutMe";
 import { Locale } from "../../i18-config";
 import { getDictionary } from "@/dictionaries";
 import AboutAsistance from "@/components/AboutAsistance";
+import ContactForm from "@/components/ContactForm";
 
 export default async function Home({
 	params: { lang },
@@ -19,6 +20,7 @@ export default async function Home({
 			<HeroHome dict={dict.hero} />
 			<Introduction dict={dict.introduction} />
 			<AboutAsistance dict={dict.assistance} />
+			<ContactForm dict={dict.contact} />
 		</>
 	);
 }

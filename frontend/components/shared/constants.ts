@@ -20,6 +20,10 @@ export const NavItems: NavItem[] = [
 				name: { sk: "O asistencii", en: "About assistance" },
 				path: "#assistance",
 			},
+			{
+				name: { sk: "Kontakt", en: "Contact" },
+				path: "#contact",
+			},
 		],
 	},
 	{

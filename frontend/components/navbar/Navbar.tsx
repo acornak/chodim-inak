@@ -91,7 +91,7 @@ const Navbar: FC = (): JSX.Element => {
 
 			if (e.clientY < 50) {
 				setShouldShowNavbar(true);
-			} else if (e.clientY > 150 && currentScrollTop !== 0) {
+			} else if (e.clientY > 185 && currentScrollTop !== 0) {
 				setShouldShowNavbar(false);
 			}
 		};

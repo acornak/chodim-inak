@@ -56,6 +56,17 @@
 					]
 				}
 			]
+		},
+		"contact": {
+			"heading": "Kontakt",
+			"button": "Odoslať správu",
+			"email": "Email",
+			"name": "Meno",
+			"message": "Správa",
+			"required": "Povinné pole",
+			"invalidemail": "Nesprávny formát emailu",
+			"error": "Nastala chyba pri odosielaní správy. Prosím, skúste to neskôr.",
+			"success": "Správa bola úspešne odoslaná. Ďakujem za záujem, budem vás kontaktovať hneď, ako to bude možné."
 		}
 	},
 	"calendar": {
