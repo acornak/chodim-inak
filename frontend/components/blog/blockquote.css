@@ -1,0 +1,16 @@
+.quote-mark {
+	position: absolute;
+	font-size: 4em;
+	color: #8c8c8e; /* replace with your color */
+	opacity: 0.3;
+}
+
+.quote-mark--open {
+	top: -0.25em;
+	left: 0.2em;
+}
+
+.quote-mark--close {
+	bottom: -0.75em;
+	right: 0.2em;
+}
