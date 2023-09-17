@@ -61,12 +61,53 @@
 			"heading": "Contact",
 			"button": "Send Message",
 			"email": "Email",
-			"name": "Name",
-			"message": "Message",
+			"name": {
+				"heading": "Full name",
+				"placeholder": "John Smith"
+			},
+			"message": {
+				"heading": "Message",
+				"placeholder": "Hi Dani, I would love to become a member of your assistance team!"
+			},
 			"required": "Required",
 			"invalidemail": "Invalid email address",
 			"error": "Something went wrong. Please try again later.",
-			"success": "Thank you for your message. I will get back to you as soon as possible."
+			"success": "Thank you for your message. I will get back to you as soon as possible.",
+			"age": {
+				"heading": "Age",
+				"tooyoung": "Minimum age is 18 years.",
+				"tooold": "Maximum age is 65 years."
+			},
+			"occupation": {
+				"heading": "Occupation or field of study",
+				"placeholder": "Student of Social Anthropology"
+			},
+			"education": {
+				"heading": "Highest achieved education",
+				"placeholder": "Please select an option",
+				"fields": [
+					"Elementary School",
+					"High School",
+					"Associate's Degree",
+					"Bachelor's Degree",
+					"Master's Degree",
+					"Doctoral Degree"
+				]
+			},
+			"citizenship": {
+				"heading": "Citizenship",
+				"placeholder": "Please select an option",
+				"fields": [
+					"Slovakia",
+					"Czech Republic",
+					"Russia",
+					"Ukraine",
+					"Poland",
+					"Romania",
+					"Hungary",
+					"Other"
+				]
+			}
 		}
 	},
 	"calendar": {

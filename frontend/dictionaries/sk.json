@@ -61,12 +61,53 @@
 			"heading": "Kontakt",
 			"button": "Odoslať správu",
 			"email": "Email",
-			"name": "Meno",
-			"message": "Správa",
+			"name": {
+				"heading": "Meno a priezvisko",
+				"placeholder": "Janko Hraško"
+			},
+			"message": {
+				"heading": "Správa",
+				"placeholder": "Ahoj Dani, chcel/a by som sa stať súčasťou tvojho asistenčného teamu!"
+			},
 			"required": "Povinné pole",
 			"invalidemail": "Nesprávny formát emailu",
 			"error": "Nastala chyba pri odosielaní správy. Prosím, skúste to neskôr.",
-			"success": "Správa bola úspešne odoslaná. Ďakujem za záujem, budem vás kontaktovať hneď, ako to bude možné."
+			"success": "Správa bola úspešne odoslaná. Ďakujem za záujem, budem vás kontaktovať hneď, ako to bude možné.",
+			"age": {
+				"heading": "Vek",
+				"tooyoung": "Minimálny vek je 18 rokov.",
+				"tooold": "Maximálny vek je 65 rokov."
+			},
+			"occupation": {
+				"heading": "Povolanie alebo študijný odbor",
+				"placeholder": "Študent/ka sociálnej práce"
+			},
+			"education": {
+				"heading": "Najvyššie dosiahnuté vzdelanie",
+				"placeholder": "Zvoľte možnosť",
+				"fields": [
+					"Základné vzdelanie",
+					"Stredoškolské vzdelanie",
+					"Postsekundárne vzdelanie",
+					"Vysokoškolské vzdelanie I. stupňa",
+					"Vysokoškolské vzdelanie II. stupňa",
+					"Vysokoškolské vzdelanie III. stupňa"
+				]
+			},
+			"citizenship": {
+				"heading": "Občianstvo",
+				"placeholder": "Zvoľte možnosť",
+				"fields": [
+					"Slovenská republika",
+					"Česká republika",
+					"Rusko",
+					"Ukrajina",
+					"Poľsko",
+					"Rumunsko",
+					"Maďarsko",
+					"iné"
+				]
+			}
 		}
 	},
 	"calendar": {

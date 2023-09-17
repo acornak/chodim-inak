@@ -20,7 +20,7 @@ export default async function Home({
 			<HeroHome dict={dict.hero} />
 			<AboutMe dict={dict.introduction} />
 			<AboutAsistance dict={dict.assistance} />
-			<ContactForm dict={dict.contact} />
+			<ContactForm dict={dict.contact} lang={lang} />
 		</>
 	);
 }

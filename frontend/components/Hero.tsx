@@ -6,7 +6,6 @@ import { StaticImport } from "next/dist/shared/lib/get-img-props";
 // Image
 import heroalt2 from "@/public/home/home-hero.webp";
 import Link from "next/link";
-import { useScrollToChangeURL } from "./shared/hooks";
 
 type HeroHomeProps = {
 	dict: {
@@ -23,8 +22,6 @@ const HeroHome: FC<HeroHomeProps> = ({ dict }): JSX.Element => {
 	useEffect((): void => {
 		setLoaded(true);
 	}, []);
-
-	useScrollToChangeURL(ref, "");
 
 	const commonClasses = `transform transition-all ease-in-out duration-700 ${
 		loaded ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"

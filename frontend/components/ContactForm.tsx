@@ -1,33 +1,63 @@
 "use client";
-import React, { FC, Fragment, useState } from "react";
+import React, { FC, useState } from "react";
 // Form
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import { useGoogleReCaptcha } from "react-google-recaptcha-v3";
 // Functions
-import { useOnScreen, useScrollToChangeURL } from "./shared/hooks";
+import { useOnScreen } from "./shared/hooks";
 // Icons
 import SuccessIcon from "@/components/icons/Success";
 import ErrorIcon from "@/components/icons/Error";
 import UserIcon from "@/components/icons/User";
 import EmailIcon from "@/components/icons/Email";
 import MessageIcon from "@/components/icons/Message";
+import AgeIcon from "./icons/Age";
+import JobIcon from "./icons/Job";
+import EducationIcon from "./icons/Education";
+import CitizenshipIcon from "./icons/Job copy";
 
 type ContactFormProps = {
+	lang: string;
 	dict: {
 		heading: string;
 		button: string;
-		name: string;
+		name: {
+			heading: string;
+			placeholder: string;
+		};
 		email: string;
-		message: string;
+		message: {
+			heading: string;
+			placeholder: string;
+		};
 		error: string;
 		success: string;
 		required: string;
 		invalidemail: string;
+		age: {
+			tooyoung: string;
+			tooold: string;
+			heading: string;
+		};
+		occupation: {
+			heading: string;
+			placeholder: string;
+		};
+		education: {
+			heading: string;
+			placeholder: string;
+			fields: string[];
+		};
+		citizenship: {
+			heading: string;
+			placeholder: string;
+			fields: string[];
+		};
 	};
 };
 
-const ContactForm: FC<ContactFormProps> = ({ dict }): JSX.Element => {
+const ContactForm: FC<ContactFormProps> = ({ lang, dict }): JSX.Element => {
 	const options = { rootMargin: "0px" };
 	const [ref, visible] = useOnScreen(options);
 
@@ -44,22 +74,31 @@ const ContactForm: FC<ContactFormProps> = ({ dict }): JSX.Element => {
 	const [submitError, setSubmitError] = useState<boolean>(false);
 	const [submitSuccess, setSubmitSuccess] = useState<boolean>(false);
 
-	useScrollToChangeURL(ref, "contact");
-
 	const validationSchema = Yup.object({
 		name: Yup.string().required(dict.required),
-		to: Yup.string().email(dict.invalidemail).required(dict.required),
+		email: Yup.string().email(dict.invalidemail).required(dict.required),
 		message: Yup.string().required(dict.required),
 		subject: Yup.string(),
+		age: Yup.number()
+			.min(18, dict.age.tooyoung)
+			.max(70, dict.age.tooold)
+			.required(dict.required),
+		education: Yup.string().required(dict.required),
+		occupation: Yup.string().required(dict.required),
+		citizenship: Yup.string().required(dict.required),
 	});
 
 	// eslint-disable-next-line @typescript-eslint/no-explicit-any
 	const formik: any = useFormik({
 		initialValues: {
 			name: "",
-			to: "",
+			email: "",
 			message: "",
 			subject: "",
+			age: "",
+			education: "",
+			occupation: "",
+			citizenship: "",
 		},
 
 		validationSchema: validationSchema,
@@ -81,6 +120,7 @@ const ContactForm: FC<ContactFormProps> = ({ dict }): JSX.Element => {
 					},
 					body: JSON.stringify({
 						...values,
+						lang: lang,
 						"g-recaptcha-response": token,
 					}),
 				});
@@ -100,33 +140,6 @@ const ContactForm: FC<ContactFormProps> = ({ dict }): JSX.Element => {
 
 	const iconClasses: string =
 		"text-secondary dark:text-darksecondary w-6 h-6 mx-4";
-
-	const formFields: {
-		id: string;
-		type: string;
-		placeholder: string;
-		icon: JSX.Element;
-	}[] = [
-		{
-			id: "name",
-			type: "text",
-			placeholder: dict.name,
-			icon: <UserIcon className={iconClasses} />,
-		},
-		{
-			id: "to",
-			type: "email",
-			placeholder: dict.email,
-			icon: <EmailIcon className={iconClasses} />,
-		},
-		{
-			id: "message",
-			type: "textarea",
-			placeholder: dict.message,
-			icon: <MessageIcon className={iconClasses} />,
-		},
-		{ id: "subject", type: "text", placeholder: "Subject", icon: <></> },
-	];
 
 	const handleForm = (): JSX.Element => {
 		if (formik.isSubmitting) {
@@ -154,68 +167,274 @@ const ContactForm: FC<ContactFormProps> = ({ dict }): JSX.Element => {
 				</>
 			);
 		} else {
+			const formClasses =
+				"flex items-center w-full border-b border-secondary dark:border-darksecondary py-2 my-2";
+			const inputClasses =
+				"appearance-none bg-transparent border-none w-full mr-3 py-1 px-2 leading-tight focus:outline-none";
 			return (
 				<form
 					onSubmit={formik.handleSubmit}
 					className="text-xs flex flex-col w-full"
 				>
-					{formFields.map((field) =>
-						field.type !== "textarea" ? (
-							<Fragment key={field.id}>
-								<div
-									className={`flex items-center bg-primary-400 dark:bg-darkprimary-400 border-b border-secondary dark:border-darksecondary py-2 my-2 ${
-										field.id === "subject" && "hidden"
+					<div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+						<div className={formClasses}>
+							<UserIcon className={iconClasses} />
+							<div className="w-full">
+								<label
+									htmlFor="name"
+									className="ml-2 block text-gray-700 dark:text-gray-300"
+								>
+									{dict.name.heading}
+								</label>
+								<input
+									id="name"
+									name="name"
+									type="text"
+									placeholder={dict.name.placeholder}
+									onChange={formik.handleChange}
+									onBlur={formik.handleBlur}
+									value={formik.values["name"]}
+									className={inputClasses}
+								/>
+							</div>
+							<div className="w-40 mt-4 text-end">
+								{formik.touched["name"] &&
+								formik.errors["name"] ? (
+									<div className="text-red-500">
+										{formik.errors["name"]}
+									</div>
+								) : null}
+							</div>
+						</div>
+
+						<div className={formClasses}>
+							<EmailIcon className={iconClasses} />
+							<div className="w-full">
+								<label
+									htmlFor="name"
+									className="ml-2 block text-gray-700 dark:text-gray-300"
+								>
+									{dict.email}
+								</label>
+								<input
+									id="email"
+									name="email"
+									type="email"
+									placeholder="me@example.com"
+									onChange={formik.handleChange}
+									onBlur={formik.handleBlur}
+									value={formik.values["email"]}
+									className={inputClasses}
+								/>
+							</div>
+							<div className="w-72 mt-4 text-end">
+								{formik.touched["email"] &&
+								formik.errors["email"] ? (
+									<div className="text-red-500">
+										{formik.errors["email"]}
+									</div>
+								) : null}
+							</div>
+						</div>
+						<div className={formClasses}>
+							<AgeIcon className={iconClasses} />
+							<div className="w-full">
+								<label
+									htmlFor="name"
+									className="ml-2 block text-gray-700 dark:text-gray-300"
+								>
+									{dict.age.heading}
+								</label>
+								<input
+									id="age"
+									name="age"
+									type="text"
+									placeholder="18"
+									onChange={formik.handleChange}
+									onBlur={formik.handleBlur}
+									value={formik.values["age"]}
+									className={inputClasses}
+								/>
+							</div>
+							<div className="w-72 mt-4 text-end">
+								{formik.touched["age"] &&
+								formik.errors["age"] ? (
+									<div className="text-red-500">
+										{formik.errors["age"]}
+									</div>
+								) : null}
+							</div>
+						</div>
+						<div className={formClasses}>
+							<JobIcon className={iconClasses} />
+							<div className="w-full">
+								<label
+									htmlFor="name"
+									className="ml-2 block text-gray-700 dark:text-gray-300"
+								>
+									{dict.occupation.heading}
+								</label>
+								<input
+									id="occupation"
+									name="occupation"
+									type="text"
+									placeholder={dict.occupation.placeholder}
+									onChange={formik.handleChange}
+									onBlur={formik.handleBlur}
+									value={formik.values["occupation"]}
+									className={inputClasses}
+								/>
+							</div>
+							<div className="w-60 mt-4 text-end">
+								{formik.touched["occupation"] &&
+								formik.errors["occupation"] ? (
+									<div className="text-red-500">
+										{formik.errors["occupation"]}
+									</div>
+								) : null}
+							</div>
+						</div>
+						<div className={formClasses}>
+							<EducationIcon className={iconClasses} />
+							<div className="w-full">
+								<label
+									htmlFor="name"
+									className="ml-2 block text-gray-700 dark:text-gray-300"
+								>
+									{dict.education.heading}
+								</label>
+								<select
+									id="education"
+									name="education"
+									onChange={formik.handleChange}
+									onBlur={formik.handleBlur}
+									value={formik.values["education"]}
+									className={`${inputClasses} ${
+										formik.values["education"] === "" &&
+										"text-gray-400"
 									}`}
 								>
-									{field.icon}
-									<input
-										id={field.id}
-										name={field.id}
-										type={field.type}
-										placeholder={field.placeholder}
-										onChange={formik.handleChange}
-										onBlur={formik.handleBlur}
-										value={formik.values[field.id]}
-										className="appearance-none bg-transparent border-none w-full text-primary-500 dark:text-darkprimary-200 mr-3 py-1 px-2 leading-tight focus:outline-none"
-									/>
-								</div>
-								{formik.touched[field.id] &&
-								formik.errors[field.id] ? (
+									<option value="" disabled>
+										{dict.education.placeholder}
+									</option>
+									{dict.education.fields.map((value) => (
+										<option key={value} value={value}>
+											{value}
+										</option>
+									))}
+								</select>
+							</div>
+							<div className="w-60 mt-4 text-end">
+								{formik.touched["education"] &&
+								formik.errors["education"] ? (
 									<div className="text-red-500">
-										{formik.errors[field.id]}
+										{formik.errors["education"]}
 									</div>
 								) : null}
-							</Fragment>
-						) : (
-							<Fragment key={field.id}>
-								<div className="flex items-center bg-primary-400 dark:bg-darkprimary-400 border-b border-secondary dark:border-darksecondary py-2 my-2">
-									{field.icon}
-									<textarea
-										id={field.id}
-										name={field.id}
-										placeholder={field.placeholder}
-										onChange={formik.handleChange}
-										onBlur={formik.handleBlur}
-										value={formik.values[field.id]}
-										className="appearance-none bg-transparent border-none w-full text-primary-500 dark:text-darkprimary-200 mr-3 py-1 px-2 leading-tight focus:outline-none"
-									/>
-								</div>
-								{formik.touched[field.id] &&
-								formik.errors[field.id] ? (
+							</div>
+						</div>
+						<div className={formClasses}>
+							<CitizenshipIcon className={iconClasses} />
+							<div className="w-full">
+								<label
+									htmlFor="name"
+									className="ml-2 block text-gray-700 dark:text-gray-300"
+								>
+									{dict.citizenship.heading}
+								</label>
+								<select
+									id="citizenship"
+									name="citizenship"
+									onChange={formik.handleChange}
+									onBlur={formik.handleBlur}
+									value={formik.values["citizenship"]}
+									className={`${inputClasses} ${
+										formik.values["citizenship"] === "" &&
+										"text-gray-400"
+									}`}
+								>
+									<option value="" disabled>
+										{dict.citizenship.placeholder}
+									</option>
+									{dict.citizenship.fields.map((value) => (
+										<option key={value} value={value}>
+											{value}
+										</option>
+									))}
+								</select>
+							</div>
+							<div className="w-60 mt-4 text-end">
+								{formik.touched["citizenship"] &&
+								formik.errors["citizenship"] ? (
 									<div className="text-red-500">
-										{formik.errors[field.id]}
+										{formik.errors["citizenship"]}
 									</div>
 								) : null}
-							</Fragment>
-						),
-					)}
-
+							</div>
+						</div>
+						<div className={`hidden ${formClasses}`}>
+							<div className="w-full">
+								<label
+									htmlFor="name"
+									className="ml-2 block text-gray-700 dark:text-gray-300"
+								>
+									Subject
+								</label>
+								<input
+									id="subject"
+									name="subject"
+									type="text"
+									placeholder="Subject"
+									onChange={formik.handleChange}
+									onBlur={formik.handleBlur}
+									value={formik.values["subject"]}
+									className={inputClasses}
+								/>
+							</div>
+							<div className="w-60 mt-4 text-end">
+								{formik.touched["subject"] &&
+								formik.errors["subject"] ? (
+									<div className="text-red-500">
+										{formik.errors["subject"]}
+									</div>
+								) : null}
+							</div>
+						</div>
+					</div>
+					<div className={formClasses}>
+						<MessageIcon className={iconClasses} />
+						<div className="w-full">
+							<label
+								htmlFor="name"
+								className="ml-2 block text-gray-700 dark:text-gray-300"
+							>
+								{dict.message.heading}
+							</label>
+							<textarea
+								id="message"
+								name="message"
+								placeholder={dict.message.placeholder}
+								onChange={formik.handleChange}
+								onBlur={formik.handleBlur}
+								value={formik.values["message"]}
+								className="appearance-none bg-transparent border-none w-full text-primary-500 dark:text-darkprimary-200 mr-3 py-1 px-2 leading-tight focus:outline-none"
+							/>
+						</div>
+					</div>
+					<div className="text-end">
+						{formik.touched["message"] &&
+						formik.errors["message"] ? (
+							<div className="text-red-500">
+								{formik.errors["message"]}
+							</div>
+						) : null}
+					</div>
 					<div className="flex justify-end pt-6">
 						<button
 							type="submit"
 							className={`text-xs px-10 md:px-4 lg:px-6 xl:px-12 py-2 mb-4 rounded uppercase font-semibold border ${
 								formik.isValid && formik.dirty
-									? "text-gray-700 dark:text-gray-300 border-gray-700 dark:border-gray-300 cursor-pointer hover:bg-gray-700 hover:text-gray-100 dark:hover:bg-gray-300 dark:hover:text-gray-700"
+									? "text-gray-700 dark:text-gray-300 dark:text-gray-300 border-gray-700 dark:border-gray-300 cursor-pointer hover:bg-gray-700 hover:text-gray-100 dark:hover:bg-gray-300 dark:hover:text-gray-700 dark:text-gray-300"
 									: "text-gray-400 dark:text-gray-500 border-gray-400 dark:border-gray-500 cursor-not-allowed"
 							}`}
 							disabled={!formik.isValid || !formik.dirty}
@@ -231,7 +450,7 @@ const ContactForm: FC<ContactFormProps> = ({ dict }): JSX.Element => {
 	return (
 		<section
 			id="contact"
-			className="bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300"
+			className="bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 dark:text-gray-300"
 		>
 			<h1
 				className={`text-4xl mb-4 font-bold uppercase text-center pt-10 ${contentAnimation}`}

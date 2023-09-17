@@ -8,78 +8,6 @@ const generateConfirmationTemplate = (
 	email: string,
 	message: string,
 ): string => {
-	type LangMap = {
-		[key: string]: {
-			mainTitle: string;
-			title: string;
-			subtitle: string;
-			subtitle2: string;
-			subtitle3: string;
-			button: string;
-			contact: string;
-			heading2: string;
-			home: string;
-			about: string;
-			assistance: string;
-			calendar: string;
-			faq: string;
-			copy: string;
-			fullname: string;
-			age: string;
-			occupation: string;
-			education: string;
-			citizenship: string;
-			message: string;
-		};
-	};
-
-	const langMap: LangMap = {
-		en: {
-			mainTitle: "chodim-jinak.cz | We have received your message!",
-			title: `chodim-jinak.cz | Thank you ${name} for reaching out!`,
-			subtitle: `Dear ${name}, thank you for your interest!`,
-			subtitle2: "I will contact you as soon as possible.",
-			subtitle3: `In the meantime, please check <a href="https://www.chodim-jinak.cz/en#assistance">frequently asked questions</a> or`,
-			button: "See Assistence Calendar",
-			contact: "Contact Information",
-			heading2: "Useful Links",
-			home: "Home",
-			about: "About",
-			assistance: "Assistance",
-			calendar: "Assistance Calendar",
-			faq: "frequently asked questions",
-			copy: "Copy of your answers:",
-			fullname: "Full Name",
-			age: "Age",
-			occupation: "Occupation or field of study",
-			education: "Highest achieved education",
-			citizenship: "Citizenship",
-			message: "Message",
-		},
-		sk: {
-			mainTitle: "chodim-jinak.cz | Dostali sme Vašu správu!",
-			title: `chodim-jinak.cz | Ďakujem, ${name}, za záujem!`,
-			subtitle: `Vážená/ý ${name}, ďakujem za záujem pomáhať!`,
-			subtitle2: "Budem Vás kontaktovať hneď, ako to bude možné.",
-			subtitle3: `Medzitým nájdete viac informácií o osobnej asistencii <a href="https://www.chodim-jinak.cz/en#assistance">na tomto linku</a>.`,
-			contact: "Kontaktné informácie",
-			button: "Zobraziť asistenčný kalendár",
-			heading2: "Užitočné odkazy",
-			home: "Domov",
-			about: "O mne",
-			assistance: "Asistencia",
-			calendar: "Asistenčný kalendár",
-			faq: "často kladené otázky",
-			copy: "Kópia Vašich odpovedí:",
-			fullname: "Celé meno",
-			age: "Vek",
-			occupation: "Povolanie alebo študijný odbor",
-			education: "Najvyššie dosiahnuté vzdelanie",
-			citizenship: "Štátna príslušnosť",
-			message: "Správa",
-		},
-	};
-
 	return `
     <html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
     <head>
@@ -87,7 +15,7 @@ const generateConfirmationTemplate = (
         <meta name="viewport" content="width=device-width"> <!-- Forcing initial-scale shouldn't be necessary -->
         <meta http-equiv="X-UA-Compatible" content="IE=edge"> <!-- Use the latest (edge) version of IE rendering engine -->
         <meta name="x-apple-disable-message-reformatting">  <!-- Disable auto-scale in iOS 10 Mail entirely -->
-        <title>${langMap[lang].mainTitle}</title> <!-- The title tag shows in email notifications, like Android 4.4. -->
+        <title>chodim-jinak.cz | Daniela, máš novú správu!</title> <!-- The title tag shows in email notifications, like Android 4.4. -->
     
         <link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700" rel="stylesheet">
     
@@ -356,7 +284,7 @@ const generateConfirmationTemplate = (
     <body width="100%" style="margin: 0; padding: 0 !important; mso-line-height-rule: exactly; background-color: #f1f1f1;">
         <center style="width: 100%; background-color: #f1f1f1;">
         <div style="display: none; font-size: 1px;max-height: 0px; max-width: 0px; opacity: 0; overflow: hidden; mso-hide: all; font-family: sans-serif;">
-            ${langMap[lang].title}
+            chodim-jinak | Daniela, máš novú správu!
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         </div>
         
@@ -380,24 +308,7 @@ const generateConfirmationTemplate = (
                     <tr>
                         <td style="padding: 0 2.5em; text-align: center; padding-bottom: 3em;">
                             <div class="text">
-                                <h2>${langMap[lang].subtitle}</h2>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                          <td style="text-align: center;">
-                              <div class="text">
-                                  <h3 class="name">${langMap[lang].subtitle2}</h3>
-                                  <h4 class="name">${langMap[lang].subtitle3}</h4>
-                                   <p><a href="https://www.chodim-jinak.cz/sk/calendar" class="btn btn-primary" rel="noopener noreferrer" target="_blank">${langMap[lang].button}</a></p>
-                               </div>
-                          </td>
-                        </tr>
-
-                    <tr style="padding: 0; margin: 0">
-                        <td style="padding: 2.5em 0; text-align: center; padding-bottom: 3em;">
-                            <div class="text">
-                                <h3>${langMap[lang].copy}</h3>
+                                <h2>${name} prejavil/a záujem stať sa súčasťou tvojho asistenčného tímu</h2>
                             </div>
                         </td>
                     </tr>
@@ -406,7 +317,7 @@ const generateConfirmationTemplate = (
                             <div class="text">
                                 <div style="display: flex; justify-content: space-between;">
                                     <div style="flex: 1; padding: 0 1em;" class="text">
-                                        <p><b>${langMap[lang].fullname}: </b>${name}</p>
+                                        <p><b>Celé meno: </b>${name}</p>
                                     </div>
                                 </div>
                                 <div style="display: flex; justify-content: space-between;">
@@ -418,41 +329,42 @@ const generateConfirmationTemplate = (
                             <div class="text">
                                 <div style="display: flex; justify-content: space-between;">
                                     <div style="flex: 1; padding: 0 1em;" class="text">
-                                        <p><b>${langMap[lang].age}: </b>${age}</p>
+                                        <p><b>Vek: </b>${age}</p>
                                     </div>
                                 </div>
                                 <div style="display: flex; justify-content: space-between;">
                                     <div style="flex: 1; padding: 0 1em;">
-                                        <p><b>${langMap[lang].occupation}: </b>${occupation}</p>
+                                        <p><b>Povolanie alebo študijný odbor: </b>${occupation}</p>
                                     </div>
                                 </div>
                             </div>
                             <div class="text">
                                 <div style="display: flex; justify-content: space-between;">
                                     <div style="flex: 1; padding: 0 1em;" class="text">
-                                        <p><b>${langMap[lang].education}: </b>${education}</p>
+                                        <p><b>Najvyššie dosiahnuté vzdelanie: </b>${education}</p>
                                     </div>
                                 </div>
                                 <div style="display: flex; justify-content: space-between;">
                                     <div style="flex: 1; padding: 0 1em;">
-                                        <p><b>${langMap[lang].citizenship}: </b>${citizenship}</p>
+                                        <p><b>Štátna príslušnosť: </b>${citizenship}</p>
                                     </div>
                                 </div>
                             </div>
                             <div class="text">
                                 <div style="display: flex; justify-content: space-between;">
                                     <div style="flex: 1; padding: 0 1em;" class="text">
-                                        <p><b>${langMap[lang].message}: </b>${message}</p>
-                                    </div>
-                                </div>
-                                <div style="display: flex; justify-content: space-between;">
-                                    <div style="flex: 1; padding: 0 1em;">
-                                        <p></p>
+                                        <p><b>Preferovaný jazyk: </b>${lang}</p>
                                     </div>
                                 </div>
                             </div>
-                        </td>
-                                                
+                            <div class="text">
+                                <div style="display: flex; justify-content: space-between;">
+                                    <div style="flex: 1; padding: 0 1em;" class="text">
+                                    <p><b>Správa: </b>${message}</p>
+                                    </div>
+                                </div>
+                             </div>
+                        </td>             
                     </tr>
                 </table>
               </td>
@@ -467,7 +379,7 @@ const generateConfirmationTemplate = (
                       <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%">
                         <tr>
                           <td style="text-align: left; padding-left: 5px; padding-right: 5px;">
-                              <h3 class="heading">${langMap[lang].contact}</h3>
+                              <h3 class="heading">Kontaktné info</h3>
                               <ul>
                                         <li><span class="text">Daniela Komanická, <a href="mailto:komix.sk@gmail.com">komix.sk@gmail.com</a></span></li>
                                         <li><span class="text"><a href="https://www.chodim-jinak.cz/sk" rel="noopener noreferrer" target="_blank">chodim-jinak.cz</a></span></a></li>
@@ -480,12 +392,12 @@ const generateConfirmationTemplate = (
                       <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%">
                         <tr>
                           <td style="text-align: left; padding-left: 10px;">
-                              <h3 class="heading">${langMap[lang].heading2}</h3>
+                              <h3 class="heading">Zaujímavé odkazy</h3>
                               <ul>
-                                        <li><a href="https://www.chodim-jinak.cz/sk" rel="noopener noreferrer" target="_blank">${langMap[lang].home}</a></li>
-                                        <li><a href="https://www.chodim-jinak.cz/sk#me" rel="noopener noreferrer" target="_blank">${langMap[lang].about}</a></li>
-                                        <li><a href="https://www.chodim-jinak.cz/sk#assistance" rel="noopener noreferrer" target="_blank">${langMap[lang].assistance}</a></li>
-                                        <li><a href="https://www.chodim-jinak.cz/sk/calendar" rel="noopener noreferrer" target="_blank">${langMap[lang].calendar}</a></li>
+                                        <li><a href="https://www.chodim-jinak.cz/sk" rel="noopener noreferrer" target="_blank">Domov</a></li>
+                                        <li><a href="https://www.chodim-jinak.cz/sk#me" rel="noopener noreferrer" target="_blank">O mne</a></li>
+                                        <li><a href="https://www.chodim-jinak.cz/sk#assistance" rel="noopener noreferrer" target="_blank">O asistencii</a></li>
+                                        <li><a href="https://www.chodim-jinak.cz/sk/calendar" rel="noopener noreferrer" target="_blank">Asistenčný kalendár</a></li>
                                       </ul>
                           </td>
                         </tr>

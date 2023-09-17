@@ -1,5 +1,6 @@
 import nodemailer from "nodemailer";
 import generateConfirmationTemplate from "./confirmation";
+import generateNotificationTemplate from "./notification";
 
 async function sendMail(to: string, subject: string, html: string) {
 	const transporter = nodemailer.createTransport({
@@ -46,10 +47,15 @@ async function verifyRecaptcha(token: string) {
 
 export async function POST(req: Request) {
 	const body: {
-		to: string;
-		message: string;
 		name: string;
+		email: string;
+		message: string;
 		subject: string;
+		age: string;
+		education: string;
+		occupation: string;
+		citizenship: string;
+		lang: string;
 		"g-recaptcha-response": string;
 	} = await req.json();
 
@@ -67,15 +73,35 @@ export async function POST(req: Request) {
 		await verifyRecaptcha(body["g-recaptcha-response"]);
 
 		await sendMail(
-			body.to,
-			"Thanks for reaching out!",
-			generateConfirmationTemplate(body.name, body.message),
+			body.email,
+			body.lang === "en"
+				? "chodim-inak.sk | Thanks for reaching out!"
+				: "chodim-inak.sk | Ďakujem za Váš záujem!",
+			generateConfirmationTemplate(
+				body.name,
+				body.lang,
+				body.age,
+				body.education,
+				body.occupation,
+				body.citizenship,
+				body.email,
+				body.message,
+			),
 		);
 
 		await sendMail(
 			process.env.EMAIL_USERNAME!,
-			"Someone reached out to you!",
-			generateConfirmationTemplate(body.name, body.message),
+			"chodim-inak.sk | Daniela, máš novú správu!",
+			generateNotificationTemplate(
+				body.name,
+				body.lang,
+				body.age,
+				body.education,
+				body.occupation,
+				body.citizenship,
+				body.email,
+				body.message,
+			),
 		);
 
 		// eslint-disable-next-line @typescript-eslint/no-explicit-any

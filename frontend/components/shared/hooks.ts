@@ -57,6 +57,7 @@ export const useOnScreen = (
 	return [ref, visible];
 };
 
+// TODO: throws error
 export const useScrollToChangeURL = (
 	ref: React.RefObject<HTMLDivElement>,
 	anchor: string,
@@ -66,6 +67,7 @@ export const useScrollToChangeURL = (
 	useEffect(() => {
 		const handleScroll = () => {
 			const rect = ref.current!.getBoundingClientRect();
+			console.log(rect);
 			if (rect.top <= 0 && rect.bottom >= 0) {
 				router.replace(`#${anchor}`, { scroll: false });
 			}
