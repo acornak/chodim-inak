@@ -9,6 +9,7 @@ vite-env.d.ts
 
 # environment files
 .env.*
+*.txt
 
 # jest
 jest.config.js

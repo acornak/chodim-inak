@@ -27,3 +27,4 @@ backend
 Dockerfile
 .dockerignore
 *.rules
+*.txt

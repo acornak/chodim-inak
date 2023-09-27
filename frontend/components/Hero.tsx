@@ -55,8 +55,9 @@ const HeroHome: FC<HeroHomeProps> = ({ dict }): JSX.Element => {
 					className={`${commonClasses} text-lg mb-4 md:mb-8`}
 					style={{ transitionDelay: "300ms" }}
 				>
-					{dict.subheading}
+					{dict.subheading}a
 				</p>
+				{/* TODO add locale here */}
 				<Link href="/calendar#register">
 					<button
 						className={`homepage-button bg-transparent px-6 py-2 rounded uppercase border font-semibold transform hover:bg-white hover:text-gray-800 ${

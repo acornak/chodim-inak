@@ -1,0 +1,11 @@
+{
+    "name": "Daniela Komanická | Chodím inak",
+    "short_name": "Chodím inak",
+    "description": "Vítam vás vo svete osobnej asistencie.",
+    "start_url": "/en",
+    "display": "standalone",
+    "background_color": "#ffffff",
+    "theme_color": "#000000",
+    "orientation": "portrait"
+  }
+  
