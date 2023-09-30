@@ -5,16 +5,14 @@ import Link from "next/link";
 import Image from "next/image";
 // Common components
 import DateCategories from "@/components/blog/DateCategories";
-import ParseBodyRaw from "@/components/blog/BlogBody";
-// Icons
-import LinkedInIcon from "@/components/icons/LinkedIn";
-import TwitterIcon from "@/components/icons/Twitter";
-import FacebookIcon from "@/components/icons/Facebook";
 // Functions
 import { getBlogPost, getBlogPosts } from "@/components/shared/functions";
 import { ChevronLeft } from "@/components/icons/Chevrons";
 // Types and constants
-import { BlogPost, Category } from "@/components/shared/types";
+import { BlogPost } from "@/components/shared/types";
+import BlogPostComponent from "@/components/blog/BlogPost";
+import { getDictionary } from "@/dictionaries";
+import LatestPosts from "@/components/blog/LatestPosts";
 
 export async function generateMetadata({
 	params: { slug },
@@ -67,9 +65,11 @@ export const revalidate: number = 3600;
 const PostPage = async ({
 	params: { slug, lang },
 }: {
-	params: { slug: string; lang: string };
+	params: { slug: string; lang: "sk" | "en" };
 }): Promise<JSX.Element> => {
+	const dict = (await getDictionary(lang)).blog;
 	const blogPost: BlogPost = await getBlogPost(slug);
+	const blogPosts: BlogPost[] = await getBlogPosts();
 
 	if (!blogPost) {
 		return (
@@ -104,7 +104,7 @@ const PostPage = async ({
 				<div className="flex justify-between items-center w-full pb-6">
 					<Link href={`/${lang}/blog`} className="group uppercase">
 						<ChevronLeft className="inline-block mr-2 h-6 w-6 transition-transform duration-200 ease-in-out group-hover:-translate-x-2" />
-						Back to blog
+						{dict.back}
 					</Link>
 
 					<div className="hidden lg:block text-3xl font-semibold">
@@ -118,69 +118,30 @@ const PostPage = async ({
 				<div className="lg:hidden text-3xl text-center font-semibold">
 					{blogPost.title}
 				</div>
-				<ParseBodyRaw bodyRaw={blogPost.bodyRaw} />
-				<hr className="h-px my-8 border-0 border-gray-400" />
-				<div className="mt-4 flex flex-wrap text-sm">
-					Posted in
-					<p className="mx-2">
-						{blogPost.categories &&
-							blogPost.categories
-								.map((category: Category) => category.title)
-								.join(", ")}
-					</p>{" "}
-					by
-					<a
-						href="https://www.linkedin.com/in/anton-cornak/"
-						target="_blank"
-						rel="noopener noreferrer"
-						className="ml-2"
-					>
-						<p>{blogPost.author.name}</p>
-					</a>
-					.
+			</div>
+			<div className="text-black dark:text-gray-300 pl-6">
+				{dict.postedBy} {blogPost.author.name}
+			</div>
+			<div className="relative md:flex md:justify-between pt-6 text-black dark:text-gray-300">
+				<div className="flex-1 md:w-2/3 mx-6">
+					<BlogPostComponent
+						blogPost={blogPost}
+						dict={dict}
+						blogPosts={blogPosts.slice(0, 3)}
+						locale={lang}
+					/>
 				</div>
-				<div className="mt-4 flex flex-wrap text-sm">
-					<p className="pr-6">Tags:</p>
-					{blogPost.tags?.map((tag: string) => (
-						<div key={tag} className="px-4 mx-2 mb-2 outline">
-							{tag}
-						</div>
-					))}
-				</div>
-
-				<div className="mt-4 flex items-center text-sm">
-					<div className="text-xl py-6 font-semibold pr-10">
-						Liked the post? Share!
-					</div>
-					<a
-						href={`https://www.facebook.com/sharer/sharer.php?u=https://www.antoncornak.com/blog/${blogPost.slug.current}`}
-						target="_blank"
-						rel="noopener noreferrer"
-						className="mr-6"
-					>
-						<FacebookIcon />
-					</a>
-					<a
-						href={`https://twitter.com/intent/tweet?text=${blogPost.title}&url=https://www.antoncornak.com/blog/${blogPost.slug.current}`}
-						target="_blank"
-						rel="noopener noreferrer"
-						className="mr-6"
-					>
-						<TwitterIcon />
-					</a>
-					<a
-						href={`https://www.linkedin.com/shareArticle?mini=true&url=https://www.antoncornak.com/blog/${blogPost.slug.current}&title=${blogPost.title}&source=https://www.antoncornak.com/blog/${blogPost.slug.current}`}
-						target="_blank"
-						rel="noopener noreferrer"
-						className="mr-6"
-					>
-						<LinkedInIcon />
-					</a>
+				<div className="flex-none md:w-1/3 text-center">
+					<LatestPosts
+						posts={blogPosts.slice(0, 1)}
+						locale={lang}
+						dict={dict}
+						share={true}
+						blogPost={blogPost}
+					/>
 				</div>
 			</div>
 		</div>
-		// TODO: add latest posts
-		// Mozno nieco po stranach
 	);
 };
 

@@ -45,6 +45,7 @@ export default async function Blog({
 								post={post}
 								locale={lang}
 								key={post._id}
+								dict={dict}
 							/>
 						))}
 					</div>
@@ -52,6 +53,7 @@ export default async function Blog({
 						<LatestPosts
 							posts={blogPosts.slice(0, 2)}
 							locale={lang}
+							dict={dict}
 						/>
 					</div>
 				</div>

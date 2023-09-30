@@ -138,7 +138,12 @@
 			"heading": "Blog",
 			"subheading": "Vitajte na mojom blogu"
 		},
-		"placeholder": "Zatiaľ žiadne blogové príspevky. Prosím, skúste to neskôr."
+		"placeholder": "Zatiaľ žiadne blogové príspevky. Prosím, skúste to neskôr.",
+		"latestPosts": "Najnovšie príspevky",
+		"back": "Späť na blog",
+		"readMore": "Čítať viac",
+		"postedBy": "Napísal/a",
+		"share": "Páčil sa vám príspevok? Zdieľajte!"
 	},
 	"faq": {
 		"hero": {

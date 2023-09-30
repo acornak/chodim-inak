@@ -1,8 +1,10 @@
 "use client";
-import React, { useEffect, useRef } from "react";
+import React, { FC, useEffect, useRef } from "react";
 // Next
 import Image from "next/image";
 import Link from "next/link";
+// Common components
+import ShareComponent from "./Share";
 // Types and constants
 import { BlogPost } from "../shared/types";
 
@@ -19,8 +21,7 @@ const PostComponent = ({
 		passHref
 	>
 		<div className="m-4 relative bg-primary-bglight dark:bg-gray-700 text-gray-700 dark:text-gray-300 group">
-			{/* Image and Overlay */}
-			<div className="relative w-full h-48">
+			<div className="relative w-full h-60">
 				<Image
 					src={post.mainImage.asset.url}
 					alt={post.title}
@@ -34,12 +35,9 @@ const PostComponent = ({
 			</div>
 
 			<div className="absolute inset-0 flex flex-col items-center justify-center">
-				{/* Title */}
 				<h2 className="text-xl text-white dark:text-gray-300 py-1 font-semibold z-30">
 					{post.title}
 				</h2>
-
-				{/* Leading Paragraph */}
 				<span className="text-sm text-white dark:text-gray-300 py-1 z-30">
 					{post.leadRaw}
 				</span>
@@ -48,12 +46,23 @@ const PostComponent = ({
 	</Link>
 );
 
-const LatestPosts = ({
-	posts,
-	locale,
-}: {
+type LatestPostsProps = {
 	posts: BlogPost[];
 	locale: string;
+	dict: {
+		latestPosts: string;
+		share: string;
+	};
+	share?: boolean;
+	blogPost?: BlogPost;
+};
+
+const LatestPosts: FC<LatestPostsProps> = ({
+	posts,
+	locale,
+	dict,
+	share = false,
+	blogPost,
 }): JSX.Element => {
 	const stickyRef = useRef<HTMLDivElement>(null);
 	const originalOffsetTop = useRef<number | null>(null);
@@ -72,6 +81,9 @@ const LatestPosts = ({
 			if (!stickyElement || originalOffsetTop.current === null) return;
 
 			const scrollPosition = window.scrollY;
+			const parent = stickyElement.parentElement;
+
+			if (!parent) return;
 
 			if (scrollPosition >= originalOffsetTop.current - 20) {
 				stickyElement.style.position = "fixed";
@@ -94,17 +106,30 @@ const LatestPosts = ({
 	}, []);
 
 	return (
-		<div
-			ref={stickyRef}
-			className="mt-4 hidden md:block bg-primary-bglight dark:bg-gray-700 col-span-1 mr-10 border-b-2 border-secondary-light dark:border-secondary-dark max-h-[69vh]"
-		>
-			<div className="text-center pt-10 px-4 text-xl uppercase font-semibold dark:text-gray-300">
-				<p className="mx-auto">Latest posts</p>
+		<>
+			<div ref={stickyRef}>
+				<div className="mt-4 hidden md:block bg-primary-bglight dark:bg-gray-700 col-span-1 mr-10 border-b-2 border-secondary-light dark:border-secondary-dark max-h-[69vh]">
+					<div className="text-center pt-10 px-4 text-xl uppercase font-semibold dark:text-gray-300">
+						<p className="mx-auto">{dict.latestPosts}</p>
+					</div>
+					{posts.map((post: BlogPost) => (
+						<PostComponent
+							post={post}
+							key={post._id}
+							locale={locale}
+						/>
+					))}
+				</div>
+				{share && blogPost && (
+					<div className="mt-4 hidden md:block bg-primary-bglight dark:bg-gray-700 col-span-1 mr-10 border-b-2 border-secondary-light dark:border-secondary-dark max-h-[69vh]">
+						<ShareComponent
+							blogPost={blogPost}
+							heading={dict.share}
+						/>
+					</div>
+				)}
 			</div>
-			{posts.map((post: BlogPost) => (
-				<PostComponent post={post} key={post._id} locale={locale} />
-			))}
-		</div>
+		</>
 	);
 };
 

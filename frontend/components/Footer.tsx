@@ -127,7 +127,10 @@ const Footer: FC = (): JSX.Element => {
 	];
 
 	return (
-		<footer className="bg-primary-bg dark:bg-gray-800 text-gray-700 dark:text-gray-300 py-8">
+		<footer
+			className="bg-primary-bg dark:bg-gray-800 text-gray-700 dark:text-gray-300 pb-8"
+			id="footer"
+		>
 			<hr className="my-4 mx-8 border-gray-400" />
 			<div className="container mx-auto grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-8 px-6 md:px-0">
 				<div className="text-xs">
@@ -162,12 +165,14 @@ const Footer: FC = (): JSX.Element => {
 						</p>
 					</span>
 				</div>
-				<LinkList
-					title={dict.sitemap.heading[locale]}
-					links={NavItems}
-					external={false}
-					locale={locale}
-				/>
+				<div className="hidden lg:block">
+					<LinkList
+						title={dict.sitemap.heading[locale]}
+						links={NavItems}
+						external={false}
+						locale={locale}
+					/>
+				</div>
 				<LinkList
 					title={dict.links.heading[locale]}
 					links={externalLinks}
@@ -196,9 +201,7 @@ const Footer: FC = (): JSX.Element => {
 					</h4>
 					<p className="text-sm">
 						<b>Email</b>:{" "}
-						<a href="mailto:example@example.com">
-							example@example.com
-						</a>
+						<a href="mailto:komixsk@gmail.com">komixsk@gmail.com</a>
 					</p>
 					<p className="text-sm">
 						<b>{dict.contact.phone[locale]}</b>:{" "}

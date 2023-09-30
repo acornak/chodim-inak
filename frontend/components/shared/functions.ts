@@ -35,6 +35,9 @@ export async function getBlogPosts(): Promise<BlogPost[]> {
 	const query: string = `{
         allPost {
 			_id
+			author {
+				name
+			}
             title
             slug {
                 current

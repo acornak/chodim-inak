@@ -555,7 +555,7 @@ const ContactForm: FC<ContactFormProps> = ({ lang, dict }): JSX.Element => {
 				className={`flex items-center justify-center mx-4 md:mx-10 ${formAnimation}`}
 			>
 				<div
-					className="flex w-full h-full justify-center items-center mb-10 py-10 px-10"
+					className="flex w-full h-full justify-center items-center mb-10 py-t px-10"
 					ref={ref}
 				>
 					{handleForm()}

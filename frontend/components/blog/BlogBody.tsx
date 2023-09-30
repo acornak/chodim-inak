@@ -65,16 +65,24 @@ const PortableComponents = {
 	},
 	block: {
 		h1: ({ children }: PortableTextComponentProps<any>) => (
-			<h1 className="text-3xl pb-6 font-semibold">{children}</h1>
+			<h1 className="text-3xl pb-6 font-semibold text-center">
+				{children}
+			</h1>
 		),
 		h2: ({ children }: PortableTextComponentProps<any>) => (
-			<h1 className="text-2xl pb-6 font-semibold">{children}</h1>
+			<h1 className="text-2xl pb-6 font-semibold text-center">
+				{children}
+			</h1>
 		),
 		h3: ({ children }: PortableTextComponentProps<any>) => (
-			<h1 className="text-xl pb-6 font-semibold">{children}</h1>
+			<h1 className="text-xl pb-6 font-semibold text-center">
+				{children}
+			</h1>
 		),
 		h4: ({ children }: PortableTextComponentProps<any>) => (
-			<h1 className="text-md pb-6 font-semibold">{children}</h1>
+			<h1 className="text-md pb-6 font-semibold text-center">
+				{children}
+			</h1>
 		),
 		blockquote: ({ children }: PortableTextComponentProps<any>) => (
 			<blockquote className="border-l-4 bg-primary-400 dark:bg-darkprimary-400 text-primary-200 dark:text-darkprimary-200 pl-4 py-2 my-4 relative">

@@ -138,7 +138,12 @@
 			"heading": "Blog",
 			"subheading": "Welcome to my blog"
 		},
-		"placeholder": "There are no blogposts yet. Please come back later."
+		"placeholder": "There are no blogposts yet. Please come back later.",
+		"latestPosts": "Latest Posts",
+		"back": "Back to posts",
+		"readMore": "Read more",
+		"postedBy": "Posted by",
+		"share": "Liked the post? Share!"
 	},
 	"faq": {
 		"hero": {
