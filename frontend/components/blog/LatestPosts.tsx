@@ -108,7 +108,7 @@ const LatestPosts: FC<LatestPostsProps> = ({
 	return (
 		<>
 			<div ref={stickyRef}>
-				<div className="mt-4 hidden md:block bg-primary-bglight dark:bg-gray-700 col-span-1 mr-10 border-b-2 border-secondary-light dark:border-secondary-dark max-h-[69vh]">
+				<div className="mt-4 hidden lg:block bg-primary-bglight dark:bg-gray-700 col-span-1 mr-10 border-b-2 border-secondary-light dark:border-secondary-dark max-h-[69vh]">
 					<div className="text-center pt-10 px-4 text-xl uppercase font-semibold dark:text-gray-300">
 						<p className="mx-auto">{dict.latestPosts}</p>
 					</div>
@@ -121,7 +121,7 @@ const LatestPosts: FC<LatestPostsProps> = ({
 					))}
 				</div>
 				{share && blogPost && (
-					<div className="mt-4 hidden md:block bg-primary-bglight dark:bg-gray-700 col-span-1 mr-10 border-b-2 border-secondary-light dark:border-secondary-dark max-h-[69vh]">
+					<div className="mt-4 hidden lg:block bg-primary-bglight dark:bg-gray-700 col-span-1 mr-10 border-b-2 border-secondary-light dark:border-secondary-dark max-h-[69vh]">
 						<ShareComponent
 							blogPost={blogPost}
 							heading={dict.share}

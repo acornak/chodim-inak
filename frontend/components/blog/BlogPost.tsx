@@ -32,7 +32,7 @@ const BlogPostComponent: FC<BlogPostProps> = ({
 				<hr className="h-px my-8 border-0 border-gray-400" />
 			</div>
 		</div>
-		<div className="md:hidden pt-6">
+		<div className="lg:hidden pt-6">
 			<div className="font-semibold text-xl text-center bg-primary-bglight dark:bg-gray-700 border-b-2 border-secondary-light mb-6">
 				<ShareComponent blogPost={blogPost} heading={dict.share} />
 			</div>

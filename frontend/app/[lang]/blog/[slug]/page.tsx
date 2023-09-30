@@ -3,8 +3,8 @@ import React from "react";
 import { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
-// Common components
-import DateCategories from "@/components/blog/DateCategories";
+// Misc
+import { format } from "date-fns";
 // Functions
 import { getBlogPost, getBlogPosts } from "@/components/shared/functions";
 import { ChevronLeft } from "@/components/icons/Chevrons";
@@ -100,30 +100,32 @@ const PostPage = async ({
 					sizes="100%"
 				/>
 			</div>
-			<div className="mt-6 p-6 bg-primary-bg dark:bg-gray-800 text-gray-700 dark:text-gray-300">
+			<div className="mt-6 p-6 text-gray-700 dark:text-gray-300">
 				<div className="flex justify-between items-center w-full pb-6">
 					<Link href={`/${lang}/blog`} className="group uppercase">
 						<ChevronLeft className="inline-block mr-2 h-6 w-6 transition-transform duration-200 ease-in-out group-hover:-translate-x-2" />
 						{dict.back}
 					</Link>
-
-					<div className="hidden lg:block text-3xl font-semibold">
-						{blogPost.title}
-					</div>
-					<DateCategories
-						date={blogPost.publishedAt}
-						textSize="text-sm"
-					/>
 				</div>
-				<div className="lg:hidden text-3xl text-center font-semibold">
+				<div className="text-3xl text-center font-semibold">
 					{blogPost.title}
 				</div>
 			</div>
-			<div className="text-black dark:text-gray-300 pl-6">
-				{dict.postedBy} {blogPost.author.name}
+			<div className="ml-6 mr-10 flex justify-between text-white dark:text-darkprimary-200">
+				<div className="bg-secondary-dark py-1 px-2 dark:bg-gray-800 rounded-md">
+					{dict.postedBy} {blogPost.author.name}
+				</div>
+				<div className="bg-secondary-dark py-1 px-2 dark:bg-gray-800 rounded-md">
+					<span>
+						{format(
+							new Date(blogPost.publishedAt),
+							"MMMM dd, yyyy",
+						)}
+					</span>
+				</div>
 			</div>
-			<div className="relative md:flex md:justify-between pt-6 text-black dark:text-gray-300">
-				<div className="flex-1 md:w-2/3 mx-6">
+			<div className="relative lg:flex lg:justify-between pt-6 text-black dark:text-gray-300">
+				<div className="flex-1 lg:w-2/3 mx-6">
 					<BlogPostComponent
 						blogPost={blogPost}
 						dict={dict}
@@ -131,7 +133,7 @@ const PostPage = async ({
 						locale={lang}
 					/>
 				</div>
-				<div className="flex-none md:w-1/3 text-center">
+				<div className="flex-none lg:w-1/3 text-center">
 					<LatestPosts
 						posts={blogPosts.slice(0, 1)}
 						locale={lang}
