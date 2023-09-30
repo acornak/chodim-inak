@@ -15,11 +15,9 @@ const DateCategories = ({
 }): JSX.Element => {
 	return (
 		<div
-			className={`${textSize} text-primary-500 dark:text-darkprimary-200 left-4 px-4 bg-primary-200 dark:bg-darkprimary-400 p-1 rounded-full inline-block`}
+			className={`${textSize} text-primary-500 dark:text-darkprimary-200 bg-primary-bg py-1 px-2 dark:bg-gray-800 rounded-md inline-block`}
 		>
-			<span className="mr-2">
-				{format(new Date(date), "MMMM dd, yyyy")}
-			</span>
+			<span>{format(new Date(date), "MMMM dd, yyyy")}</span>
 			{categories && (
 				<>
 					|

@@ -25,19 +25,19 @@ export async function generateMetadata({
 	if (!post) return {} as Metadata;
 
 	return {
-		metadataBase: new URL(`https://www.antoncornak.com/blog/${slug}`),
+		metadataBase: new URL(`https://www.chodim-inak.sk/sk/blog/${slug}`),
 		alternates: {
 			canonical: `/blog/${slug}`,
 		},
 		title: post.title,
-		// description: post.leadRaw[0].children![0].text,
+		description: post.leadRaw,
 		keywords: post.tags?.join(", "),
 		openGraph: {
 			title: post.title,
-			// description: post.leadRaw[0].children![0].text,
-			url: new URL(`https://www.antoncornak.com/blog/${slug}`),
+			description: post.leadRaw,
+			url: new URL(`https://www.chodim-inak.sk/sk/blog/${slug}`),
 			siteName: post.title,
-			locale: "en_US",
+			locale: "sk_SK",
 			images: [
 				{
 					url: post.mainImage.asset.url,
@@ -47,7 +47,7 @@ export async function generateMetadata({
 		twitter: {
 			card: "summary_large_image",
 			title: post.title,
-			// description: post.leadRaw[0].children![0].text,
+			description: post.leadRaw,
 			images: [post.mainImage.asset.url],
 		},
 	};

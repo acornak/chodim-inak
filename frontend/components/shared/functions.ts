@@ -45,6 +45,7 @@ export async function getBlogPosts(): Promise<BlogPost[]> {
                     url
                 }
             }
+			leadRaw
             categories {
                 title
             }
@@ -63,7 +64,6 @@ export async function getBlogPosts(): Promise<BlogPost[]> {
 	}
 
 	const data = await res.json();
-
 	return data.data.allPost
 		.filter((post: BlogPost) => !post._id.startsWith("drafts."))
 		.sort(
@@ -102,6 +102,7 @@ export async function getBlogPost(slug: string): Promise<BlogPost> {
                     url
                 }
             }
+			leadRaw
             bodyRaw
             categories {
                 title

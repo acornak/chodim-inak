@@ -84,7 +84,7 @@ const AboutAsistance: FC<AboutAsistanceProps> = ({ dict }): JSX.Element => {
 						<div className="flip-card rounded-lg overflow-hidden h-[420px]">
 							<div className="flip-card-inner h-full">
 								<div
-									className="flip-card-front flex items-center justify-center h-full rounded-lg backdrop-blur"
+									className="flip-card-front flex items-center justify-center h-full rounded-lg"
 									style={{
 										backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(${
 											cardBg[card.id].src
@@ -94,7 +94,7 @@ const AboutAsistance: FC<AboutAsistanceProps> = ({ dict }): JSX.Element => {
 										zIndex: -2,
 									}}
 								>
-									<h2 className="text-2xl font-bold text-white">
+									<h2 className="text-2xl font-bold text-white dark:text-gray-300">
 										{card.heading}
 									</h2>
 								</div>

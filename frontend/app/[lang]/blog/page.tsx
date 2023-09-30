@@ -11,6 +11,7 @@ import heroBlog from "@/public/blog/hero-blog.webp";
 // Types and constants
 import { BlogPost } from "@/components/shared/types";
 import BlogPostList from "@/components/blog/BlogPostList";
+import LatestPosts from "@/components/blog/LatestPosts";
 
 export const dynamicParams: boolean = true;
 export const revalidate: number = 3600;
@@ -37,14 +38,22 @@ export default async function Blog({
 				<div className="text-center pt-10 px-4 text-2xl uppercase font-semibold dark:text-gray-300">
 					<p className="mx-auto">Blog</p>
 				</div>
-				<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 text-center pt-6">
-					{blogPosts.map((post: BlogPost) => (
-						<BlogPostList
-							post={post}
+				<div className="relative md:flex md:justify-between text-center pt-6">
+					<div className="flex-1 md:w-2/3 mx-6">
+						{blogPosts.map((post: BlogPost) => (
+							<BlogPostList
+								post={post}
+								locale={lang}
+								key={post._id}
+							/>
+						))}
+					</div>
+					<div className="flex-none md:w-1/3">
+						<LatestPosts
+							posts={blogPosts.slice(0, 2)}
 							locale={lang}
-							key={post._id}
 						/>
-					))}
+					</div>
 				</div>
 			</>
 		);

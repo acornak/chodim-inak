@@ -64,7 +64,7 @@ export type BlogPost = {
 	};
 	tags: string[];
 	categories: Category[];
-	leadRaw: BlogContent[];
+	leadRaw: string;
 	bodyRaw: BlogContent[];
 	author: {
 		name: string;

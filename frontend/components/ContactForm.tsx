@@ -70,7 +70,7 @@ type ContactFormProps = {
 };
 
 const ContactForm: FC<ContactFormProps> = ({ lang, dict }): JSX.Element => {
-	const options = { rootMargin: "50px" };
+	const options = { rootMargin: "50px 0px 50px 0px" };
 	const [ref, visible] = useOnScreen(options);
 
 	const contentAnimation = `flex flex-col justify-center items-center text-center transform transition-all ease-in-out duration-700 ${
@@ -548,14 +548,16 @@ const ContactForm: FC<ContactFormProps> = ({ lang, dict }): JSX.Element => {
 		>
 			<h1
 				className={`text-4xl mb-4 font-bold uppercase text-center pt-10 ${contentAnimation}`}
-				ref={ref}
 			>
 				{dict.heading}
 			</h1>
 			<div
 				className={`flex items-center justify-center mx-4 md:mx-10 ${formAnimation}`}
 			>
-				<div className="flex w-full h-full justify-center items-center mb-10 py-10 px-10">
+				<div
+					className="flex w-full h-full justify-center items-center mb-10 py-10 px-10"
+					ref={ref}
+				>
 					{handleForm()}
 				</div>
 			</div>

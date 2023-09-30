@@ -32,7 +32,10 @@ const LanguageSwitch: FC<LanguageSwitchProps> = ({
 	const toggleDropdown = () => setShowDropdown(!showDropdown);
 
 	return (
-		<div className={`${textColor} relative`}>
+		<div
+			className={`${textColor} relative`}
+			onMouseEnter={() => setShowDropdown(true)}
+		>
 			<button onClick={toggleDropdown} className="text-sm mr-2 uppercase">
 				{locale?.toUpperCase()}
 				<ChevronDown className={`inline-block`} />
@@ -40,12 +43,14 @@ const LanguageSwitch: FC<LanguageSwitchProps> = ({
 			{showDropdown && (
 				<ul
 					className={`${bg} absolute top-full -left-4 w-full py-2 mt-1`}
+					onMouseLeave={() => setShowDropdown(false)}
 				>
 					{i18n.locales.map((locale) => (
 						<li key={locale} className="px-4 py-2 cursor-pointer">
 							<Link
 								locale={locale}
 								href={redirectedPathName(locale)}
+								onClick={() => setShowDropdown(false)}
 							>
 								{locale}
 							</Link>

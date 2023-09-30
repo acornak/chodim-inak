@@ -1,6 +1,5 @@
 "use client";
 import { useEffect, useState, useRef, RefObject } from "react";
-import { useRouter } from "next/navigation";
 
 export const useScroll = (threshold: number = 60): boolean => {
 	const [isScrolled, setIsScrolled] = useState<boolean>(false);
@@ -55,27 +54,4 @@ export const useOnScreen = (
 	}, [ref, options]);
 
 	return [ref, visible];
-};
-
-// TODO: throws error
-export const useScrollToChangeURL = (
-	ref: React.RefObject<HTMLDivElement>,
-	anchor: string,
-) => {
-	const router = useRouter();
-
-	useEffect(() => {
-		const handleScroll = () => {
-			const rect = ref.current!.getBoundingClientRect();
-			console.log(rect);
-			if (rect.top <= 0 && rect.bottom >= 0) {
-				router.replace(`#${anchor}`, { scroll: false });
-			}
-		};
-
-		window.addEventListener("scroll", handleScroll);
-		return () => {
-			window.removeEventListener("scroll", handleScroll);
-		};
-	}, [ref, anchor, router]);
 };

@@ -36,8 +36,3 @@
 	transform: rotateY(90deg);
 	transition-delay: 0s;
 }
-
-
-.backdrop-blur {
-	backdrop-filter: blur(3px);
-}
