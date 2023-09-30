@@ -1,11 +1,29 @@
 "use client";
 import React, { FC, useEffect, useRef } from "react";
+// Next
+import { StaticImageData } from "next/image";
 // Functions
 import { useOnScreen } from "./shared/hooks";
-// Images
+// Images and styles
 import "./cards.css";
+import time from "@/public/cards/time.webp";
+import tasks from "@/public/cards/tasks.webp";
+import team from "@/public/cards/team.webp";
+import health from "@/public/cards/health.webp";
+import meeting from "@/public/cards/meeting.webp";
+import compensation from "@/public/cards/compensation.webp";
+
+const cardBg: Record<string, StaticImageData> = {
+	time,
+	tasks,
+	team,
+	health,
+	meeting,
+	compensation,
+};
 
 type Card = {
+	id: string;
 	heading: string;
 	text: string[];
 };
@@ -65,12 +83,22 @@ const AboutAsistance: FC<AboutAsistanceProps> = ({ dict }): JSX.Element => {
 					>
 						<div className="flip-card rounded-lg overflow-hidden h-[420px]">
 							<div className="flip-card-inner h-full">
-								<div className="flip-card-front flex items-center justify-center h-full bg-gray-100 dark:bg-gray-600 rounded-lg">
-									<h2 className="text-2xl font-bold">
+								<div
+									className="flip-card-front flex items-center justify-center h-full rounded-lg backdrop-blur"
+									style={{
+										backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(${
+											cardBg[card.id].src
+										})`,
+										backgroundSize: "cover",
+										backgroundPosition: "center",
+										zIndex: -2,
+									}}
+								>
+									<h2 className="text-2xl font-bold text-white">
 										{card.heading}
 									</h2>
 								</div>
-								<div className="flip-card-back flex items-center justify-center h-full bg-gray-200 dark:bg-gray-900 rounded-lg">
+								<div className="flip-card-back flex items-center justify-center h-full bg-primary-light dark:bg-gray-900 rounded-lg">
 									<div className="p-6">
 										<h3 className="text-lg text-center font-semibold pb-4">
 											{card.heading}

@@ -70,7 +70,7 @@ export const OtherControls: FC<OtherControlsProps> = ({
 }) => (
 	<div className="hidden md:flex items-center text-white mr-2 md:mr-0 uppercase text-xs">
 		<LanguageSwitch
-			bg={isScrolled ? "bg-white dark:bg-gray-800" : bg}
+			bg={isScrolled ? "bg-primary-bg dark:bg-gray-800" : bg}
 			textColor={textColor}
 		/>
 		<div className="border-l h-5 mx-4" />
@@ -186,7 +186,7 @@ const ChildItems: FC<ChildItemsProps> = ({
 	index,
 }) => (
 	<ul
-		className={`bg-white dark:bg-gray-800 absolute top-full w-56 py-2 text-gray-700 dark:text-gray-300 transform transition-transform origin-top duration-300 ${
+		className={`bg-primary-bg dark:bg-gray-800 absolute top-full w-56 py-2 text-gray-700 dark:text-gray-300 transform transition-transform origin-top duration-300 ${
 			showChildren === index ? "scale-y-100" : "scale-y-0"
 		}`}
 	>

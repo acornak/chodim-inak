@@ -22,3 +22,7 @@
 .flip-card-back {
 	transform: rotateY(180deg);
 }
+
+.backdrop-blur {
+	backdrop-filter: blur(3px);
+}

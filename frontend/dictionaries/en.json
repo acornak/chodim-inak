@@ -16,6 +16,7 @@
 			"heading": "About assistance",
 			"cards": [
 				{
+					"id": "tasks",
 					"heading": "About the tasks",
 					"text": [
 						"Since I have weak hands, I need help with everything related to survival: dressing, preparing meal, hygiene (such as showering), going out, household chores like cleaning or laundry, transfers and positioning, i.e., sitting me in the right position, putting me to bed, or turning me to the other side by night... Basically, everything that an able-bodied person does without thinking about it too much. A personal assistant serves as my hands and legs. They do for me what I would like to do myself if I could but, due to physical limitations, I cannot. That's what I need to survive in my condition.",
@@ -23,12 +24,14 @@
 					]
 				},
 				{
+					"id": "team",
 					"heading": "About the assistance team",
 					"text": [
 						"The team of my personal assistants is international. It usually consists of about 25 people per month (before the pandemic, it was 40), from all over the world. There shouldn't be a language barrier. In addition to Slovak and Czech, I can communicate in English (C1), Russian (B2), and Swedish (B2). Shifts of assistance always overlap within a time range of approximately 15 minutes, so it's essential to arrive on time for each shift to make effective use of the time for mutual assistance."
 					]
 				},
 				{
+					"id": "time",
 					"heading": "About time",
 					"text": [
 						"I prefer long-term cooperatio and offer flexible time commitments. You decide how often and for how long you want to assist each time (after mutual agreement according to the availability in the assistance calendar). You do this according to your own possibilities and willingness to come - I don't force anyone to come but it's fair to inform me about your availability or unavailability so that I can make arrangements. The chosen time (both the length of the visit and the date) can vary each time (the assistance calendar is also transferred to the website where you can see your shifts).",
@@ -36,12 +39,14 @@
 					]
 				},
 				{
+					"id": "health",
 					"heading": "About health precautions",
 					"text": [
 						"I try to adhere to hygiene principles so assistance washes their hands when they arrive at my apartment, before working with food and, most importantly, they shouldn't come to me if they are sick with flu etc. as struggling with illness is much more difficult for me than for able-bodied people. Due to the nature of the work, we have no other restrictions but if someone doesn't feel well or has been in touch with a sick person, they must inform me in advance because I am in a high-risk group."
 					]
 				},
 				{
+					"id": "compensation",
 					"heading": "About compensation",
 					"text": [
 						"I provide a sum of 130 CZK / hour or 5.52 € / hour for your assistance. It's not a huge amount but since I live completely alone without the help of relatives and need round the-clock assistance, paying for 21 hours a day, 7 days a week (I don't pay for 3 hours at night), it is already a considerable amount of money for me and I simply can't afford to pay more. Some people even come to assist as volunteers so that they help me to manage this way. Whether you opt for paid work or volunteer service, the responsibilities and tasks are the same.",
@@ -49,6 +54,7 @@
 					]
 				},
 				{
+					"id": "meeting",
 					"heading": "About the first meeting",
 					"text": [
 						"I am, of course, a private person, not an institution. And since it's my privacy which I allow a new person to enter, I have a habit of meeting with every interested individual before we start working together. This first visit is not binding and lasts approximately an hour and a half, maximum 2 hours. We will talk about mutual expectations and I will show you some basic things, tasks, and equipment with my experienced assistant. If the training goes well and your interest persists, we can start cooperating.",

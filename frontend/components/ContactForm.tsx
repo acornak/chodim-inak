@@ -145,7 +145,7 @@ const ContactForm: FC<ContactFormProps> = ({ lang, dict }): JSX.Element => {
 		if (formik.isSubmitting) {
 			return (
 				<div className="flex justify-center items-center py-14">
-					<div className="animate-spin rounded-full h-20 w-20 border-t-4 border-secondary dark:border-darksecondary"></div>
+					<div className="animate-spin rounded-full h-20 w-20 border-t-4"></div>
 				</div>
 			);
 		} else if (submitError) {
@@ -168,7 +168,7 @@ const ContactForm: FC<ContactFormProps> = ({ lang, dict }): JSX.Element => {
 			);
 		} else {
 			const formClasses =
-				"flex items-center w-full border-b border-secondary dark:border-darksecondary py-2 my-2";
+				"flex items-center w-full border-b border-gray-400 py-2 my-2";
 			const inputClasses =
 				"appearance-none bg-transparent border-none w-full mr-3 py-1 px-2 leading-tight focus:outline-none";
 			return (
@@ -417,7 +417,7 @@ const ContactForm: FC<ContactFormProps> = ({ lang, dict }): JSX.Element => {
 								onChange={formik.handleChange}
 								onBlur={formik.handleBlur}
 								value={formik.values["message"]}
-								className="appearance-none bg-transparent border-none w-full text-primary-500 dark:text-darkprimary-200 mr-3 py-1 px-2 leading-tight focus:outline-none"
+								className="appearance-none bg-transparent border-none w-full dark:text-darkprimary-200 mr-3 py-1 px-2 leading-tight focus:outline-none"
 							/>
 						</div>
 					</div>
@@ -450,7 +450,7 @@ const ContactForm: FC<ContactFormProps> = ({ lang, dict }): JSX.Element => {
 	return (
 		<section
 			id="contact"
-			className="bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 dark:text-gray-300"
+			className="bg-primary-bg dark:bg-gray-800 text-gray-700 dark:text-gray-300"
 		>
 			<h1
 				className={`text-4xl mb-4 font-bold uppercase text-center pt-10 ${contentAnimation}`}

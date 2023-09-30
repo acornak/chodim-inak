@@ -127,8 +127,8 @@ const Footer: FC = (): JSX.Element => {
 	];
 
 	return (
-		<footer className="bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 py-8">
-			<hr className="my-4 mx-8" />
+		<footer className="bg-primary-bg dark:bg-gray-800 text-gray-700 dark:text-gray-300 py-8">
+			<hr className="my-4 mx-8 border-gray-400" />
 			<div className="container mx-auto grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-8 px-6 md:px-0">
 				<div className="text-xs">
 					{logo && (
@@ -206,7 +206,7 @@ const Footer: FC = (): JSX.Element => {
 					</p>
 					<div className="flex justify-center mt-4">
 						<Link href="/calendar#register">
-							<button className="text-xs px-10 md:px-4 lg:px-6 xl:px-12 py-2 mb-4 rounded uppercase font-semibold border border-gray-300">
+							<button className="text-xs px-10 md:px-4 lg:px-6 xl:px-12 py-2 mb-4 rounded uppercase font-semibold border border-gray-400">
 								{dict.contact.button[locale]}
 							</button>
 						</Link>

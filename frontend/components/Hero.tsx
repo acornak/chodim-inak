@@ -8,6 +8,7 @@ import heroalt2 from "@/public/home/home-hero.webp";
 import Link from "next/link";
 
 type HeroHomeProps = {
+	locale: string;
 	dict: {
 		heading: string;
 		subheading: string;
@@ -15,7 +16,7 @@ type HeroHomeProps = {
 	};
 };
 
-const HeroHome: FC<HeroHomeProps> = ({ dict }): JSX.Element => {
+const HeroHome: FC<HeroHomeProps> = ({ locale, dict }): JSX.Element => {
 	const [loaded, setLoaded] = useState<boolean>(false);
 	const ref = useRef<HTMLDivElement>(null);
 
@@ -58,9 +59,9 @@ const HeroHome: FC<HeroHomeProps> = ({ dict }): JSX.Element => {
 					{dict.subheading}a
 				</p>
 				{/* TODO add locale here */}
-				<Link href="/calendar#register">
+				<Link href={`/${locale}/calendar#register`}>
 					<button
-						className={`homepage-button bg-transparent px-6 py-2 rounded uppercase border font-semibold transform hover:bg-white hover:text-gray-800 ${
+						className={`homepage-button bg-transparent px-6 py-2 rounded uppercase border font-semibold transform hover:bg-primary-bg hover:text-gray-800 ${
 							loaded
 								? "loaded-homepage-button translate-y-0 opacity-100"
 								: "translate-y-8 opacity-0"

@@ -5,7 +5,7 @@ import { HeroOthers } from "@/components/Hero";
 import { Locale } from "@/i18-config";
 import { getDictionary } from "@/dictionaries";
 // Image
-import heroCalendar from "@/public/calendar/hero-calendar.png";
+import heroCalendar from "@/public/calendar/hero-calendar.webp";
 
 export default async function Calendar({
 	params: { lang },

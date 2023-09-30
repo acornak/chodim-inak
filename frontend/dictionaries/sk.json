@@ -16,6 +16,7 @@
 			"heading": "O asistencii",
 			"cards": [
 				{
+					"id": "tasks",
 					"heading": "O pracovných úkonoch",
 					"text": [
 						"Keďže mám slabé ruky, potrebujem pomôcť so všetkým, čo patrí k prežitiu: obliekanie, príprava jedla, pomoc pri hygiene ako je sprchovanie, doprovod po vonku, domáce práce ako upratovanie či pranie, presuny a polohovanie, tj. manipulácia so mnou ako usádzanie do správneho sedu, ukladanie do postele či otáčanie v noci na druhú stranu... Proste všetko, čo chodiaci človek robí bez toho, aby si to nejak výraznejšie uvedomoval. Osobná asistentka ci osobný asistent mi pri tom slúži ako moje ruky a nohy. Robí za mňa to, čo by som chcela robiť sama, keby som mohla, ale kvôli fyzickým obmedzeniam nemôžem. To je to, čo vo svojom stave k prežitiu potrebujem.",
@@ -23,12 +24,14 @@
 					]
 				},
 				{
+					"id": "team",
 					"heading": "O asistenčnom teame",
 					"text": [
 						"Team mojich osobných asistentov a asistentiek je medzinárodný. Obvykle sa skladá približne z 25 ľudí mesačne (pred pandémiou to bolo 40) a to skutočne z celého sveta. Jazyková bariéra by nastať nemala. Okrem slovenčiny a češtiny sa dohovorím po anglicky (C1), rusky (B2) a švédsky (B2). Striedania asistencie sa vždy prekrývajú v časovom rozmedzí približne 15 minút, preto je dôležité prísť na každú službu včas, aby bol uvedený čas efektívne využitý na vzájomnú výpomoc."
 					]
 				},
 				{
+					"id": "time",
 					"heading": "O čase",
 					"text": [
 						"V asistencii preferujem dlhodobú spoluprácu, ale čo sa týka času stráveného asistenciou, je veľmi flexibilný. Vy samy / sami sa rozhodujete, ako často si na mňa nájdete čas a ako často i na ako dlho chcete zakaždým prísť (samozrejme, po dohode so mnou a podľa možností v asistenčnom kalendári). Robíte tak podľa svojich vlastných možností a ochoty prísť - nikoho do ničoho nenútim, ale je dobré a férové informovať ma o vašej prípadnej ne/dostupnosti, aby som sa vedela zariadiť.",
@@ -36,12 +39,14 @@
 					]
 				},
 				{
+					"id": "health",
 					"heading": "O zdravotných opatreniach",
 					"text": [
 						"Snažím sa dodržať zásady hygieny, takže asistencia si po príchode do bytu umýva ruky, takisto pred prácou s jedlom a hlavne nesmie ku mne prísť s nachladnutím, pretože každý priebeh u mňa môže byť omnoho horší, než u bežného človeka. Vzhľadom na charakter práce nemáme žiadne ďalšie obmedzenia, ale pokiaľ sa človek necíti dobre alebo bol v kontakte s chorou osobou, musí ma o tom vopred informovať, pretože patrím do ohrozenej skupiny."
 					]
 				},
 				{
+					"id": "compensation",
 					"heading": "O odmene",
 					"text": [
 						"Čo sa týka odmeny, asistencii dávam jednotnú sumu 130 Kč / hodinu, prípadne 5,52 € / hodinu. Nie je to žiadna horibilná suma, ale keďže žijem úplne sama bez pomoci príbuzných a potrebujem asistenciu 24 hodín denne, pričom platím 21 hodín 7 dní v týždni (3 hodiny v noci neplatím), ide už i tak o ohromnú čiastku peňazí a platiť viac si skrátka nemôžem dovoliť. Niektorí ľudia mi dokonca chodia asistovať aj dobrovoľnícky, aby som to zvládla. To, či si človek vyberie túto aktivitu ako platenú prácu alebo ako dobrovoľnícku službu je len na ňom - v oboch prípadoch zostávajú povinnosti a úkony rovnaké.",
@@ -49,6 +54,7 @@
 					]
 				},
 				{
+					"id": "meeting",
 					"heading": "O prvej schôdzke",
 					"text": [
 						"Som, samozrejme, súkromná osoba, žiadne zariadenie. A keďže ide o moje súkromie, do ktorého pustím nového človeka, mám vo zvyku najprv sa s každým záujemcom či každou záujemkyňou osobne stretnúť. Táto prvá návšteva je nezáväzná a trvá orientačne asi hodinu a pol, max. 2 hodiny. Porozprávame sa o vzájomných očakávaniach, ukážeme Vám s asistentom či asistentkou nejaké základné veci, úkony, pomôcky a pod. Ak si pri zácviku sadneme a váš záujem bude pretrvávať, môžeme začať spoluprácu.",

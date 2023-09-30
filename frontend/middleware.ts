@@ -25,7 +25,6 @@ function getLocale(request: NextRequest): string | undefined {
 
 export function middleware(request: NextRequest) {
 	const pathname = request.nextUrl.pathname;
-	console.log("Middleware invoked for URL:", request.nextUrl.pathname);
 
 	const skipPaths = [
 		/\/[a-zA-Z-_]+\/_vercel\//,

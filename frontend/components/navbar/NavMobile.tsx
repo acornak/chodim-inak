@@ -76,7 +76,7 @@ const NavMobileOpen: FC<NavMobileOpenProps> = ({ closeMenu, menuOpen }) => {
 	return (
 		<div
 			style={menuStyle}
-			className="md:hidden fixed top-0 right-0 w-1/2 h-full bg-white dark:bg-gray-800 flex flex-col space-y-4 py-8 px-6 text-gray-700 dark:text-gray-300"
+			className="md:hidden fixed top-0 right-0 w-1/2 h-full bg-primary-bg dark:bg-gray-800 flex flex-col space-y-4 py-8 px-6 text-gray-700 dark:text-gray-300"
 		>
 			<button
 				style={menuStyle}
@@ -153,7 +153,7 @@ const NavMobileOpen: FC<NavMobileOpenProps> = ({ closeMenu, menuOpen }) => {
 				<ModeSwitch />
 			</div>
 
-			<div className="fixed bottom-0 left-0 w-full p-4 bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 text-sm justify-center">
+			<div className="fixed bottom-0 left-0 w-full p-4 bg-primary-bg dark:bg-gray-800 text-gray-700 dark:text-gray-300 text-sm justify-center">
 				<Link href="/calendar#register">
 					<div className="flex justify-center">
 						<button

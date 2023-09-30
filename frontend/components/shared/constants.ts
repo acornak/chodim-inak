@@ -4,7 +4,7 @@ import { NavItem } from "./types";
 export const bgColor = (currentPage: string, locale: string): string => {
 	return currentPage === "/" + locale
 		? "bg-transparent"
-		: "bg-white dark:bg-gray-800";
+		: "bg-primary-bg dark:bg-gray-800";
 };
 
 export const NavItems: NavItem[] = [

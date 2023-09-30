@@ -73,7 +73,7 @@ const PostPage = async ({
 
 	if (!blogPost) {
 		return (
-			<div className="flex w-full h-screen bg-white dark:bg-gray-800 justify-center items-center mb-10">
+			<div className="flex w-full h-screen bg-primary-bg dark:bg-gray-800 justify-center items-center mb-10">
 				<div className="text-center">
 					<div className="text-gray-700 dark:text-gray-300 text-7xl">
 						404
@@ -100,7 +100,7 @@ const PostPage = async ({
 					sizes="100%"
 				/>
 			</div>
-			<div className="mt-6 p-6 bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300">
+			<div className="mt-6 p-6 bg-primary-bg dark:bg-gray-800 text-gray-700 dark:text-gray-300">
 				<div className="flex justify-between items-center w-full pb-6">
 					<Link href={`/${lang}/blog`} className="group uppercase">
 						<ChevronLeft className="inline-block mr-2 h-6 w-6 transition-transform duration-200 ease-in-out group-hover:-translate-x-2" />
@@ -119,7 +119,7 @@ const PostPage = async ({
 					{blogPost.title}
 				</div>
 				<ParseBodyRaw bodyRaw={blogPost.bodyRaw} />
-				<hr className="h-px my-8 border-0 bg-secondary dark:bg-darksecondary" />
+				<hr className="h-px my-8 border-0 border-gray-400" />
 				<div className="mt-4 flex flex-wrap text-sm">
 					Posted in
 					<p className="mx-2">

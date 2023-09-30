@@ -77,7 +77,7 @@ const PortableComponents = {
 			<h1 className="text-md pb-6 font-semibold">{children}</h1>
 		),
 		blockquote: ({ children }: PortableTextComponentProps<any>) => (
-			<blockquote className="border-l-4 border-secondary dark:border-darksecondary bg-primary-400 dark:bg-darkprimary-400 text-primary-200 dark:text-darkprimary-200 pl-4 py-2 my-4 relative">
+			<blockquote className="border-l-4 bg-primary-400 dark:bg-darkprimary-400 text-primary-200 dark:text-darkprimary-200 pl-4 py-2 my-4 relative">
 				<div className="quote-mark quote-mark--open">“</div>
 				<div className="ml-10 pb-4">{children}</div>
 				<div className="quote-mark quote-mark--close">”</div>

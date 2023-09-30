@@ -16,7 +16,7 @@ type BlogPostListProps = {
 };
 
 const BlogPostList: FC<BlogPostListProps> = ({ post, locale }): JSX.Element => (
-	<div className="bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 group overflow-hidden m-4 border-2 border-gray-300 dark:border-gray-700">
+	<div className="bg-primary-bg dark:bg-gray-800 text-gray-700 dark:text-gray-300 group overflow-hidden m-4 border-2 border-gray-300 dark:border-gray-700">
 		<div className="relative overflow-hidden h-64">
 			<Image
 				src={post.mainImage.asset.url}

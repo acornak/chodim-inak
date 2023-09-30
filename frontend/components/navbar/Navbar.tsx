@@ -65,7 +65,7 @@ const Navbar: FC = (): JSX.Element => {
 
 	const underline: string =
 		currentPage === "/" + locale
-			? "bg-white dark:bg-gray-300"
+			? `${isScrolled ? "bg-primary-base" : "bg-white"} dark:bg-gray-300`
 			: "bg-primary-base dark:bg-white";
 
 	const [shouldShowNavbar, setShouldShowNavbar] = useState<boolean>(true);
@@ -124,7 +124,7 @@ const Navbar: FC = (): JSX.Element => {
 	return (
 		<nav
 			className={`${navClass} transition-all ease-in-out duration-300 ${
-				isScrolled ? "bg-white dark:bg-gray-800" : bg
+				isScrolled ? "bg-primary-bg dark:bg-gray-800" : bg
 			} fixed w-full z-20 py-4`}
 		>
 			<div className="container mx-auto flex justify-between items-center px-6 md:px-0">

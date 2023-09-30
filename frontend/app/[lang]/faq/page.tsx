@@ -5,7 +5,7 @@ import { HeroOthers } from "@/components/Hero";
 import { Locale } from "@/i18-config";
 import { getDictionary } from "@/dictionaries";
 // Image
-import heroFaq from "@/public/faq/hero-faq.png";
+import heroFaq from "@/public/faq/hero-faq.webp";
 
 export default async function FAQ({
 	params: { lang },

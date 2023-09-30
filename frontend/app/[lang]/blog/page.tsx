@@ -7,7 +7,7 @@ import { getDictionary } from "@/dictionaries";
 // Functions
 import { getBlogPosts } from "@/components/shared/functions";
 // Image
-import heroBlog from "@/public/blog/hero-blog.png";
+import heroBlog from "@/public/blog/hero-blog.webp";
 // Types and constants
 import { BlogPost } from "@/components/shared/types";
 import BlogPostList from "@/components/blog/BlogPostList";
