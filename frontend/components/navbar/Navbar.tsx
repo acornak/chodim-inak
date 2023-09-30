@@ -9,7 +9,7 @@ import React, {
 import { debounce } from "lodash";
 // Next.js
 import { StaticImageData } from "next/image";
-import { usePathname } from "next/navigation";
+import { usePathname, redirect } from "next/navigation";
 // Context
 import { useTheme } from "next-themes";
 // Components
@@ -33,10 +33,13 @@ import {
 const Navbar: FC = (): JSX.Element => {
 	const { theme } = useTheme();
 	const currentPage: string = usePathname();
-	const locale: string = useMemo(
-		(): string => getLocaleFromPath(currentPage)!.toLowerCase(),
-		[currentPage],
-	);
+	const locale: string = useMemo(() => {
+		const localeFromPath = getLocaleFromPath(currentPage);
+		if (!localeFromPath) {
+			redirect("/en");
+		}
+		return localeFromPath.toLowerCase();
+	}, [currentPage]);
 	const bg: string = useMemo(
 		(): string => bgColor(currentPage, locale),
 		[currentPage, locale],
