@@ -111,7 +111,7 @@ const PostPage = async ({
 					{blogPost.title}
 				</div>
 			</div>
-			<div className="ml-6 mr-10 flex justify-between text-white dark:text-darkprimary-200">
+			<div className="text-xs md:text-sm ml-6 mr-10 flex justify-between text-white dark:text-darkprimary-200">
 				<div className="bg-secondary-dark py-1 px-2 dark:bg-gray-800 rounded-md">
 					{dict.postedBy} {blogPost.author.name}
 				</div>
