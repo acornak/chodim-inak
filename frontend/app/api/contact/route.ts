@@ -51,9 +51,11 @@ export async function POST(req: Request) {
 		email: string;
 		message: string;
 		subject: string;
+		sex: string;
 		age: string;
 		education: string;
 		occupation: string;
+		stay: string;
 		citizenship: string;
 		lang: string;
 		"g-recaptcha-response": string;
@@ -80,9 +82,11 @@ export async function POST(req: Request) {
 			generateConfirmationTemplate(
 				body.name,
 				body.lang,
+				body.sex,
 				body.age,
 				body.education,
 				body.occupation,
+				body.stay,
 				body.citizenship,
 				body.email,
 				body.message,
@@ -95,9 +99,11 @@ export async function POST(req: Request) {
 			generateNotificationTemplate(
 				body.name,
 				body.lang,
+				body.sex,
 				body.age,
 				body.education,
 				body.occupation,
+				body.stay,
 				body.citizenship,
 				body.email,
 				body.message,

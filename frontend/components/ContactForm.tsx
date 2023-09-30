@@ -15,7 +15,9 @@ import MessageIcon from "@/components/icons/Message";
 import AgeIcon from "./icons/Age";
 import JobIcon from "./icons/Job";
 import EducationIcon from "./icons/Education";
-import CitizenshipIcon from "./icons/Job copy";
+import CitizenshipIcon from "./icons/Citizenship";
+import StayIcon from "./icons/Stay";
+import SexIcon from "./icons/Sex";
 
 type ContactFormProps = {
 	lang: string;
@@ -35,6 +37,11 @@ type ContactFormProps = {
 		success: string;
 		required: string;
 		invalidemail: string;
+		sex: {
+			heading: string;
+			placeholder: string;
+			fields: string[];
+		};
 		age: {
 			tooyoung: string;
 			tooold: string;
@@ -49,6 +56,11 @@ type ContactFormProps = {
 			placeholder: string;
 			fields: string[];
 		};
+		stay: {
+			heading: string;
+			placeholder: string;
+			fields: string[];
+		};
 		citizenship: {
 			heading: string;
 			placeholder: string;
@@ -58,7 +70,7 @@ type ContactFormProps = {
 };
 
 const ContactForm: FC<ContactFormProps> = ({ lang, dict }): JSX.Element => {
-	const options = { rootMargin: "0px" };
+	const options = { rootMargin: "50px" };
 	const [ref, visible] = useOnScreen(options);
 
 	const contentAnimation = `flex flex-col justify-center items-center text-center transform transition-all ease-in-out duration-700 ${
@@ -79,12 +91,14 @@ const ContactForm: FC<ContactFormProps> = ({ lang, dict }): JSX.Element => {
 		email: Yup.string().email(dict.invalidemail).required(dict.required),
 		message: Yup.string().required(dict.required),
 		subject: Yup.string(),
+		sex: Yup.string().required(dict.required),
 		age: Yup.number()
 			.min(18, dict.age.tooyoung)
 			.max(70, dict.age.tooold)
 			.required(dict.required),
 		education: Yup.string().required(dict.required),
 		occupation: Yup.string().required(dict.required),
+		stay: Yup.string().required(dict.required),
 		citizenship: Yup.string().required(dict.required),
 	});
 
@@ -95,9 +109,11 @@ const ContactForm: FC<ContactFormProps> = ({ lang, dict }): JSX.Element => {
 			email: "",
 			message: "",
 			subject: "",
+			sex: "",
 			age: "",
 			education: "",
 			occupation: "",
+			stay: "",
 			citizenship: "",
 		},
 
@@ -145,7 +161,7 @@ const ContactForm: FC<ContactFormProps> = ({ lang, dict }): JSX.Element => {
 		if (formik.isSubmitting) {
 			return (
 				<div className="flex justify-center items-center py-14">
-					<div className="animate-spin rounded-full h-20 w-20 border-t-4"></div>
+					<div className="animate-spin rounded-full h-20 w-20 border-t-4 border-gray-400"></div>
 				</div>
 			);
 		} else if (submitError) {
@@ -232,6 +248,45 @@ const ContactForm: FC<ContactFormProps> = ({ lang, dict }): JSX.Element => {
 								formik.errors["email"] ? (
 									<div className="text-red-500">
 										{formik.errors["email"]}
+									</div>
+								) : null}
+							</div>
+						</div>
+						<div className={formClasses}>
+							<SexIcon className={iconClasses} />
+							<div className="w-full">
+								<label
+									htmlFor="name"
+									className="ml-2 block text-gray-700 dark:text-gray-300"
+								>
+									{dict.sex.heading}
+								</label>
+								<select
+									id="sex"
+									name="sex"
+									onChange={formik.handleChange}
+									onBlur={formik.handleBlur}
+									value={formik.values["sex"]}
+									className={`${inputClasses} ${
+										formik.values["sex"] === "" &&
+										"text-gray-400"
+									}`}
+								>
+									<option value="" disabled>
+										{dict.sex.placeholder}
+									</option>
+									{dict.sex.fields.map((value) => (
+										<option key={value} value={value}>
+											{value}
+										</option>
+									))}
+								</select>
+							</div>
+							<div className="w-60 mt-4 text-end">
+								{formik.touched["sex"] &&
+								formik.errors["sex"] ? (
+									<div className="text-red-500">
+										{formik.errors["sex"]}
 									</div>
 								) : null}
 							</div>
@@ -329,6 +384,45 @@ const ContactForm: FC<ContactFormProps> = ({ lang, dict }): JSX.Element => {
 								formik.errors["education"] ? (
 									<div className="text-red-500">
 										{formik.errors["education"]}
+									</div>
+								) : null}
+							</div>
+						</div>
+						<div className={formClasses}>
+							<StayIcon className={iconClasses} />
+							<div className="w-full">
+								<label
+									htmlFor="name"
+									className="ml-2 block text-gray-700 dark:text-gray-300"
+								>
+									{dict.stay.heading}
+								</label>
+								<select
+									id="stay"
+									name="stay"
+									onChange={formik.handleChange}
+									onBlur={formik.handleBlur}
+									value={formik.values["stay"]}
+									className={`${inputClasses} ${
+										formik.values["stay"] === "" &&
+										"text-gray-400"
+									}`}
+								>
+									<option value="" disabled>
+										{dict.stay.placeholder}
+									</option>
+									{dict.stay.fields.map((value) => (
+										<option key={value} value={value}>
+											{value}
+										</option>
+									))}
+								</select>
+							</div>
+							<div className="w-60 mt-4 text-end">
+								{formik.touched["stay"] &&
+								formik.errors["stay"] ? (
+									<div className="text-red-500">
+										{formik.errors["stay"]}
 									</div>
 								) : null}
 							</div>

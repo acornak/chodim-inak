@@ -79,6 +79,11 @@
 			"invalidemail": "Invalid email address",
 			"error": "Something went wrong. Please try again later.",
 			"success": "Thank you for your message. I will get back to you as soon as possible.",
+			"sex": {
+				"heading": "Gender",
+				"placeholder": "Please select an option",
+				"fields": ["Female", "Male", "Other"]
+			},
 			"age": {
 				"heading": "Age",
 				"tooyoung": "Minimum age is 18 years.",
@@ -99,6 +104,11 @@
 					"Master's Degree",
 					"Doctoral Degree"
 				]
+			},
+			"stay": {
+				"heading": "Current stay",
+				"placeholder": "Please select an option",
+				"fields": ["Slovakia", "Czech Republic", "Other"]
 			},
 			"citizenship": {
 				"heading": "Citizenship",

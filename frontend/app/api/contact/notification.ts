@@ -1,9 +1,11 @@
 const generateConfirmationTemplate = (
 	name: string,
 	lang: string,
+	sex: string,
 	age: string,
 	education: string,
 	occupation: string,
+	stay: string,
 	citizenship: string,
 	email: string,
 	message: string,
@@ -329,19 +331,31 @@ const generateConfirmationTemplate = (
                             <div class="text">
                                 <div style="display: flex; justify-content: space-between;">
                                     <div style="flex: 1; padding: 0 1em;" class="text">
-                                        <p><b>Vek: </b>${age}</p>
+                                        <p><b>Pohlavie: </b>${sex}</p>
                                     </div>
                                 </div>
                                 <div style="display: flex; justify-content: space-between;">
-                                    <div style="flex: 1; padding: 0 1em;">
-                                        <p><b>Povolanie alebo študijný odbor: </b>${occupation}</p>
+                                    <div style="flex: 1; padding: 0 1em;" class="text">
+                                        <p><b>Vek: </b>${age}</p>
                                     </div>
                                 </div>
                             </div>
                             <div class="text">
                                 <div style="display: flex; justify-content: space-between;">
+                                    <div style="flex: 1; padding: 0 1em;">
+                                        <p><b>Povolanie alebo študijný odbor: </b>${occupation}</p>
+                                    </div>
+                                </div>
+                                <div style="display: flex; justify-content: space-between;">
                                     <div style="flex: 1; padding: 0 1em;" class="text">
                                         <p><b>Najvyššie dosiahnuté vzdelanie: </b>${education}</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="text">
+                                <div style="display: flex; justify-content: space-between;">
+                                    <div style="flex: 1; padding: 0 1em;">
+                                        <p><b>Súčasný pobyt: </b>${stay}</p>
                                     </div>
                                 </div>
                                 <div style="display: flex; justify-content: space-between;">

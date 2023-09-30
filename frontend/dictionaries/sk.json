@@ -79,6 +79,11 @@
 			"invalidemail": "Nesprávny formát emailu",
 			"error": "Nastala chyba pri odosielaní správy. Prosím, skúste to neskôr.",
 			"success": "Správa bola úspešne odoslaná. Ďakujem za záujem, budem vás kontaktovať hneď, ako to bude možné.",
+			"sex": {
+				"heading": "Pohlavie",
+				"placeholder": "Zvoľte možnosť",
+				"fields": ["Žena", "Muž", "Iné"]
+			},
 			"age": {
 				"heading": "Vek",
 				"tooyoung": "Minimálny vek je 18 rokov.",
@@ -100,6 +105,11 @@
 					"Vysokoškolské vzdelanie III. stupňa"
 				]
 			},
+			"stay": {
+				"heading": "Súčasný pobyt",
+				"placeholder": "Zvoľte možnosť",
+				"fields": ["Slovenská republika", "Česká republika", "Iné"]
+			},
 			"citizenship": {
 				"heading": "Občianstvo",
 				"placeholder": "Zvoľte možnosť",
@@ -111,7 +121,7 @@
 					"Poľsko",
 					"Rumunsko",
 					"Maďarsko",
-					"iné"
+					"Iné"
 				]
 			}
 		}

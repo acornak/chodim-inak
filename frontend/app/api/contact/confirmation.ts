@@ -1,9 +1,11 @@
 const generateConfirmationTemplate = (
 	name: string,
 	lang: string,
+	sex: string,
 	age: string,
 	education: string,
 	occupation: string,
+	stay: string,
 	citizenship: string,
 	email: string,
 	message: string,
@@ -25,9 +27,11 @@ const generateConfirmationTemplate = (
 			faq: string;
 			copy: string;
 			fullname: string;
+			sex: string;
 			age: string;
 			occupation: string;
 			education: string;
+			stay: string;
 			citizenship: string;
 			message: string;
 		};
@@ -50,9 +54,11 @@ const generateConfirmationTemplate = (
 			faq: "frequently asked questions",
 			copy: "Copy of your answers:",
 			fullname: "Full Name",
+			sex: "Gender",
 			age: "Age",
 			occupation: "Occupation or field of study",
 			education: "Highest achieved education",
+			stay: "Current stay",
 			citizenship: "Citizenship",
 			message: "Message",
 		},
@@ -72,9 +78,11 @@ const generateConfirmationTemplate = (
 			faq: "často kladené otázky",
 			copy: "Kópia Vašich odpovedí:",
 			fullname: "Celé meno",
+			sex: "Pohlavie",
 			age: "Vek",
 			occupation: "Povolanie alebo študijný odbor",
 			education: "Najvyššie dosiahnuté vzdelanie",
+			stay: "Súčasný pobyt",
 			citizenship: "Štátna príslušnosť",
 			message: "Správa",
 		},
@@ -418,19 +426,31 @@ const generateConfirmationTemplate = (
                             <div class="text">
                                 <div style="display: flex; justify-content: space-between;">
                                     <div style="flex: 1; padding: 0 1em;" class="text">
-                                        <p><b>${langMap[lang].age}: </b>${age}</p>
+                                        <p><b>${langMap[lang].sex}: </b>${sex}</p>
                                     </div>
                                 </div>
                                 <div style="display: flex; justify-content: space-between;">
+                                    <div style="flex: 1; padding: 0 1em;" class="text">
+                                        <p><b>${langMap[lang].age}: </b>${age}</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="text">
+                                <div style="display: flex; justify-content: space-between;">
                                     <div style="flex: 1; padding: 0 1em;">
                                         <p><b>${langMap[lang].occupation}: </b>${occupation}</p>
+                                    </div>
+                                </div>
+                                <div style="display: flex; justify-content: space-between;">
+                                    <div style="flex: 1; padding: 0 1em;" class="text">
+                                        <p><b>${langMap[lang].education}: </b>${education}</p>
                                     </div>
                                 </div>
                             </div>
                             <div class="text">
                                 <div style="display: flex; justify-content: space-between;">
                                     <div style="flex: 1; padding: 0 1em;" class="text">
-                                        <p><b>${langMap[lang].education}: </b>${education}</p>
+                                        <p><b>${langMap[lang].stay}: </b>${stay}</p>
                                     </div>
                                 </div>
                                 <div style="display: flex; justify-content: space-between;">
