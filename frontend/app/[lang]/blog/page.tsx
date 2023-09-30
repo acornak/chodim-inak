@@ -14,7 +14,7 @@ import BlogPostList from "@/components/blog/BlogPostList";
 import LatestPosts from "@/components/blog/LatestPosts";
 
 export const dynamicParams: boolean = true;
-export const revalidate: number = 3600;
+export const revalidate: number = 60;
 
 export default async function Blog({
 	params: { lang },

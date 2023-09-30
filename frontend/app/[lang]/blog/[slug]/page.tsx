@@ -60,7 +60,7 @@ export async function generateStaticParams(): Promise<{ slug: string }[]> {
 }
 
 export const dynamicParams: boolean = true;
-export const revalidate: number = 3600;
+export const revalidate: number = 60;
 
 const PostPage = async ({
 	params: { slug, lang },
