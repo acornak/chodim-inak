@@ -55,7 +55,7 @@ export async function getBlogPosts(): Promise<BlogPost[]> {
         }
     }`;
 
-	const url: string = `${process.env.SANITY_URL}v1/graphql/${process.env.SANITY_DATASET}/default`;
+	const url: string = `${process.env.NEXT_PUBLIC_SANITY_URL}v1/graphql/${process.env.NEXT_PUBLIC_SANITY_DATASET}/default`;
 	const res: Response = await fetch(url, {
 		method: "POST",
 		headers: headers,
@@ -116,7 +116,7 @@ export async function getBlogPost(slug: string): Promise<BlogPost> {
         }
     }`;
 
-	const url: string = `${process.env.SANITY_URL}v1/graphql/${process.env.SANITY_DATASET}/default`;
+	const url: string = `${process.env.NEXT_PUBLIC_SANITY_URL}v1/graphql/${process.env.NEXT_PUBLIC_SANITY_DATASET}/default`;
 	const res: Response = await fetch(url, {
 		method: "POST",
 		headers: headers,

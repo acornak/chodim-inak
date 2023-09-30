@@ -203,7 +203,11 @@ const Footer: FC = (): JSX.Element => {
 					</h4>
 					<p className="text-sm">
 						<b>Email</b>:{" "}
-						<a href="mailto:komixsk@gmail.com">komixsk@gmail.com</a>
+						<a
+							href={`mailto:${process.env.NEXT_PUBLIC_EMAIL_USERNAME}`}
+						>
+							{process.env.NEXT_PUBLIC_EMAIL_USERNAME}
+						</a>
 					</p>
 					<p className="text-sm">
 						<b>{dict.contact.phone[locale]}</b>:{" "}

@@ -29,7 +29,7 @@ function getImageUrl(ref: string): string {
 	const lastElement = parts.pop();
 	const newRef = parts.join("-") + "." + lastElement;
 
-	return `https://cdn.sanity.io/images/${process.env.SANITY_PROJECT_ID}/${process.env.SANITY_DATASET}/${newRef}`;
+	return `https://cdn.sanity.io/images/${process.env.NEXT_PUBLIC_SANITY_PROJECT_ID}/${process.env.NEXT_PUBLIC_SANITY_DATASET}/${newRef}`;
 }
 
 const PortableComponents = {

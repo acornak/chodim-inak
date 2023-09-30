@@ -6,13 +6,13 @@ async function sendMail(to: string, subject: string, html: string) {
 	const transporter = nodemailer.createTransport({
 		service: "gmail",
 		auth: {
-			user: process.env.EMAIL_USERNAME,
+			user: process.env.NEXT_PUBLIC_EMAIL_USERNAME,
 			pass: process.env.EMAIL_PASSWORD,
 		},
 	});
 
 	const mailData = {
-		from: process.env.EMAIL_USERNAME,
+		from: process.env.NEXT_PUBLIC_EMAIL_USERNAME,
 		to,
 		subject,
 		html,
@@ -94,7 +94,7 @@ export async function POST(req: Request) {
 		);
 
 		await sendMail(
-			process.env.EMAIL_USERNAME!,
+			process.env.NEXT_PUBLIC_EMAIL_USERNAME!,
 			"chodim-inak.sk | Daniela, máš novú správu!",
 			generateNotificationTemplate(
 				body.name,

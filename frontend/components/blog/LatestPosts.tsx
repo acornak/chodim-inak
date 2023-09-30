@@ -85,9 +85,9 @@ const LatestPosts: FC<LatestPostsProps> = ({
 
 			if (!parent) return;
 
-			if (scrollPosition >= originalOffsetTop.current - 20) {
+			if (scrollPosition >= originalOffsetTop.current - 10) {
 				stickyElement.style.position = "fixed";
-				stickyElement.style.top = "20px";
+				stickyElement.style.top = "10px";
 				if (originalWidth) {
 					stickyElement.style.width = originalWidth;
 				}

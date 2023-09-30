@@ -24,7 +24,7 @@ const ShareComponent: FC<ShareComponentProps> = ({
 				href={`https://www.facebook.com/sharer/sharer.php?u=https://www.chodim-inak.sk/sk/blog/${blogPost.slug.current}`}
 				target="_blank"
 				rel="noopener noreferrer"
-				className="mr-6 hover:text-primary-dark"
+				className="mr-6 hover:text-primary-dark dark:hover:text-gray-300"
 			>
 				<FacebookIcon />
 			</a>
@@ -32,15 +32,15 @@ const ShareComponent: FC<ShareComponentProps> = ({
 				href={`https://twitter.com/intent/tweet?text=${blogPost.title}&url=https://www.chodim-inak.sk/sk/blog/${blogPost.slug.current}`}
 				target="_blank"
 				rel="noopener noreferrer"
-				className="mr-6 hover:text-primary-dark"
+				className="mr-6 hover:text-primary-dark dark:hover:text-gray-300"
 			>
 				<TwitterIcon />
 			</a>
 			<a
-				href={`https://www.linkedin.com/shareArticle?mini=true&url=https://www.antchodim-inak.sk/sk/blog/${blogPost.slug.current}&title=${blogPost.title}&source=https://www.chodim-inak.sk/sk/blog/${blogPost.slug.current}`}
+				href={`https://www.linkedin.com/shareArticle?mini=true&url=https://www.chodim-inak.sk/sk/blog/${blogPost.slug.current}&title=${blogPost.title}&source=https://www.chodim-inak.sk/sk/blog/${blogPost.slug.current}`}
 				target="_blank"
 				rel="noopener noreferrer"
-				className="mr-6 hover:text-primary-dark"
+				className="mr-6 hover:text-primary-dark dark:hover:text-gray-300"
 			>
 				<LinkedInIcon />
 			</a>

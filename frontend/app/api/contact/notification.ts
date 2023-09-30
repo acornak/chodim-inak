@@ -395,7 +395,7 @@ const generateConfirmationTemplate = (
                           <td style="text-align: left; padding-left: 5px; padding-right: 5px;">
                               <h3 class="heading">Kontaktné info</h3>
                               <ul>
-                                        <li><span class="text">Daniela Komanická, <a href="mailto:komix.sk@gmail.com">komix.sk@gmail.com</a></span></li>
+                                        <li><span class="text">Daniela Komanická, <a href="mailto:${process.env.NEXT_PUBLIC_EMAIL_USERNAME}">${process.env.NEXT_PUBLIC_EMAIL_USERNAME}</a></span></li>
                                         <li><span class="text"><a href="https://www.chodim-jinak.cz/sk" rel="noopener noreferrer" target="_blank">chodim-jinak.cz</a></span></a></li>
                                       </ul>
                           </td>

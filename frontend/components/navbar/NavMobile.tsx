@@ -175,7 +175,11 @@ const NavMobileOpen: FC<NavMobileOpenProps> = ({ closeMenu, menuOpen }) => {
 				<div className="flex flex-col items-start">
 					<span>
 						<b>Email</b>:{" "}
-						<a href="mailto:komixsk@gmail.com">komixsk@gmail.com</a>
+						<a
+							href={`mailto:${process.env.NEXT_PUBLIC_EMAIL_USERNAME}`}
+						>
+							{process.env.NEXT_PUBLIC_EMAIL_USERNAME}
+						</a>
 					</span>
 					<span>
 						<b>{dict.phone[locale]}</b>:{" "}

@@ -1,5 +1,5 @@
 "use client";
-import React, { ReactNode, FC } from "react";
+import React, { ReactNode, FC, useEffect } from "react";
 // Components
 import Navbar from "./navbar/Navbar";
 import Footer from "./Footer";
@@ -13,6 +13,20 @@ type WrapperProps = {
 };
 
 const PageWrapper: FC<WrapperProps> = ({ children }): JSX.Element => {
+	useEffect(() => {
+		const handleContextMenu = (e: Event) => {
+			if (e.target instanceof HTMLImageElement) {
+				e.preventDefault();
+			}
+		};
+
+		window.addEventListener("contextmenu", handleContextMenu);
+
+		return () => {
+			window.removeEventListener("contextmenu", handleContextMenu);
+		};
+	}, []);
+
 	return (
 		<GoogleReCaptchaProvider
 			reCaptchaKey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY!}

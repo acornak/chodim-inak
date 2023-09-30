@@ -112,10 +112,10 @@ const PostPage = async ({
 				</div>
 			</div>
 			<div className="text-xs md:text-sm ml-6 mr-10 flex justify-between text-white dark:text-darkprimary-200">
-				<div className="bg-secondary-dark py-1 px-2 dark:bg-gray-800 rounded-md">
+				<div className="bg-secondary-dark dark:bg-gray-600 py-1 px-2 dark:bg-gray-800 rounded-md">
 					{dict.postedBy} {blogPost.author.name}
 				</div>
-				<div className="bg-secondary-dark py-1 px-2 dark:bg-gray-800 rounded-md">
+				<div className="bg-secondary-dark dark:bg-gray-600 py-1 px-2 dark:bg-gray-800 rounded-md">
 					<span>
 						{format(
 							new Date(blogPost.publishedAt),

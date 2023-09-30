@@ -66,7 +66,7 @@ const BlogPostList: FC<BlogPostListProps> = ({
 				/>
 			</div>
 		</div>
-		<div className="lg:hidden flex flex-col m-4 bg-primary-bglight dark:bg-gray-700 text-gray-700 dark:text-gray-300">
+		<div className="lg:hidden flex flex-col m-4 bg-primary-bglight dark:bg-gray-700 text-gray-700 dark:text-gray-300 border-b-2 border-secondary-light">
 			<div className="relative w-full h-60">
 				<Image
 					src={post.mainImage.asset.url}
