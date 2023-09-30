@@ -1,16 +1,16 @@
 .flip-card {
+	width: 100%;
+	position: relative;
 	perspective: 1000px;
+	aspect-ratio: 1 / 1;
 }
+
 .flip-card-inner {
-	transition: transform 0.8s;
-	transform-style: preserve-3d;
 	position: relative;
 	width: 100%;
 	height: 100%;
 }
-.flip-card:hover .flip-card-inner {
-	transform: rotateY(180deg);
-}
+
 .flip-card-front,
 .flip-card-back {
 	position: absolute;
@@ -18,10 +18,25 @@
 	height: 100%;
 	backface-visibility: hidden;
 	border-radius: inherit;
+	transition: all ease-in 0.2s;
 }
+
 .flip-card-back {
-	transform: rotateY(180deg);
+	transform: rotateY(90deg);
 }
+.flip-card:hover .flip-card-back {
+	transform: rotateY(0deg);
+	transition-delay: 0.2s;
+}
+
+.flip-card-front {
+	transition-delay: 0.2s;
+}
+.flip-card:hover .flip-card-front {
+	transform: rotateY(90deg);
+	transition-delay: 0s;
+}
+
 
 .backdrop-blur {
 	backdrop-filter: blur(3px);
