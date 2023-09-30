@@ -11,9 +11,6 @@ import {
 } from "@portabletext/react";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { atomDark } from "react-syntax-highlighter/dist/esm/styles/prism";
-// Types and constants
-
-import Link from "next/link";
 // CSS
 import "./blockquote.css";
 import { BlogContent } from "../shared/types";
@@ -62,6 +59,19 @@ const PortableComponents = {
 				</SyntaxHighlighter>
 			</div>
 		),
+		facebookUrl: ({ value }: PortableTextComponentProps<any>) => {
+			console.log(value);
+			return (
+				<iframe
+					src={`https://www.facebook.com/plugins/post.php?href=https%3A%2F%2F${encodeURIComponent(
+						value.url.slice(8),
+					)}&show_text=true&width=500`}
+					width="500"
+					height="811"
+					allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
+				/>
+			);
+		},
 	},
 	block: {
 		h1: ({ children }: PortableTextComponentProps<any>) => (
@@ -106,13 +116,13 @@ const PortableComponents = {
 	listItem: {
 		bullet: ({ children }: PortableTextComponentProps<any>) => (
 			<li className="relative">
-				<span className="absolute left-2 top-1/2 transform -translate-y-1/2 h-1 w-1 bg-secondary dark:bg-darksecondary rounded-full"></span>
+				<span className="absolute left-2 top-1/2 transform -translate-y-1/2 h-1 w-1 bg-secondary-dark rounded-full"></span>
 				<div className="pl-6">{children}</div>
 			</li>
 		),
 		number: (props: PortableTextComponentProps<any>) => (
 			<li className="pl-6">
-				<span className="text-secondary dark:text-darksecondary inline">
+				<span className="text-secondary-dark inline">
 					{props.index + 1}.&nbsp;&nbsp;
 				</span>
 				<span className="inline">{props.children}</span>
@@ -121,22 +131,12 @@ const PortableComponents = {
 	},
 	marks: {
 		link: ({ value, children }: PortableTextMarkComponentProps<any>) => {
-			if (value.href.startsWith("/"))
-				return (
-					<Link
-						href={value.href}
-						className="text-secondary dark:text-darksecondary"
-					>
-						{children}
-					</Link>
-				);
-
 			return (
 				<a
 					href={value.href}
 					target="_blank"
 					rel="noopener noreferrer"
-					className="text-secondary dark:text-darksecondary"
+					className="text-secondary-dark"
 				>
 					{children}
 				</a>
