@@ -132,7 +132,7 @@ const Footer: FC = (): JSX.Element => {
 			id="footer"
 		>
 			<hr className="my-4 mx-8 border-gray-400" />
-			<div className="container mx-auto grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-8 px-6 md:px-0">
+			<div className="container mx-auto grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8 px-6 md:px-0">
 				<div className="text-xs">
 					{logo && (
 						<Image
@@ -173,12 +173,14 @@ const Footer: FC = (): JSX.Element => {
 						locale={locale}
 					/>
 				</div>
-				<LinkList
-					title={dict.links.heading[locale]}
-					links={externalLinks}
-					external={true}
-					locale={locale}
-				/>
+				<div className="hidden lg:block">
+					<LinkList
+						title={dict.links.heading[locale]}
+						links={externalLinks}
+						external={true}
+						locale={locale}
+					/>
+				</div>
 				<div className="hidden md:block">
 					<h4 className="font-semibold mb-2">
 						{dict.social.heading[locale]}

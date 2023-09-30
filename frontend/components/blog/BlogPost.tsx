@@ -41,36 +41,37 @@ const BlogPostComponent: FC<BlogPostProps> = ({
 			</div>
 
 			{blogPosts.map((post: BlogPost) => (
-				<Link
-					href={`/${locale}/blog/[slug]`}
-					as={`/${locale}/blog/${post.slug.current}`}
-					passHref
-					key={post._id}
-				>
-					<div className="relative">
-						<div className="relative w-full h-60">
-							<Image
-								src={post.mainImage.asset.url}
-								alt={post.title}
-								style={{
-									objectFit: "cover",
-								}}
-								fill
-								className="z-0"
-							/>
-							<div className="absolute inset-0 bg-black opacity-50 z-10"></div>
+				<div className="pb-6" key={post._id}>
+					<Link
+						href={`/${locale}/blog/[slug]`}
+						as={`/${locale}/blog/${post.slug.current}`}
+						passHref
+						key={post._id}
+					>
+						<div className="relative text-center">
+							<div className="relative w-full h-60">
+								<Image
+									src={post.mainImage.asset.url}
+									alt={post.title}
+									style={{
+										objectFit: "cover",
+									}}
+									fill
+									className="z-0"
+								/>
+								<div className="absolute inset-0 bg-black opacity-50 z-10"></div>
+							</div>
+							<div className="absolute inset-0 flex flex-col items-center justify-center">
+								<h2 className="text-xl text-white dark:text-gray-300 py-1 font-semibold z-30 text-center">
+									{post.title}
+								</h2>
+								<span className="text-sm text-white dark:text-gray-300 py-1 z-30 text-center">
+									{post.leadRaw}
+								</span>
+							</div>
 						</div>
-
-						<div className="absolute inset-0 flex flex-col items-center justify-center">
-							<h2 className="text-xl text-white dark:text-gray-300 py-1 font-semibold z-30">
-								{post.title}
-							</h2>
-							<span className="text-sm text-white dark:text-gray-300 py-1 z-30">
-								{post.leadRaw}
-							</span>
-						</div>
-					</div>
-				</Link>
+					</Link>
+				</div>
 			))}
 		</div>
 	</>
