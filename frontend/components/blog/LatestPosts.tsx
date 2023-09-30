@@ -109,7 +109,7 @@ const LatestPosts: FC<LatestPostsProps> = ({
 		<>
 			<div ref={stickyRef}>
 				<div className="mt-4 hidden lg:block bg-primary-bglight dark:bg-gray-700 col-span-1 mr-10 border-b-2 border-secondary-light dark:border-secondary-dark max-h-[69vh]">
-					<div className="text-center pt-10 px-4 text-xl uppercase font-semibold dark:text-gray-300">
+					<div className="text-center pt-4 px-4 text-xl uppercase font-semibold dark:text-gray-300">
 						<p className="mx-auto">{dict.latestPosts}</p>
 					</div>
 					{posts.map((post: BlogPost) => (

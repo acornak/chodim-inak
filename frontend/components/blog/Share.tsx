@@ -16,7 +16,7 @@ const ShareComponent: FC<ShareComponentProps> = ({
 	heading,
 }): JSX.Element => (
 	<>
-		<div className="text-center pt-10 px-4 text-xl uppercase font-semibold dark:text-gray-300">
+		<div className="text-center pt-4 px-4 text-xl uppercase font-semibold dark:text-gray-300">
 			<p className="mx-auto">{heading}</p>
 		</div>
 		<div className="mt-4 flex items-center text-center justify-center text-sm pb-6 text-secondary-dark">
