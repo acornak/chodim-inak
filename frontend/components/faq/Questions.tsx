@@ -42,7 +42,7 @@ const Questions: FC<QuestionsProps> = ({ questions }): JSX.Element => {
 				</div>
 				<div
 					className={`px-2 overflow-hidden transition-max-height duration-300 ease-in-out ${
-						isAnswerVisible ? "max-h-none" : "max-h-0"
+						isAnswerVisible ? "max-h-[10000px]" : "max-h-0"
 					}`}
 				>
 					{question.answer.split("\n").map(
