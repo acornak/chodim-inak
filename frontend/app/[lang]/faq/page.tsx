@@ -1,6 +1,7 @@
 import React from "react";
 // Components
 import { HeroOthers } from "@/components/Hero";
+import Questions from "@/components/faq/Questions";
 // Internationalization
 import { Locale } from "@/i18-config";
 import { getDictionary } from "@/dictionaries";
@@ -21,9 +22,11 @@ export default async function FAQ({
 				subtitle={dict.hero.subheading}
 				image={heroFaq}
 			/>
-			<div className="text-center pt-10 px-4 text-2xl font-semibold dark:text-gray-300">
-				<p className="mx-auto">{dict.placeholder}</p>
-			</div>
+
+			<p className="text-lg text-justify p-10">{dict.paragraph1}</p>
+			<p className="text-lg text-justify p-10 pt-0">{dict.paragraph2}</p>
+
+			<Questions questions={dict.questions} />
 		</>
 	);
 }

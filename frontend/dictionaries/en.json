@@ -150,6 +150,13 @@
 			"heading": "FAQ",
 			"subheading": "Frequently asked questions about personal assistance"
 		},
-		"placeholder": "This site is still under construction. Please come back later."
+		"paragraph1": "This site is still under construction. Please come back later.",
+		"paragraph2": "",
+		"questions": [
+			{
+				"question": "",
+				"answer": ""
+			}
+		]
 	}
 }
